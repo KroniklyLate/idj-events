@@ -86,7 +86,7 @@ function businessCardBackSvg() {
   <text x="525" y="278" text-anchor="middle" fill="${gold}" font-family="Georgia, serif" font-size="36" font-weight="600">${ownerName}</text>
   <text x="525" y="330" text-anchor="middle" fill="${goldDeep}" font-family="Georgia, serif" font-size="26" font-weight="600">DJ · MC · Lighting · Ceremony Sound</text>
   <text x="525" y="368" text-anchor="middle" fill="${goldDeep}" font-family="Arial, sans-serif" font-size="20">Officiant · Karaoke · Event Coordination</text>
-  <text x="525" y="420" text-anchor="middle" fill="${gold}" font-family="Arial, sans-serif" font-size="18" font-weight="600" letter-spacing="2">PACKAGES FROM $1,500</text>
+  <text x="525" y="420" text-anchor="middle" fill="${gold}" font-family="Arial, sans-serif" font-size="18" font-weight="600" letter-spacing="1">Custom packages for every celebration</text>
   <text x="525" y="460" text-anchor="middle" fill="${goldDeep}" font-family="Arial, sans-serif" font-size="16">Third-party vendors available — photo, catering, beauty &amp; more</text>
   <text x="525" y="520" text-anchor="middle" fill="${gold}" font-family="Arial, sans-serif" font-size="22" font-weight="700">idj.events</text>
 </svg>`;
@@ -232,7 +232,7 @@ async function exportBusinessCardBack() {
       <text x="525" y="278" text-anchor="middle" fill="${gold}" font-family="Georgia, serif" font-size="36" font-weight="600">${ownerName}</text>
       <text x="525" y="330" text-anchor="middle" fill="${goldDeep}" font-family="Georgia, serif" font-size="26" font-weight="600">DJ · MC · Lighting · Ceremony Sound</text>
       <text x="525" y="368" text-anchor="middle" fill="${goldDeep}" font-family="Arial, sans-serif" font-size="20">Officiant · Karaoke · Event Coordination</text>
-      <text x="525" y="420" text-anchor="middle" fill="${gold}" font-family="Arial, sans-serif" font-size="18" font-weight="600" letter-spacing="2">PACKAGES FROM $1,500</text>
+      <text x="525" y="420" text-anchor="middle" fill="${gold}" font-family="Arial, sans-serif" font-size="18" font-weight="600" letter-spacing="1">Custom packages for every celebration</text>
       <text x="525" y="460" text-anchor="middle" fill="${goldDeep}" font-family="Arial, sans-serif" font-size="16">Third-party vendors available — photo, catering, beauty &amp; more</text>
       <text x="525" y="520" text-anchor="middle" fill="${gold}" font-family="Arial, sans-serif" font-size="22" font-weight="700">idj.events</text>
     </svg>`;
