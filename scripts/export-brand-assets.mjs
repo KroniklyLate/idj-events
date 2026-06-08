@@ -64,9 +64,12 @@ function writeStackedSvg() {
   console.log("Wrote svg/logo-stacked.svg");
 }
 
+const cardBorderSvg = `<rect x="48" y="48" width="954" height="504" rx="12" fill="none" stroke="${gold}" stroke-width="2"/>`;
+
 function businessCardFrontSvg() {
   return `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 ${cardWidth} ${cardHeight}" role="img" aria-label="I DJ Events business card front">
   <rect width="${cardWidth}" height="${cardHeight}" fill="${white}"/>
+  ${cardBorderSvg}
   <image xlink:href="../transparent/mark-512.png" x="48" y="130" width="200" height="200" preserveAspectRatio="xMidYMid meet"/>
   <text x="280" y="210" fill="${gold}" font-family="Georgia, serif" font-size="54" font-weight="600">I DJ Events</text>
   <text x="280" y="258" fill="${goldDeep}" font-family="Georgia, serif" font-size="34" font-weight="500">${ownerName}</text>
@@ -81,7 +84,7 @@ function businessCardFrontSvg() {
 function businessCardBackSvg() {
   return `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 ${cardWidth} ${cardHeight}" role="img" aria-label="I DJ Events business card back">
   <rect width="${cardWidth}" height="${cardHeight}" fill="${white}"/>
-  <rect x="48" y="48" width="954" height="504" rx="12" fill="none" stroke="${gold}" stroke-width="2"/>
+  ${cardBorderSvg}
   <image xlink:href="../transparent/mark-512.png" x="435" y="58" width="180" height="180" preserveAspectRatio="xMidYMid meet"/>
   <text x="525" y="278" text-anchor="middle" fill="${gold}" font-family="Georgia, serif" font-size="36" font-weight="600">${ownerName}</text>
   <text x="525" y="330" text-anchor="middle" fill="${goldDeep}" font-family="Georgia, serif" font-size="26" font-weight="600">DJ · MC · Lighting · Ceremony Sound</text>
@@ -210,6 +213,7 @@ async function exportBusinessCardFront() {
   const svg = `
     <svg width="${cardWidth}" height="${cardHeight}" xmlns="http://www.w3.org/2000/svg">
       <rect width="${cardWidth}" height="${cardHeight}" fill="${white}"/>
+      <rect x="48" y="48" width="954" height="504" rx="12" fill="none" stroke="${gold}" stroke-width="2"/>
       <text x="280" y="210" fill="${gold}" font-family="Georgia, serif" font-size="54" font-weight="600">I DJ Events</text>
       <text x="280" y="258" fill="${goldDeep}" font-family="Georgia, serif" font-size="34" font-weight="500">${ownerName}</text>
       <text x="280" y="300" fill="${gold}" font-family="Arial, sans-serif" font-size="16" font-weight="600" letter-spacing="4">TAHOE'S PREMIER WEDDING DJ</text>

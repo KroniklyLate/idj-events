@@ -1,5 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1050 600" role="img" aria-label="I DJ Events business card front">
   <rect width="1050" height="600" fill="#FFFFFF"/>
+  <rect x="48" y="48" width="954" height="504" rx="12" fill="none" stroke="#D4AF37" stroke-width="2"/>
   <image xlink:href="../transparent/mark-512.png" x="48" y="130" width="200" height="200" preserveAspectRatio="xMidYMid meet"/>
   <text x="280" y="210" fill="#D4AF37" font-family="Georgia, serif" font-size="54" font-weight="600">I DJ Events</text>
   <text x="280" y="258" fill="#a8841e" font-family="Georgia, serif" font-size="34" font-weight="500">Clint Davidson</text>
