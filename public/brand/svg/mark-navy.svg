@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="I DJ Events mark">
+  <rect x="4" y="4" width="112" height="112" rx="22" fill="none" stroke="#0c1929" stroke-width="3"/>
+  <text x="60" y="58" text-anchor="middle" fill="#0c1929" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700" letter-spacing="-1">IDJ</text>
+  <text x="60" y="82" text-anchor="middle" fill="#0c1929" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="600" letter-spacing="3">EVENTS</text>
+  <path d="M28 96 C42 90 52 98 60 92 C68 86 78 94 92 88" fill="none" stroke="#0c1929" stroke-width="2.5" stroke-linecap="round"/>
+</svg>

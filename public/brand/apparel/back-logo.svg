@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 280" role="img" aria-label="I DJ Events back print">
+  <defs>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f0d78c"/>
+      <stop offset="100%" stop-color="#c9a227"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(0,20) scale(1.6)">
+    <rect x="4" y="8" width="104" height="104" rx="20" fill="#0c1929"/>
+    <rect x="4" y="8" width="104" height="104" rx="20" fill="none" stroke="url(#gold)" stroke-width="3"/>
+    <text x="56" y="58" text-anchor="middle" fill="url(#gold)" font-family="Arial, sans-serif" font-size="34" font-weight="700" letter-spacing="-1">IDJ</text>
+    <text x="56" y="80" text-anchor="middle" fill="#93c5fd" font-family="Arial, sans-serif" font-size="8" font-weight="600" letter-spacing="2.5">EVENTS</text>
+  </g>
+  <text x="220" y="100" fill="#ffffff" font-family="Georgia, serif" font-size="72" font-weight="600">I DJ Events</text>
+  <text x="220" y="155" fill="url(#gold)" font-family="Arial, sans-serif" font-size="22" font-weight="600" letter-spacing="5">LAKE TAHOE · RENO · BEYOND</text>
+  <text x="220" y="210" fill="#93c5fd" font-family="Arial, sans-serif" font-size="20" letter-spacing="3">TAHOE'S PREMIER WEDDING DJ</text>
+</svg>

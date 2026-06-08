@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="I DJ Events chest mark">
+  <defs>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f0d78c"/>
+      <stop offset="100%" stop-color="#c9a227"/>
+    </linearGradient>
+  </defs>
+  <rect x="40" y="40" width="320" height="320" rx="56" fill="#0c1929"/>
+  <rect x="40" y="40" width="320" height="320" rx="56" fill="none" stroke="url(#gold)" stroke-width="8"/>
+  <text x="200" y="185" text-anchor="middle" fill="url(#gold)" font-family="Arial, Helvetica, sans-serif" font-size="108" font-weight="700" letter-spacing="-3">IDJ</text>
+  <text x="200" y="250" text-anchor="middle" fill="#93c5fd" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="600" letter-spacing="8">EVENTS</text>
+  <path d="M90 310 C130 295 160 315 200 300 C240 285 270 305 310 290" fill="none" stroke="#3b82f6" stroke-width="7" stroke-linecap="round"/>
+</svg>

@@ -1,9 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { navLinks, siteConfig } from "@/lib/site-data";
+import { navLinks } from "@/lib/site-data";
 
 export function Header() {
   const pathname = usePathname();
@@ -12,13 +13,15 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-white/20 bg-white/10 backdrop-blur-lg">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-        <Link href="/" className="group flex flex-col" onClick={() => setOpen(false)}>
-          <span className="font-display text-xl font-semibold tracking-wide text-white transition-colors group-hover:text-gold-400 sm:text-2xl">
-            {siteConfig.name}
-          </span>
-          <span className="hidden text-xs tracking-widest text-lake-300 uppercase sm:block">
-            Lake Tahoe Weddings
-          </span>
+        <Link href="/" className="group shrink-0" onClick={() => setOpen(false)}>
+          <Image
+            src="/brand/svg/logo-horizontal-light.svg"
+            alt="I DJ Events"
+            width={220}
+            height={52}
+            priority
+            className="h-10 w-auto transition-opacity group-hover:opacity-90 sm:h-12"
+          />
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
