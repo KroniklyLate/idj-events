@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { BrandLogo } from "@/components/BrandLogo";
 
 type PageHeroProps = {
   eyebrow?: string;
@@ -6,6 +7,7 @@ type PageHeroProps = {
   description?: string;
   children?: ReactNode;
   tall?: boolean;
+  showLogo?: boolean;
 };
 
 export function PageHero({
@@ -14,6 +16,7 @@ export function PageHero({
   description,
   children,
   tall = false,
+  showLogo = true,
 }: PageHeroProps) {
   return (
     <section
@@ -26,6 +29,9 @@ export function PageHero({
           tall ? "py-20 sm:py-28 lg:py-32" : "py-16 sm:py-20"
         }`}
       >
+        {showLogo && (
+          <BrandLogo size={tall ? "hero" : "lg"} className="mb-6 drop-shadow-lg" priority />
+        )}
         {eyebrow && (
           <p className="text-on-image text-xs font-semibold tracking-[0.2em] text-gold-300 uppercase sm:text-sm">
             {eyebrow}

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Cormorant_Garamond, Source_Sans_3 } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { brandAssets } from "@/lib/site-data";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -32,13 +33,14 @@ export const metadata: Metadata = {
     siteName: "I DJ Events",
     locale: "en_US",
     type: "website",
+    images: [{ url: brandAssets.mark512, width: 512, height: 512, alt: "I DJ Events" }],
   },
   icons: {
     icon: [
-      { url: "/brand/web/favicon-32.png", sizes: "32x32", type: "image/png" },
-      { url: "/brand/web/favicon-16.png", sizes: "16x16", type: "image/png" },
+      { url: brandAssets.favicon, sizes: "128x128", type: "image/png" },
+      { url: brandAssets.mark256, sizes: "256x256", type: "image/png" },
     ],
-    apple: "/brand/web/apple-touch-icon.png",
+    apple: brandAssets.appleTouchIcon,
   },
 };
 

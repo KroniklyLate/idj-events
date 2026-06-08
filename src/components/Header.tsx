@@ -1,9 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { BrandLogo } from "@/components/BrandLogo";
 import { navLinks } from "@/lib/site-data";
 
 export function Header() {
@@ -13,16 +13,13 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-white/20 bg-white/10 backdrop-blur-lg">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-        <Link href="/" className="group shrink-0" onClick={() => setOpen(false)}>
-          <Image
-            src="/brand/web/logo-primary-256.png"
-            alt="I DJ Events"
-            width={256}
-            height={256}
-            priority
-            className="h-11 w-11 transition-opacity group-hover:opacity-90 sm:h-12 sm:w-12"
-          />
-        </Link>
+        <BrandLogo
+          href="/"
+          size="sm"
+          priority
+          onClick={() => setOpen(false)}
+          className="h-11 w-11 sm:h-12 sm:w-12"
+        />
 
         <nav className="hidden items-center gap-8 md:flex">
           {navLinks.map((link) => {

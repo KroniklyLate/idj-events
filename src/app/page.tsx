@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BrandLogo } from "@/components/BrandLogo";
 import { CTABanner } from "@/components/CTABanner";
 import { PackageCard } from "@/components/PackageCard";
 import { PageBackground } from "@/components/PageBackground";
@@ -146,6 +147,9 @@ export default function HomePage() {
             </div>
 
             <div className="glass-panel p-8 sm:p-10">
+              <div className="mb-6 flex justify-center sm:justify-start">
+                <BrandLogo size="sm" className="h-14 w-14" />
+              </div>
               <p className="font-display text-2xl leading-snug font-medium italic text-navy-900 sm:text-3xl">
                 &ldquo;Your wedding deserves more than a playlist — it deserves
                 a partner who cares about every moment.&rdquo;

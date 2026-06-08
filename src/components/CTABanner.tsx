@@ -1,11 +1,15 @@
 import Link from "next/link";
+import { BrandLogo } from "@/components/BrandLogo";
 import { siteConfig } from "@/lib/site-data";
 
 export function CTABanner() {
   return (
     <section className="relative py-16 sm:py-20">
       <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-        <p className="text-on-image text-xs font-semibold tracking-[0.2em] text-gold-300 uppercase">
+        <div className="flex justify-center">
+          <BrandLogo size="md" className="drop-shadow-lg" />
+        </div>
+        <p className="text-on-image mt-6 text-xs font-semibold tracking-[0.2em] text-gold-300 uppercase">
           Let&apos;s Create Your Soundtrack
         </p>
         <h2 className="text-on-image mt-3 font-display text-3xl font-semibold sm:text-4xl">

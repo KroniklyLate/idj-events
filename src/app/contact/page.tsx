@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
+import { BrandLogo } from "@/components/BrandLogo";
 import { ContactForm } from "@/components/ContactForm";
 import { PageBackground } from "@/components/PageBackground";
 import { PageHero } from "@/components/PageHero";
@@ -34,6 +35,7 @@ export default function ContactPage() {
       <section className="py-16 sm:py-24">
         <div className="mx-auto grid max-w-6xl gap-12 px-4 sm:px-6 lg:grid-cols-5 lg:px-8">
           <div className="lg:col-span-2">
+            <BrandLogo size="md" className="mb-6 drop-shadow-lg" />
             <h2 className="text-on-image font-display text-2xl font-semibold">
               Reach us directly
             </h2>

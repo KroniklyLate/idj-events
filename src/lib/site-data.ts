@@ -1,3 +1,12 @@
+export const brandAssets = {
+  mark128: "/brand/transparent/mark-128.png",
+  mark256: "/brand/web/mark-transparent-256.png",
+  mark512: "/brand/web/mark-transparent-512.png",
+  mark1024: "/brand/transparent/mark-1024.png",
+  favicon: "/brand/transparent/mark-128.png",
+  appleTouchIcon: "/brand/web/mark-transparent-512.png",
+} as const;
+
 export const heroImages = {
   home: "/images/backgrounds/hero-home.jpg",
   packages: "/images/backgrounds/hero-packages.jpg",

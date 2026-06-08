@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BrandLogo } from "@/components/BrandLogo";
 import { navLinks, siteConfig } from "@/lib/site-data";
 
 export function Footer() {
@@ -8,7 +9,8 @@ export function Footer() {
     <footer className="mt-auto border-t border-white/20 bg-white/10 text-white/90 backdrop-blur-lg">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-3 lg:px-8">
         <div>
-          <p className="font-display text-2xl font-semibold text-white">
+          <BrandLogo href="/" size="md" className="h-16 w-16" />
+          <p className="mt-4 font-display text-2xl font-semibold text-white">
             {siteConfig.name}
           </p>
           <p className="mt-2 text-sm leading-relaxed">{siteConfig.tagline}</p>
