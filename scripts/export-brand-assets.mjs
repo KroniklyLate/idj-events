@@ -109,6 +109,60 @@ async function exportMasterPng(out, size, bg = navy) {
   console.log(`Exported ${out}`);
 }
 
+/** Navy backdrop in logo-master.jpg — remove it to produce transparent gold hexagon marks. */
+const bgKey = { r: 10, g: 22, b: 40 };
+const bgThreshold = 42;
+const bgFeather = 28;
+
+function alphaFromBackground(r, g, b) {
+  const dr = r - bgKey.r;
+  const dg = g - bgKey.g;
+  const db = b - bgKey.b;
+  const dist = Math.sqrt(dr * dr + dg * dg + db * db);
+  if (dist <= bgThreshold) return 0;
+  if (dist >= bgThreshold + bgFeather) return 255;
+  return Math.round(((dist - bgThreshold) / bgFeather) * 255);
+}
+
+async function buildTransparentMarkBuffer(workSize = 2048) {
+  const { data, info } = await sharp(masterPath)
+    .resize(workSize, workSize, {
+      fit: "contain",
+      background: { ...bgKey, alpha: 1 },
+    })
+    .ensureAlpha()
+    .raw()
+    .toBuffer({ resolveWithObject: true });
+
+  for (let i = 0; i < data.length; i += info.channels) {
+    data[i + 3] = alphaFromBackground(data[i], data[i + 1], data[i + 2]);
+  }
+
+  return sharp(data, { raw: { width: info.width, height: info.height, channels: info.channels } })
+    .png()
+    .trim()
+    .toBuffer();
+}
+
+async function exportTransparentMarkPng(out, size) {
+  const outPath = join(brandRoot, out);
+  mkdirSync(dirname(outPath), { recursive: true });
+  const trimmed = await buildTransparentMarkBuffer();
+  await sharp(trimmed)
+    .resize(size, size, { fit: "inside", background: { r: 0, g: 0, b: 0, alpha: 0 } })
+    .png()
+    .toFile(outPath);
+  console.log(`Exported ${out}`);
+}
+
+function writeTransparentMarkSvg(outRelative, pngRelative) {
+  const content = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 400 400" role="img" aria-label="I DJ Events mark">
+  <image xlink:href="../${pngRelative.replace(/\\/g, "/")}" x="0" y="0" width="400" height="400" preserveAspectRatio="xMidYMid meet"/>
+</svg>`;
+  writeFileSync(join(brandRoot, outRelative), content);
+  console.log(`Wrote ${outRelative}`);
+}
+
 async function exportHorizontalPng(out, width, height, bg, textColor, subColor) {
   const outPath = join(brandRoot, out);
   const logo = await sharp(masterPath)
@@ -268,5 +322,24 @@ await exportStackedPng();
 await exportBusinessCardFront();
 await exportBusinessCardBack();
 await exportBackPrint();
+
+const transparentExports = [
+  { out: "transparent/mark-2048.png", size: 2048 },
+  { out: "transparent/mark-1024.png", size: 1024 },
+  { out: "transparent/mark-512.png", size: 512 },
+  { out: "transparent/mark-256.png", size: 256 },
+  { out: "transparent/mark-128.png", size: 128 },
+  { out: "web/mark-transparent-512.png", size: 512 },
+  { out: "web/mark-transparent-256.png", size: 256 },
+  { out: "apparel/mark-transparent-1200.png", size: 1200 },
+  { out: "apparel/mark-transparent-800.png", size: 800 },
+  { out: "print/mark-transparent-3000.png", size: 3000 },
+];
+
+for (const item of transparentExports) {
+  await exportTransparentMarkPng(item.out, item.size);
+}
+
+writeTransparentMarkSvg("svg/mark-transparent.svg", "transparent/mark-512.png");
 
 console.log("Brand package recompiled from logo-master.jpg.");
