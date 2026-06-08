@@ -29,7 +29,7 @@ Until this is configured, the contact form shows a fallback message with your ph
 
 ## Step 3 — Push to GitHub
 
-1. Create a new repository on https://github.com (e.g. `idj-events`)
+1. Create a new repository at https://github.com/new (e.g. `idj-events`) under account **KroniklyLate**
 2. From the project folder:
 
 ```powershell
@@ -37,7 +37,7 @@ git init
 git add .
 git commit -m "Initial I DJ Events website"
 git branch -M main
-git remote add origin https://github.com/YOUR_USERNAME/idj-events.git
+git remote add origin https://github.com/KroniklyLate/idj-events.git
 git push -u origin main
 ```
 
