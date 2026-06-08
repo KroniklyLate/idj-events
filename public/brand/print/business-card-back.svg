@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1050 600" role="img" aria-label="I DJ Events business card back">
-  <rect width="1050" height="600" fill="#f8fafc"/>
+  <rect width="1050" height="600" fill="#ffffff"/>
   <rect x="48" y="48" width="954" height="504" rx="12" fill="none" stroke="#D4AF37" stroke-width="2"/>
   <image xlink:href="../logo-master.jpg" x="435" y="60" width="180" height="180" preserveAspectRatio="xMidYMid meet"/>
   <text x="525" y="300" text-anchor="middle" fill="#0A1628" font-family="Georgia, serif" font-size="28" font-weight="600">DJ · MC · Lighting · Ceremony Sound</text>
