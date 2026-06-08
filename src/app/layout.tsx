@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "I DJ Events | Tahoe's Premier Wedding DJ",
     description:
-      "Professional wedding DJ services in Lake Tahoe and surrounding areas. Packages from $1,500.",
+      "Professional wedding DJ services in Lake Tahoe, Reno, and beyond. Packages from $1,500.",
     url: "https://idj.events",
     siteName: "I DJ Events",
     locale: "en_US",

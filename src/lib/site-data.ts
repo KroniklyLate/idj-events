@@ -14,7 +14,7 @@ export const siteConfig = {
   phoneHref: "tel:+17752336501",
   email: "booking@idj.events",
   emailHref: "mailto:booking@idj.events",
-  serviceArea: "Lake Tahoe and surrounding areas",
+  serviceArea: "Lake Tahoe, Reno, and beyond",
   travelNote: "Travel available",
 };
 
@@ -175,7 +175,7 @@ export const faqs = [
   {
     question: "Do you travel outside of Lake Tahoe?",
     answer:
-      "Yes! We serve Lake Tahoe and surrounding areas, and travel is available for destination weddings throughout Northern California and Nevada.",
+      "Yes! We serve Lake Tahoe, Reno, and beyond, with travel available for destination weddings throughout Northern California and Nevada.",
   },
   {
     question: "How far in advance should we book?",

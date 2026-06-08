@@ -8,7 +8,7 @@ import { faqs, heroImages, siteConfig } from "@/lib/site-data";
 export const metadata: Metadata = {
   title: "About I DJ Events",
   description:
-    "Learn about I DJ Events — Lake Tahoe's premier wedding DJ serving Tahoe and surrounding areas with travel available.",
+    "Learn about I DJ Events — Lake Tahoe's premier wedding DJ serving Lake Tahoe, Reno, and beyond.",
 };
 
 export default function AboutPage() {
