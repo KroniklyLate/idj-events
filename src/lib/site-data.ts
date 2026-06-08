@@ -81,8 +81,8 @@ export const packages: Package[] = [
     features: [
       "Professional DJ for reception, cocktails, dinner, and dancing",
       "2 × 15 inch speakers",
-      "4 LED PAR cans",
-      "4 hours total (setup through breakdown)",
+      "4 Light Bars",
+      "4 Hour DJ Service",
     ],
   },
   {
@@ -94,7 +94,7 @@ export const packages: Package[] = [
       "4 Mid-High speakers + 1 subwoofer",
       "8 LED PAR cans",
       "2 club-style party lights with lasers",
-      "6 hours total (setup through breakdown)",
+      "6 Hour DJ Service",
     ],
   },
   {
@@ -109,7 +109,7 @@ export const packages: Package[] = [
       "2 LED light bars",
       "4 club-style party lights with lasers",
       "2 moving head wash lights",
-      "6 hours total (setup through breakdown)",
+      "6 Hour DJ Service",
     ],
   },
   {
@@ -123,7 +123,7 @@ export const packages: Package[] = [
       "16 LED PAR cans",
       "6 moving head wash lights",
       "Choice of linen colors",
-      "6 hours total (setup through breakdown)",
+      "6 Hour DJ Service",
     ],
   },
   {
@@ -138,7 +138,7 @@ export const packages: Package[] = [
       "6 moving head wash lights",
       "2 gobo moving heads",
       "2 five-lamp moving head units",
-      "7 hours total (setup through breakdown)",
+      "7 Hour DJ Service",
     ],
   },
   {
@@ -153,7 +153,7 @@ export const packages: Package[] = [
       "8 moving head wash lights",
       "2 gobo moving heads",
       "4 five-lamp moving head units",
-      "8 hours total (setup through breakdown)",
+      "8 Hour DJ Service",
     ],
   },
 ];
