@@ -10,7 +10,7 @@ const navy = "#0A1628";
 const gold = "#D4AF37";
 const goldDeep = "#a8841e";
 const white = "#FFFFFF";
-const ownerName = "Clint Davdison";
+const ownerName = "Clint Davidson";
 const cardWidth = 1050;
 const cardHeight = 600;
 
