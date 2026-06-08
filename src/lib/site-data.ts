@@ -80,7 +80,7 @@ export const packages: Package[] = [
     slug: "starter",
     features: [
       "Professional DJ for reception, cocktails, dinner, and dancing",
-      "2 × 15 inch speakers",
+      "Sound system for 25–50 guests",
       "4 Light Bars",
       "4 Hour DJ Service",
     ],
@@ -91,7 +91,7 @@ export const packages: Package[] = [
     slug: "step-it-up",
     features: [
       "DJ with light hosting for reception and select announcements",
-      "4 Mid-High speakers + 1 subwoofer",
+      "Sound system for 50–75 guests",
       "8 LED PAR cans",
       "2 club-style party lights with lasers",
       "6 Hour DJ Service",
@@ -104,7 +104,7 @@ export const packages: Package[] = [
     highlight: true,
     features: [
       "Full DJ and MC services with Ceremony Audio",
-      "6 Mid-High speakers + 1 subwoofer",
+      "Sound system for 75–100 guests",
       "12 LED PAR cans",
       "2 LED light bars",
       "4 club-style party lights with lasers",
@@ -118,7 +118,7 @@ export const packages: Package[] = [
     slug: "forever",
     features: [
       "Acts as day-of wedding planner for music and flow",
-      "6 Mid-High speakers + 2 subwoofers",
+      "Sound system for 100–150 guests",
       "Full lighting truss + 2 truss bars",
       "16 LED PAR cans",
       "6 moving head wash lights",
@@ -132,7 +132,7 @@ export const packages: Package[] = [
     slug: "the-i-do",
     features: [
       "Includes outdoor ceremony sound system",
-      "Concert Quality Sound System",
+      "Sound system for 150–200 guests",
       "Full lighting truss + 2 truss bars",
       "20 LED PAR cans",
       "6 moving head wash lights",
@@ -147,7 +147,7 @@ export const packages: Package[] = [
     slug: "till-the-end",
     features: [
       "Complete event coordination and ceremony audio",
-      "Concert Quality Sound System",
+      "Sound system for 200+ guests",
       "Extended lighting truss + 4 truss bars",
       "24 LED PAR cans",
       "8 moving head wash lights",
