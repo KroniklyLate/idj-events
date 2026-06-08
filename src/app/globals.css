@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+:root {
+  --background: transparent;
+  --foreground: #ffffff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-source-sans);
+  --font-display: var(--font-cormorant);
+
+  --color-navy-800: #1e3a5f;
+  --color-navy-900: #152a45;
+  --color-navy-950: #0c1929;
+
+  --color-lake-300: #93c5fd;
+  --color-lake-500: #3b82f6;
+  --color-lake-700: #1d4ed8;
+  --color-lake-800: #1e40af;
+
+  --color-gold-300: #f0d78c;
+  --color-gold-400: #d4af37;
+  --color-gold-500: #c9a227;
+  --color-gold-600: #a8841e;
+}
+
+body {
+  background: transparent;
+  color: var(--foreground);
+  font-family: var(--font-source-sans), system-ui, sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-cormorant), Georgia, serif;
+}
+
+.text-on-image {
+  color: #ffffff;
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.9),
+    0 2px 12px rgba(0, 0, 0, 0.75),
+    0 0 40px rgba(0, 0, 0, 0.35);
+}
+
+.glass-panel {
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+}
+
+.glass-panel-soft {
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+}
+
+.link-on-image {
+  color: #f0d78c;
+  font-weight: 600;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+  transition: color 0.2s ease;
+}
+
+.link-on-image:hover {
+  color: #ffffff;
+}
