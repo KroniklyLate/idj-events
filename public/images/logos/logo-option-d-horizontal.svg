@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 100" role="img" aria-label="I DJ Events">
+  <g transform="translate(12,18)">
+    <circle cx="32" cy="32" r="30" fill="#152a45" stroke="#d4af37" stroke-width="2"/>
+    <circle cx="32" cy="32" r="18" fill="none" stroke="#93c5fd" stroke-width="2"/>
+    <circle cx="32" cy="32" r="5" fill="#d4af37"/>
+    <path d="M18 44 C24 28 40 24 48 36" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+    <path d="M22 50 C30 40 38 42 44 48" fill="none" stroke="#d4af37" stroke-width="2" stroke-linecap="round"/>
+  </g>
+  <text x="108" y="48" fill="#ffffff" font-family="Georgia, serif" font-size="36" font-weight="600" letter-spacing="1">I DJ Events</text>
+  <text x="108" y="72" fill="#d4af37" font-family="Arial, sans-serif" font-size="11" letter-spacing="3.5">LAKE TAHOE · RENO · BEYOND</text>
+</svg>
