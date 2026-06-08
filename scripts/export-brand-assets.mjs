@@ -8,7 +8,11 @@ const brandRoot = join(__dirname, "..", "public", "brand");
 const masterPath = join(brandRoot, "logo-master.jpg");
 const navy = "#0A1628";
 const gold = "#D4AF37";
+const goldDeep = "#a8841e";
 const white = "#FFFFFF";
+const ownerName = "Clint Davdison";
+const cardWidth = 1050;
+const cardHeight = 600;
 
 /** All mark/logo assets derive from logo-master.jpg — the official hexagon + gold soundwave + mountain artwork. */
 const markSvgVariants = [
@@ -60,43 +64,47 @@ function writeStackedSvg() {
   console.log("Wrote svg/logo-stacked.svg");
 }
 
+function businessCardFrontSvg() {
+  return `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 ${cardWidth} ${cardHeight}" role="img" aria-label="I DJ Events business card front">
+  <rect width="${cardWidth}" height="${cardHeight}" fill="${white}"/>
+  <image xlink:href="../transparent/mark-512.png" x="48" y="130" width="200" height="200" preserveAspectRatio="xMidYMid meet"/>
+  <text x="280" y="210" fill="${gold}" font-family="Georgia, serif" font-size="54" font-weight="600">I DJ Events</text>
+  <text x="280" y="258" fill="${goldDeep}" font-family="Georgia, serif" font-size="34" font-weight="500">${ownerName}</text>
+  <text x="280" y="300" fill="${gold}" font-family="Arial, sans-serif" font-size="16" font-weight="600" letter-spacing="4">TAHOE'S PREMIER WEDDING DJ</text>
+  <text x="280" y="380" fill="${goldDeep}" font-family="Arial, sans-serif" font-size="22" font-weight="600">775-233-6501</text>
+  <text x="280" y="420" fill="${goldDeep}" font-family="Arial, sans-serif" font-size="22">booking@idj.events</text>
+  <text x="280" y="460" fill="${goldDeep}" font-family="Arial, sans-serif" font-size="18">idj.events</text>
+  <text x="280" y="500" fill="${gold}" font-family="Arial, sans-serif" font-size="14" font-weight="600" letter-spacing="2">LAKE TAHOE · RENO · BEYOND</text>
+</svg>`;
+}
+
+function businessCardBackSvg() {
+  return `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 ${cardWidth} ${cardHeight}" role="img" aria-label="I DJ Events business card back">
+  <rect width="${cardWidth}" height="${cardHeight}" fill="${white}"/>
+  <rect x="48" y="48" width="954" height="504" rx="12" fill="none" stroke="${gold}" stroke-width="2"/>
+  <image xlink:href="../transparent/mark-512.png" x="435" y="58" width="180" height="180" preserveAspectRatio="xMidYMid meet"/>
+  <text x="525" y="278" text-anchor="middle" fill="${gold}" font-family="Georgia, serif" font-size="36" font-weight="600">${ownerName}</text>
+  <text x="525" y="330" text-anchor="middle" fill="${goldDeep}" font-family="Georgia, serif" font-size="26" font-weight="600">DJ · MC · Lighting · Ceremony Sound</text>
+  <text x="525" y="368" text-anchor="middle" fill="${goldDeep}" font-family="Arial, sans-serif" font-size="20">Officiant · Karaoke · Event Coordination</text>
+  <text x="525" y="420" text-anchor="middle" fill="${gold}" font-family="Arial, sans-serif" font-size="18" font-weight="600" letter-spacing="2">PACKAGES FROM $1,500</text>
+  <text x="525" y="460" text-anchor="middle" fill="${goldDeep}" font-family="Arial, sans-serif" font-size="16">Third-party vendors available — photo, catering, beauty &amp; more</text>
+  <text x="525" y="520" text-anchor="middle" fill="${gold}" font-family="Arial, sans-serif" font-size="22" font-weight="700">idj.events</text>
+</svg>`;
+}
+
 function writeBusinessCardSvgs() {
-  writeFileSync(
-    join(brandRoot, "print/business-card-front.svg"),
-    `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1050 600" role="img" aria-label="I DJ Events business card front">
-  <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0A1628"/>
-      <stop offset="100%" stop-color="#152a45"/>
-    </linearGradient>
-  </defs>
-  <rect width="1050" height="600" fill="url(#bg)"/>
-  <image xlink:href="../logo-master.jpg" x="48" y="120" width="220" height="220" preserveAspectRatio="xMidYMid meet"/>
-  <text x="300" y="250" fill="#ffffff" font-family="Georgia, serif" font-size="54" font-weight="600">I DJ Events</text>
-  <text x="300" y="292" fill="#D4AF37" font-family="Arial, sans-serif" font-size="16" font-weight="600" letter-spacing="4">TAHOE'S PREMIER WEDDING DJ</text>
-  <text x="300" y="380" fill="#ffffff" font-family="Arial, sans-serif" font-size="22" font-weight="600">775-233-6501</text>
-  <text x="300" y="420" fill="#93c5fd" font-family="Arial, sans-serif" font-size="22">booking@idj.events</text>
-  <text x="300" y="460" fill="#ffffff" font-family="Arial, sans-serif" font-size="18">idj.events</text>
-  <text x="300" y="500" fill="#D4AF37" font-family="Arial, sans-serif" font-size="14" letter-spacing="2">LAKE TAHOE · RENO · BEYOND</text>
-</svg>`,
-  );
-
-  writeFileSync(
-    join(brandRoot, "print/business-card-back.svg"),
-    `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1050 600" role="img" aria-label="I DJ Events business card back">
-  <rect width="1050" height="600" fill="#ffffff"/>
-  <rect x="48" y="48" width="954" height="504" rx="12" fill="none" stroke="#D4AF37" stroke-width="2"/>
-  <image xlink:href="../logo-master.jpg" x="435" y="60" width="180" height="180" preserveAspectRatio="xMidYMid meet"/>
-  <text x="525" y="300" text-anchor="middle" fill="#0A1628" font-family="Georgia, serif" font-size="28" font-weight="600">DJ · MC · Lighting · Ceremony Sound</text>
-  <text x="525" y="340" text-anchor="middle" fill="#152a45" font-family="Arial, sans-serif" font-size="20">Officiant · Karaoke · Event Coordination</text>
-  <text x="525" y="400" text-anchor="middle" fill="#a8841e" font-family="Arial, sans-serif" font-size="18" font-weight="600" letter-spacing="2">PACKAGES FROM $1,500</text>
-  <text x="525" y="450" text-anchor="middle" fill="#1d4ed8" font-family="Arial, sans-serif" font-size="16">Third-party vendors available — photo, catering, beauty &amp; more</text>
-  <text x="525" y="520" text-anchor="middle" fill="#0A1628" font-family="Arial, sans-serif" font-size="22" font-weight="700">idj.events</text>
-</svg>`,
-  );
-
+  writeFileSync(join(brandRoot, "print/business-card-front.svg"), businessCardFrontSvg());
+  writeFileSync(join(brandRoot, "print/business-card-back.svg"), businessCardBackSvg());
   console.log("Wrote print/business-card-front.svg");
   console.log("Wrote print/business-card-back.svg");
+}
+
+async function getCardLogoBuffer(size) {
+  const trimmed = await buildTransparentMarkBuffer();
+  return sharp(trimmed)
+    .resize(size, size, { fit: "inside", background: { r: 0, g: 0, b: 0, alpha: 0 } })
+    .png()
+    .toBuffer();
 }
 
 async function exportMasterPng(out, size, bg = navy) {
@@ -198,41 +206,37 @@ async function exportStackedPng() {
 
 async function exportBusinessCardFront() {
   const outPath = join(brandRoot, "print/business-card-front.png");
-  const logo = await sharp(masterPath).resize(220, 220, { fit: "contain", background: navy }).png().toBuffer();
+  const logo = await getCardLogoBuffer(200);
   const svg = `
-    <svg width="1050" height="600" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#0A1628"/>
-          <stop offset="100%" stop-color="#152a45"/>
-        </linearGradient>
-      </defs>
-      <rect width="1050" height="600" fill="url(#bg)"/>
-      <text x="300" y="250" fill="#ffffff" font-family="Georgia, serif" font-size="54" font-weight="600">I DJ Events</text>
-      <text x="300" y="292" fill="#D4AF37" font-family="Arial, sans-serif" font-size="16" font-weight="600" letter-spacing="4">TAHOE'S PREMIER WEDDING DJ</text>
-      <text x="300" y="380" fill="#ffffff" font-family="Arial, sans-serif" font-size="22" font-weight="600">775-233-6501</text>
-      <text x="300" y="420" fill="#93c5fd" font-family="Arial, sans-serif" font-size="22">booking@idj.events</text>
-      <text x="300" y="460" fill="#ffffff" font-family="Arial, sans-serif" font-size="18">idj.events</text>
-      <text x="300" y="500" fill="#D4AF37" font-family="Arial, sans-serif" font-size="14" letter-spacing="2">LAKE TAHOE · RENO · BEYOND</text>
+    <svg width="${cardWidth}" height="${cardHeight}" xmlns="http://www.w3.org/2000/svg">
+      <rect width="${cardWidth}" height="${cardHeight}" fill="${white}"/>
+      <text x="280" y="210" fill="${gold}" font-family="Georgia, serif" font-size="54" font-weight="600">I DJ Events</text>
+      <text x="280" y="258" fill="${goldDeep}" font-family="Georgia, serif" font-size="34" font-weight="500">${ownerName}</text>
+      <text x="280" y="300" fill="${gold}" font-family="Arial, sans-serif" font-size="16" font-weight="600" letter-spacing="4">TAHOE'S PREMIER WEDDING DJ</text>
+      <text x="280" y="380" fill="${goldDeep}" font-family="Arial, sans-serif" font-size="22" font-weight="600">775-233-6501</text>
+      <text x="280" y="420" fill="${goldDeep}" font-family="Arial, sans-serif" font-size="22">booking@idj.events</text>
+      <text x="280" y="460" fill="${goldDeep}" font-family="Arial, sans-serif" font-size="18">idj.events</text>
+      <text x="280" y="500" fill="${gold}" font-family="Arial, sans-serif" font-size="14" font-weight="600" letter-spacing="2">LAKE TAHOE · RENO · BEYOND</text>
     </svg>`;
-  await sharp(Buffer.from(svg)).png().composite([{ input: logo, left: 48, top: 140 }]).toFile(outPath);
+  await sharp(Buffer.from(svg)).png().composite([{ input: logo, left: 48, top: 130 }]).toFile(outPath);
   console.log("Exported print/business-card-front.png");
 }
 
 async function exportBusinessCardBack() {
   const outPath = join(brandRoot, "print/business-card-back.png");
-  const logo = await sharp(masterPath).resize(180, 180, { fit: "contain", background: white }).png().toBuffer();
+  const logo = await getCardLogoBuffer(180);
   const svg = `
-    <svg width="1050" height="600" xmlns="http://www.w3.org/2000/svg">
-      <rect width="1050" height="600" fill="#ffffff"/>
-      <rect x="48" y="48" width="954" height="504" rx="12" fill="none" stroke="#D4AF37" stroke-width="2"/>
-      <text x="525" y="300" text-anchor="middle" fill="#0A1628" font-family="Georgia, serif" font-size="28" font-weight="600">DJ · MC · Lighting · Ceremony Sound</text>
-      <text x="525" y="340" text-anchor="middle" fill="#152a45" font-family="Arial, sans-serif" font-size="20">Officiant · Karaoke · Event Coordination</text>
-      <text x="525" y="400" text-anchor="middle" fill="#a8841e" font-family="Arial, sans-serif" font-size="18" font-weight="600" letter-spacing="2">PACKAGES FROM $1,500</text>
-      <text x="525" y="450" text-anchor="middle" fill="#1d4ed8" font-family="Arial, sans-serif" font-size="16">Third-party vendors available — photo, catering, beauty &amp; more</text>
-      <text x="525" y="520" text-anchor="middle" fill="#0A1628" font-family="Arial, sans-serif" font-size="22" font-weight="700">idj.events</text>
+    <svg width="${cardWidth}" height="${cardHeight}" xmlns="http://www.w3.org/2000/svg">
+      <rect width="${cardWidth}" height="${cardHeight}" fill="${white}"/>
+      <rect x="48" y="48" width="954" height="504" rx="12" fill="none" stroke="${gold}" stroke-width="2"/>
+      <text x="525" y="278" text-anchor="middle" fill="${gold}" font-family="Georgia, serif" font-size="36" font-weight="600">${ownerName}</text>
+      <text x="525" y="330" text-anchor="middle" fill="${goldDeep}" font-family="Georgia, serif" font-size="26" font-weight="600">DJ · MC · Lighting · Ceremony Sound</text>
+      <text x="525" y="368" text-anchor="middle" fill="${goldDeep}" font-family="Arial, sans-serif" font-size="20">Officiant · Karaoke · Event Coordination</text>
+      <text x="525" y="420" text-anchor="middle" fill="${gold}" font-family="Arial, sans-serif" font-size="18" font-weight="600" letter-spacing="2">PACKAGES FROM $1,500</text>
+      <text x="525" y="460" text-anchor="middle" fill="${goldDeep}" font-family="Arial, sans-serif" font-size="16">Third-party vendors available — photo, catering, beauty &amp; more</text>
+      <text x="525" y="520" text-anchor="middle" fill="${gold}" font-family="Arial, sans-serif" font-size="22" font-weight="700">idj.events</text>
     </svg>`;
-  await sharp(Buffer.from(svg)).png().composite([{ input: logo, left: 435, top: 70 }]).toFile(outPath);
+  await sharp(Buffer.from(svg)).png().composite([{ input: logo, left: 435, top: 58 }]).toFile(outPath);
   console.log("Exported print/business-card-back.png");
 }
 
@@ -282,7 +286,6 @@ writeMasterEmbedSvg("apparel/chest-mark.svg", { bg: navy });
 writeMasterEmbedSvg("apparel/sleeve-mark.svg", { bg: navy });
 writeBackLogoSvg();
 writeStackedSvg();
-writeBusinessCardSvgs();
 
 writeHorizontalSvg("svg/logo-horizontal.svg", { width: 520, height: 120, bg: navy, textColor: white, subColor: gold });
 writeHorizontalSvg("svg/logo-horizontal-dark.svg", { width: 520, height: 120, bg: white, textColor: navy, subColor: gold });
@@ -341,5 +344,6 @@ for (const item of transparentExports) {
 }
 
 writeTransparentMarkSvg("svg/mark-transparent.svg", "transparent/mark-512.png");
+writeBusinessCardSvgs();
 
 console.log("Brand package recompiled from logo-master.jpg.");

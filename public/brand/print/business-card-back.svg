@@ -1,10 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1050 600" role="img" aria-label="I DJ Events business card back">
-  <rect width="1050" height="600" fill="#ffffff"/>
+  <rect width="1050" height="600" fill="#FFFFFF"/>
   <rect x="48" y="48" width="954" height="504" rx="12" fill="none" stroke="#D4AF37" stroke-width="2"/>
-  <image xlink:href="../logo-master.jpg" x="435" y="60" width="180" height="180" preserveAspectRatio="xMidYMid meet"/>
-  <text x="525" y="300" text-anchor="middle" fill="#0A1628" font-family="Georgia, serif" font-size="28" font-weight="600">DJ · MC · Lighting · Ceremony Sound</text>
-  <text x="525" y="340" text-anchor="middle" fill="#152a45" font-family="Arial, sans-serif" font-size="20">Officiant · Karaoke · Event Coordination</text>
-  <text x="525" y="400" text-anchor="middle" fill="#a8841e" font-family="Arial, sans-serif" font-size="18" font-weight="600" letter-spacing="2">PACKAGES FROM $1,500</text>
-  <text x="525" y="450" text-anchor="middle" fill="#1d4ed8" font-family="Arial, sans-serif" font-size="16">Third-party vendors available — photo, catering, beauty &amp; more</text>
-  <text x="525" y="520" text-anchor="middle" fill="#0A1628" font-family="Arial, sans-serif" font-size="22" font-weight="700">idj.events</text>
+  <image xlink:href="../transparent/mark-512.png" x="435" y="58" width="180" height="180" preserveAspectRatio="xMidYMid meet"/>
+  <text x="525" y="278" text-anchor="middle" fill="#D4AF37" font-family="Georgia, serif" font-size="36" font-weight="600">Clint Davdison</text>
+  <text x="525" y="330" text-anchor="middle" fill="#a8841e" font-family="Georgia, serif" font-size="26" font-weight="600">DJ · MC · Lighting · Ceremony Sound</text>
+  <text x="525" y="368" text-anchor="middle" fill="#a8841e" font-family="Arial, sans-serif" font-size="20">Officiant · Karaoke · Event Coordination</text>
+  <text x="525" y="420" text-anchor="middle" fill="#D4AF37" font-family="Arial, sans-serif" font-size="18" font-weight="600" letter-spacing="2">PACKAGES FROM $1,500</text>
+  <text x="525" y="460" text-anchor="middle" fill="#a8841e" font-family="Arial, sans-serif" font-size="16">Third-party vendors available — photo, catering, beauty &amp; more</text>
+  <text x="525" y="520" text-anchor="middle" fill="#D4AF37" font-family="Arial, sans-serif" font-size="22" font-weight="700">idj.events</text>
 </svg>
