@@ -15,12 +15,12 @@ export function Header() {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
         <Link href="/" className="group shrink-0" onClick={() => setOpen(false)}>
           <Image
-            src="/brand/svg/logo-horizontal-light.svg"
+            src="/brand/web/logo-primary-256.png"
             alt="I DJ Events"
-            width={220}
-            height={52}
+            width={256}
+            height={256}
             priority
-            className="h-10 w-auto transition-opacity group-hover:opacity-90 sm:h-12"
+            className="h-11 w-11 transition-opacity group-hover:opacity-90 sm:h-12 sm:w-12"
           />
         </Link>
 

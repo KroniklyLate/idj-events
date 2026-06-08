@@ -1,15 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="I DJ Events mark">
-  <defs>
-    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#f0d78c"/>
-      <stop offset="50%" stop-color="#d4af37"/>
-      <stop offset="100%" stop-color="#c9a227"/>
-    </linearGradient>
-  </defs>
-  <rect x="4" y="4" width="112" height="112" rx="22" fill="#0c1929"/>
-  <rect x="4" y="4" width="112" height="112" rx="22" fill="none" stroke="url(#gold)" stroke-width="3"/>
-  <text x="60" y="58" text-anchor="middle" fill="url(#gold)" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700" letter-spacing="-1">IDJ</text>
-  <text x="60" y="82" text-anchor="middle" fill="#93c5fd" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="600" letter-spacing="3">EVENTS</text>
-  <path d="M28 96 C42 90 52 98 60 92 C68 86 78 94 92 88" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round"/>
-  <path d="M72 28 L78 18 L84 30 Z" fill="#93c5fd" opacity="0.9"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="I DJ Events">
+  <rect width="400" height="400" fill="#0A1628"/>
+  <g fill="none" stroke="#D4AF37" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M118 168 L118 132 L152 112 L248 112 L282 132 L282 168 L282 248 L248 268 L152 268 L118 248 Z"/>
+    <path d="M118 132 L96 118 L96 98 L108 88 L124 92 L132 104 L140 96 L156 90 L168 98 L176 112 L188 104 L204 98 L220 106 L228 118 L240 110 L256 104 L272 112 L280 124 L296 118 L304 128 L304 146 L282 132"/>
+    <path d="M240 110 L258 126 L272 148 L286 168 L298 186 L310 204 L318 218"/>
+    <circle cx="318" cy="218" r="4" fill="#D4AF37" stroke="none"/>
+    <path d="M272 148 L280 132 L292 118 L304 106 L318 98 L330 106 L338 122 L342 140 L338 158 L328 172 L314 182 L298 186"/>
+  </g>
+  <g fill="#D4AF37" stroke="none">
+    <rect x="96" y="98" width="6" height="18" rx="1"/>
+    <rect x="106" y="92" width="6" height="24" rx="1"/>
+    <rect x="116" y="86" width="6" height="30" rx="1"/>
+    <rect x="126" y="92" width="6" height="24" rx="1"/>
+    <rect x="136" y="98" width="6" height="18" rx="1"/>
+    <rect x="146" y="104" width="6" height="12" rx="1"/>
+    <rect x="156" y="108" width="6" height="8" rx="1"/>
+  </g>
+  <text x="200" y="218" text-anchor="middle" fill="#D4AF37" font-family="Arial, Helvetica, sans-serif" font-size="72" font-weight="700" letter-spacing="-2">IDJ</text>
+  <text x="200" y="252" text-anchor="middle" fill="#D4AF37" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="600" letter-spacing="8">EVENTS</text>
 </svg>
