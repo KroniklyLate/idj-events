@@ -3,7 +3,8 @@ import Link from "next/link";
 import { CTABanner } from "@/components/CTABanner";
 import { PageBackground } from "@/components/PageBackground";
 import { PageHero } from "@/components/PageHero";
-import { heroImages, services } from "@/lib/site-data";
+import { SectionHeading } from "@/components/SectionHeading";
+import { addOnServices, heroImages, services } from "@/lib/site-data";
 
 export const metadata: Metadata = {
   title: "Wedding DJ Services",
@@ -48,8 +49,41 @@ export default function ServicesPage() {
               </article>
             ))}
           </div>
+        </div>
+      </section>
 
-          <div className="glass-panel mt-14 px-6 py-10 text-center sm:px-10">
+      <section className="py-16 sm:py-24">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <SectionHeading
+            eyebrow="Third-Party Vendor Services"
+            title="All-in-one event solutions"
+            description="Round out your wedding team with trusted vendor partners — beauty, photo, catering, transportation, and more, coordinated through I DJ Events."
+          />
+
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {addOnServices.map((service) => (
+              <div
+                key={service}
+                className="glass-panel-soft flex items-start gap-3 px-5 py-4"
+              >
+                <span className="mt-0.5 font-bold text-gold-600" aria-hidden="true">
+                  +
+                </span>
+                <span className="text-sm text-slate-800 sm:text-base">{service}</span>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-on-image mx-auto mt-10 max-w-2xl text-center text-sm text-white">
+            Mention your interests when you request a quote and we&apos;ll connect
+            you with the right partners.
+          </p>
+        </div>
+      </section>
+
+      <section className="pb-16 sm:pb-24">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="glass-panel px-6 py-10 text-center sm:px-10">
             <h3 className="font-display text-2xl font-semibold text-navy-900">
               Not sure which services you need?
             </h3>
