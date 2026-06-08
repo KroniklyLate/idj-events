@@ -36,7 +36,7 @@ export const services = [
   {
     title: "MC & Hosting",
     description:
-      "Professional announcements, timeline coordination, and light hosting that keeps your reception flowing effortlessly.",
+      "Professional announcements, timeline coordination, and MC services that keep your reception flowing effortlessly.",
     icon: "🎤",
   },
   {
