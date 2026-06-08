@@ -1,36 +1,23 @@
-import { readFileSync, mkdirSync, writeFileSync } from "fs";
+import { mkdirSync, writeFileSync } from "fs";
 import { dirname, join } from "path";
 import { fileURLToPath } from "url";
 import sharp from "sharp";
-import { Resvg } from "@resvg/resvg-js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const brandRoot = join(__dirname, "..", "public", "brand");
 const masterPath = join(brandRoot, "logo-master.jpg");
-const templatePath = join(brandRoot, "svg", "mark-full.svg");
 const navy = "#0A1628";
 const gold = "#D4AF37";
 const white = "#FFFFFF";
 
+/** All mark/logo assets derive from logo-master.jpg — the official hexagon + gold soundwave + mountain artwork. */
 const markSvgVariants = [
-  { file: "svg/mark.svg", gold, bg: navy },
-  { file: "svg/mark-gold.svg", gold, bg: "transparent" },
-  { file: "svg/mark-white.svg", gold: white, bg: "transparent" },
-  { file: "svg/mark-navy.svg", gold: navy, bg: white },
+  { file: "svg/mark.svg", bg: navy },
+  { file: "svg/mark-gold.svg", bg: navy },
+  { file: "svg/mark-white.svg", bg: navy },
+  { file: "svg/mark-navy.svg", bg: white },
+  { file: "svg/logo-primary.svg", bg: navy },
 ];
-
-function buildMarkSvg(goldColor, bgColor) {
-  const template = readFileSync(templatePath, "utf8");
-  const bg = bgColor === "transparent" ? "none" : bgColor;
-  return template.replaceAll("{{GOLD}}", goldColor).replaceAll("{{BG}}", bg);
-}
-
-function writeMarkSvgVariants() {
-  for (const variant of markSvgVariants) {
-    writeFileSync(join(brandRoot, variant.file), buildMarkSvg(variant.gold, variant.bg));
-    console.log(`Wrote ${variant.file}`);
-  }
-}
 
 function writeMasterEmbedSvg(outRelative, { width = 400, height = 400, bg = navy, imageSize = 400 } = {}) {
   const fill = bg === "transparent" ? "none" : bg;
@@ -40,6 +27,12 @@ function writeMasterEmbedSvg(outRelative, { width = 400, height = 400, bg = navy
 </svg>`;
   writeFileSync(join(brandRoot, outRelative), content);
   console.log(`Wrote ${outRelative}`);
+}
+
+function writeMarkSvgVariants() {
+  for (const variant of markSvgVariants) {
+    writeMasterEmbedSvg(variant.file, { bg: variant.bg });
+  }
 }
 
 function writeHorizontalSvg(outRelative, { width, height, bg, textColor, subColor, transparent = false }) {
@@ -104,19 +97,6 @@ function writeBusinessCardSvgs() {
 
   console.log("Wrote print/business-card-front.svg");
   console.log("Wrote print/business-card-back.svg");
-}
-
-function exportSvgPng(relativeSvg, relativeOut, width, bg) {
-  const srcPath = join(brandRoot, relativeSvg);
-  const outPath = join(brandRoot, relativeOut);
-  mkdirSync(dirname(outPath), { recursive: true });
-  const svg = readFileSync(srcPath, "utf8");
-  const resvg = new Resvg(svg, {
-    fitTo: { mode: "width", value: width },
-    background: !bg || bg === "transparent" ? undefined : bg,
-  });
-  writeFileSync(outPath, resvg.render().asPng());
-  console.log(`Exported ${relativeOut}`);
 }
 
 async function exportMasterPng(out, size, bg = navy) {
@@ -215,7 +195,6 @@ async function exportBackPrint() {
 }
 
 writeMarkSvgVariants();
-writeMasterEmbedSvg("svg/logo-primary.svg", { bg: navy });
 writeMasterEmbedSvg("apparel/chest-mark.svg", { bg: navy });
 writeMasterEmbedSvg("apparel/sleeve-mark.svg", { bg: navy });
 writeMasterEmbedSvg("apparel/back-logo.svg", { bg: navy });
@@ -242,13 +221,11 @@ await exportMasterPng("web/apple-touch-icon.png", 180);
 await exportMasterPng("web/favicon-32.png", 32);
 await exportMasterPng("web/favicon-16.png", 16);
 await exportMasterPng("web/mark-512.png", 512);
+await exportMasterPng("web/favicon-from-svg-32.png", 32);
 
-exportSvgPng("svg/mark.svg", "web/mark-vector-512.png", 512, navy);
-exportSvgPng("svg/mark-white.svg", "apparel/mark-white.png", 800, "transparent");
-exportSvgPng("svg/mark-navy.svg", "apparel/mark-navy.png", 800, white);
-exportSvgPng("svg/mark-gold.svg", "apparel/mark-gold.png", 800, navy);
-exportSvgPng("web/favicon.svg", "web/favicon-from-svg-32.png", 32, navy);
-
+await exportMasterPng("apparel/mark-gold.png", 800);
+await exportMasterPng("apparel/mark-white.png", 800);
+await exportMasterPng("apparel/mark-navy.png", 800, white);
 await exportMasterPng("apparel/chest-mark.png", 1200);
 await exportMasterPng("apparel/mark-on-white.png", 800, white);
 await exportMasterPng("apparel/mark-on-navy.png", 800, navy);
@@ -263,4 +240,4 @@ await exportBusinessCardFront();
 await exportBusinessCardBack();
 await exportBackPrint();
 
-console.log("Brand package recompiled.");
+console.log("Brand package recompiled from logo-master.jpg.");
