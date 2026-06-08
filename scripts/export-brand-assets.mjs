@@ -182,22 +182,51 @@ async function exportBusinessCardBack() {
   console.log("Exported print/business-card-back.png");
 }
 
+function writeBackLogoSvg() {
+  const width = 1800;
+  const height = 960;
+  const logoSize = 560;
+  const logoX = (width - logoSize) / 2;
+  const logoY = 80;
+  const taglineY = logoY + logoSize + 72;
+  const content = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 ${width} ${height}" role="img" aria-label="I DJ Events back print">
+  <rect width="${width}" height="${height}" fill="${navy}"/>
+  <image xlink:href="../logo-master.jpg" x="${logoX}" y="${logoY}" width="${logoSize}" height="${logoSize}" preserveAspectRatio="xMidYMid meet"/>
+  <text x="${width / 2}" y="${taglineY}" text-anchor="middle" fill="${gold}" font-family="Arial, sans-serif" font-size="36" font-weight="600" letter-spacing="6">LAKE TAHOE · RENO · BEYOND</text>
+</svg>`;
+  writeFileSync(join(brandRoot, "apparel/back-logo.svg"), content);
+  console.log("Wrote apparel/back-logo.svg");
+}
+
 async function exportBackPrint() {
   const outPath = join(brandRoot, "apparel/back-logo.png");
-  const logo = await sharp(masterPath).resize(700, 700, { fit: "contain", background: navy }).png().toBuffer();
+  const width = 1800;
+  const height = 960;
+  const logoSize = 560;
+  const logoX = Math.round((width - logoSize) / 2);
+  const logoY = 80;
+  const taglineY = logoY + logoSize + 72;
+
+  const logo = await sharp(masterPath)
+    .resize(logoSize, logoSize, { fit: "contain", background: navy })
+    .png()
+    .toBuffer();
   const svg = `
-    <svg width="1800" height="900" xmlns="http://www.w3.org/2000/svg">
-      <rect width="1800" height="900" fill="${navy}"/>
-      <text x="900" y="760" text-anchor="middle" fill="#D4AF37" font-family="Arial, sans-serif" font-size="36" font-weight="600" letter-spacing="6">LAKE TAHOE · RENO · BEYOND</text>
+    <svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">
+      <rect width="${width}" height="${height}" fill="${navy}"/>
+      <text x="${width / 2}" y="${taglineY}" text-anchor="middle" fill="#D4AF37" font-family="Arial, sans-serif" font-size="36" font-weight="600" letter-spacing="6">LAKE TAHOE · RENO · BEYOND</text>
     </svg>`;
-  await sharp(Buffer.from(svg)).png().composite([{ input: logo, left: 550, top: 40 }]).toFile(outPath);
+  await sharp(Buffer.from(svg))
+    .png()
+    .composite([{ input: logo, left: logoX, top: logoY }])
+    .toFile(outPath);
   console.log("Exported apparel/back-logo.png");
 }
 
 writeMarkSvgVariants();
 writeMasterEmbedSvg("apparel/chest-mark.svg", { bg: navy });
 writeMasterEmbedSvg("apparel/sleeve-mark.svg", { bg: navy });
-writeMasterEmbedSvg("apparel/back-logo.svg", { bg: navy });
+writeBackLogoSvg();
 writeStackedSvg();
 writeBusinessCardSvgs();
 

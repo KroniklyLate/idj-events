@@ -1,4 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 400 400" role="img" aria-label="I DJ Events">
-  <rect width="400" height="400" fill="#0A1628"/>
-  <image xlink:href="../logo-master.jpg" x="0" y="0" width="400" height="400" preserveAspectRatio="xMidYMid meet"/>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1800 960" role="img" aria-label="I DJ Events back print">
+  <rect width="1800" height="960" fill="#0A1628"/>
+  <image xlink:href="../logo-master.jpg" x="620" y="80" width="560" height="560" preserveAspectRatio="xMidYMid meet"/>
+  <text x="900" y="712" text-anchor="middle" fill="#D4AF37" font-family="Arial, sans-serif" font-size="36" font-weight="600" letter-spacing="6">LAKE TAHOE · RENO · BEYOND</text>
 </svg>
