@@ -1020,6 +1020,266 @@ export const blogPosts: BlogPost[] = [
       },
     ],
   },
+  {
+    slug: "lake-tahoe-wedding-florists",
+    title: "Lake Tahoe Wedding Florists: My Pick for the Best Floral Design",
+    excerpt:
+      "From ceremony arches on the lake to reception centerpieces that photograph like art — here's how to choose a Tahoe florist, why I recommend Create With T on the South Shore, and solid North Shore alternatives.",
+    publishedAt: "2025-09-18",
+    author: "Clint Davidson",
+    category: "Wedding Planning",
+    readTimeMinutes: 11,
+    directoryTitle: "Lake Tahoe florists — quick reference",
+    directoryDescription:
+      "Contact details and inquiry links are listed for convenience. Availability, minimums, and seasonal pricing change — always confirm directly with each studio before you book.",
+    content: [
+      {
+        type: "paragraph",
+        text: "Florals are not a finishing touch at a Lake Tahoe wedding — they are part of the story. The lake, the granite, the pine forest, and the light at elevation already give you a backdrop most destinations cannot touch. The right floral designer does not compete with that scenery. They frame it, soften it, and translate your vision into something that feels unmistakably yours.",
+      },
+      {
+        type: "paragraph",
+        text: "I have DJ'd hundreds of celebrations around this basin, and I can tell you this: couples who invest in great florals rarely regret it. Guests notice. Photographers notice. You notice the moment you walk into the ceremony space. This guide is my honest take on Tahoe floral design — who I recommend, what to book early, and how flowers fit into the bigger production picture when you are planning music, timeline, and guest flow.",
+      },
+      {
+        type: "heading",
+        text: "Why florals matter more at Tahoe than you think",
+      },
+      {
+        type: "image",
+        image: {
+          src: "/images/blog/florals-lakeside-ceremony.jpg",
+          alt: "Outdoor wedding ceremony setup on a Lake Tahoe lakeside lawn with floral aisle markers",
+          caption:
+            "Tahoe ceremonies are often outdoors — florals anchor the space and give photographers a focal point when the wind picks up.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: "Tahoe weddings run on variables you do not get in a hotel ballroom: afternoon wind off the lake, temperature swings between ceremony and reception, load-in windows at private estates, and venue rules about what can be staked, hung, or placed on historic wood floors. A local florist who knows the basin is not a luxury — it is insurance.",
+      },
+      {
+        type: "list",
+        items: [
+          "Outdoor ceremonies need structure — arches, aisle markers, and altar arrangements that stay composed when gusts roll through.",
+          "Reception florals should match your lighting plan — candlelight, uplighting, and dance-floor energy all change how colors read in photos and in person.",
+          "Season matters — late-spring peonies, summer garden roses, and autumn dahlias each tell a different Tahoe story.",
+          "Timeline coordination — personal flowers often need delivery to getting-ready suites while ceremony installs happen simultaneously at the venue.",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "The best floral teams communicate with your planner, photographer, and entertainment vendor. When I know where the ceremony arch sits relative to the DJ booth and where the sweetheart table lands in the lighting rig, everyone's job gets easier — and your day feels seamless instead of stitched together at the last minute.",
+      },
+      {
+        type: "heading",
+        text: "My pick for the best floral design: Create With T",
+      },
+      {
+        type: "image",
+        image: {
+          src: "/images/blog/florals-ceremony-arch-tahoe.jpg",
+          alt: "Lush floral ceremony arch with roses and greenery overlooking Lake Tahoe",
+          caption:
+            "Create With T builds elevated, artful designs — the kind of ceremony moments that stop you in your tracks.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: "If you want my straight answer on the best floral design around Lake Tahoe, it is Create With T on the South Shore. Tracey Duncan and her team are not just arranging flowers — they are bringing what their site calls \"floral magic to your special day,\" and after seeing their work at events across the basin, I believe that tagline.",
+      },
+      {
+        type: "paragraph",
+        text: "Create With T was established in 2018 with a clear mission: authentic, creative, and inspiring florals that help craft dreams into reality. That is not marketing fluff — it is how they operate. Tracey is the owner, creative director, and lead designer, and her background in landscape architecture shows up in the way she thinks about scale, color, and how installations sit in real outdoor spaces. She is a California Certified Florist with competition credentials and a portfolio that spans classic Tahoe romance to completely non-traditional celebrations.",
+      },
+      {
+        type: "list",
+        items: [
+          "Consultation-first process — they listen before they prescribe, and they are known for idea boards with color palettes, centerpiece concepts, and visual direction you can actually react to.",
+          "Story-driven design — elevated, artful arrangements that tell your story rather than forcing you into a template.",
+          "Communication that calms nervous couples — responsive, patient, and willing to meet in person when you are in town for a venue walkthrough.",
+          "Full-event capability — bouquets, ceremony, reception, and those thoughtful extras that make a room feel finished.",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "Their Love Notes say what I have seen on the ground: couples who showed up with half-formed ideas and left with installations that made them sit down and take it in. One review described Tracey's work as the moment the whole wedding finally felt real. Another called her an artist who turned a lakeside ceremony and garden reception into pure magic. That is the standard I want for every couple I work with.",
+      },
+      {
+        type: "paragraph",
+        text: "Start with their planning questionnaire or reach out through Instagram at @Create_with_t — Tracey's team is approachable, professional, and genuinely excited about the design process. If you are marrying on the South Shore, at Edgewood, a Stateline resort, a Ski Run restaurant, or a private estate above the lake, Create With T is who I recommend first.",
+      },
+      {
+        type: "heading",
+        text: "Ceremony & reception: what to book",
+      },
+      {
+        type: "image",
+        image: {
+          src: "/images/blog/florals-bridal-bouquet-tahoe.jpg",
+          alt: "Elegant bridal bouquet with garden roses and trailing greenery in Tahoe",
+          caption:
+            "Personal flowers set the palette — bouquets, boutonnieres, and corsages should feel connected to your ceremony and table designs.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: "Most full-service wedding florals break into four buckets. Knowing the language helps you compare proposals apples to apples.",
+      },
+      {
+        type: "list",
+        items: [
+          "Personal flowers — bridal bouquet, bridesmaid bouquets, boutonnieres, corsages, flower crowns, and toss arrangements.",
+          "Ceremony — arch or arbor florals, aisle markers, altar arrangements, petal paths, and ceremony exit pieces.",
+          "Cocktail hour — statement arrangements on bar tops, welcome table florals, and accent pieces near lounge furniture.",
+          "Reception — centerpieces, sweetheart or head table designs, cake flowers, and any hanging or elevated installations.",
+        ],
+      },
+      {
+        type: "image",
+        image: {
+          src: "/images/blog/florals-reception-centerpieces.jpg",
+          alt: "Artful wedding reception table centerpieces at a Lake Tahoe lodge",
+          caption:
+            "Reception florals should look incredible in person and in photos — especially once your lighting design kicks in.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: "Pro tip: if budget is tight, protect ceremony impact and personal flowers first. Guests experience those moments directly. Reception centerpieces can be simplified — or mixed with candles and greenery — without losing the magic. A great designer will tell you where to invest and where to streamline without making you feel like you are compromising.",
+      },
+      {
+        type: "heading",
+        text: "North Shore & Truckee: strong alternatives worth knowing",
+      },
+      {
+        type: "paragraph",
+        text: "North Lake Tahoe and Truckee have their own floral ecosystem — and if you are marrying at the Hyatt Regency, Gar Woods, Granlibakken, a Sugar Pine Point estate, or anywhere on the West Shore, you will want a team that knows that side of the basin. Create With T is my top pick basin-wide for pure design talent, but these North Shore studios are excellent options depending on your style, venue, and logistics.",
+      },
+      {
+        type: "list",
+        items: [
+          "Wyld Peony (Incline Village) — North Lake Tahoe's only dedicated storefront florist, with walk-in designs and custom wedding work. Owner Jen brings heart, passion, and a knack for unique containers and unexpected blooms. Great for Incline Village, Crystal Bay, and North Shore events that want a polished, distinctive look.",
+          "Golden Florals / Golden Flowers (Incline Village) — A sustainable Lake Tahoe wedding studio creating bold, artful, seasonally grown designs — from editorial bouquets to full installations. Ideal for couples who want intentional, eco-conscious florals with a fashion-forward edge. They have done beautiful work at major North Shore properties including Hyatt Regency Tahoe.",
+          "Love and Lupines (Truckee) — Floral design rooted in the Sierra Nevada, with a creative vision shaped by Tahoe's natural surroundings and locally sourced flowers when possible. Meghon and wedding specialist Alyssa run a structured, planner-friendly process with design boards, retainers, and clear timelines — excellent for destination couples working remotely.",
+          "Ash + Lily (Truckee) — A boutique studio founded by lead designer Annie Hull, known for modern, upscale, artistic arrangements for weddings and private events across Tahoe, Truckee, and Reno. Sophisticated and contemporary — a strong fit for couples who want editorial elegance.",
+          "Art in Bloom (serves Greater Lake Tahoe) — Elevated event florals with a personal, design-forward approach. Worth a conversation for North Shore and West Shore weddings that need a flexible creative partner.",
+          "Reno Tahoe Event Florist — 20+ years of experience creating distinctive designs across the Reno–Tahoe region. A practical option when you want seasoned event florals with free consultation availability by phone for out-of-area couples.",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "If you are North Shore-first, start with Wyld Peony or Golden Florals for Incline Village proximity, Love and Lupines or Ash + Lily for Truckee and West Shore weddings, and keep Create With T on your list if your heart is set on Tracey's design language — she works South Shore events regularly and the portfolio speaks for itself.",
+      },
+      {
+        type: "heading",
+        text: "How florals connect to your DJ & event timeline",
+      },
+      {
+        type: "paragraph",
+        text: "Here is what most couples do not think about until the week of the wedding: florals and entertainment share the same real estate. Your ceremony arch placement affects where wireless microphones can go. Your sweetheart table position affects where I place subs and how dance-floor lighting wraps the room. Cocktail-hour lounge furniture determines speaker coverage for background music before the reception opens.",
+      },
+      {
+        type: "paragraph",
+        text: "At I DJ Events, I like to see finalized floor plans and floral layouts about two weeks out — same timeline most florists want for seating charts and room diagrams. When your florist, planner, and DJ are working from the same map, transitions feel effortless: ceremony ends, cocktail hour flows, introductions hit, and the dance floor opens without awkward gaps or last-minute furniture moves.",
+      },
+      {
+        type: "heading",
+        text: "Booking tips: budget, season & Tahoe realities",
+      },
+      {
+        type: "list",
+        items: [
+          "Book early — top Tahoe florists fill peak summer and fall weekends 9–12 months out. September and October are gold; June through August move even faster.",
+          "Share inspiration honestly — Pinterest boards are fine, but tell your designer what you hate as clearly as what you love.",
+          "Ask about wind strategy for outdoor installs — weighted mechanics, lower profiles, and hardy blooms matter at elevation.",
+          "Confirm delivery windows — personal flowers, ceremony setup, and reception strikes all happen on different schedules.",
+          "Budget range — full wedding florals at Tahoe often start around $3,500–$5,000 for intimate events and scale with guest count, installation complexity, and flower variety. Get a proposal before you assume you are priced out.",
+          "Winter weddings — snow, heated tents, and shorter daylight change the playbook. Tracey and other basin florists have strong winter portfolios — lean on their experience.",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "Your flowers will be in more photos than almost any other detail on your wedding day. They set the color story. They shape how guests feel when they walk into the room. And at Tahoe, they are the bridge between the natural beauty outside and the celebration you are building inside.",
+      },
+      {
+        type: "paragraph",
+        text: "My recommendation: start with Create With T if you want the best floral design I have seen around this lake. Explore the North Shore studios below if your venue and vision pull you that direction. Bring your florist into the planning conversation early — and bring your entertainment team in at the same time. The best Tahoe weddings are designed as one experience, not a stack of separate vendor bookings.",
+      },
+    ],
+    venues: [
+      {
+        name: "Create With T — Floral Design",
+        area: "South Lake Tahoe, CA (South Shore)",
+        type: "Wedding & Event Florist",
+        phone: "(530) 721-1907",
+        email: "Tracey@createwitht.com",
+        website: "https://www.createwitht.com/",
+        notes:
+          "Clint's top pick. Established 2018; consultation via Typeform or Instagram @Create_with_t. Full wedding florals, custom installs, and story-driven design boards.",
+      },
+      {
+        name: "Wyld Peony",
+        area: "Incline Village, NV (North Shore)",
+        type: "Florist & Event Design Studio",
+        address: "797 Southwood Blvd., Suite 15, Incline Village, NV 89451",
+        phone: "(775) 298-2799",
+        hours: "Tue–Sat 10:00 AM–5:00 PM",
+        website: "https://wyldpeony.com/",
+        notes:
+          "Only dedicated storefront florist in North Lake Tahoe; weddings, events, walk-in arrangements, and custom designs.",
+      },
+      {
+        name: "Golden Florals (Golden Flowers)",
+        area: "Incline Village, NV (North Shore)",
+        type: "Sustainable Wedding Florist",
+        phone: "(530) 557-7689",
+        email: "brittany@goldenflorals.com",
+        website: "https://goldenflorals.com/",
+        notes:
+          "Bold, artful, seasonally grown designs; editorial bouquets to full installations. Hyatt Regency Tahoe and North Shore weddings.",
+      },
+      {
+        name: "Love and Lupines",
+        area: "Truckee, CA (North Shore)",
+        type: "Wedding & Event Florist",
+        address: "10736 Pioneer Trail, Unit 6, Truckee, CA 96161",
+        email: "meghon@loveandlupines.com",
+        website: "https://loveandlupines.com/",
+        notes:
+          "Sierra-rooted design with locally sourced flowers when possible; structured planning process and design boards.",
+      },
+      {
+        name: "Ash + Lily Floral Design",
+        area: "Truckee, CA (North Shore)",
+        type: "Luxury Wedding & Event Florist",
+        address: "12177 Business Park Dr., Suite 7, Truckee, CA 96161",
+        phone: "(530) 214-8486",
+        website: "https://www.ashandlily.com/",
+        notes:
+          "Modern, upscale floral studio by lead designer Annie Hull; weddings and private events across Tahoe, Truckee, and Reno.",
+      },
+      {
+        name: "Art in Bloom",
+        area: "Lake Tahoe region (North Shore & basin)",
+        type: "Event Floral Design",
+        phone: "(775) 720-7204",
+        email: "hattie@artinbloomfloral.design",
+        website: "https://artinbloomfloral.design/",
+        notes: "Elevated floral design for weddings and special events throughout the greater Lake Tahoe area.",
+      },
+      {
+        name: "Reno Tahoe Event Florist",
+        area: "Reno–Tahoe region",
+        type: "Wedding & Event Florist",
+        phone: "(775) 544-1610",
+        email: "tahoeflorist@gmail.com",
+        website: "https://renotahoeeventflorist.com/",
+        notes:
+          "20+ years of event florals; free one-hour consultation available by phone for out-of-area couples.",
+      },
+    ],
+  },
 ];
 
 export function getBlogPost(slug: string) {
