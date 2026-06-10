@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { brandAssets } from "@/lib/site-data";
+import { brandAssets, brandImageAlt } from "@/lib/site-data";
 
 const sizeMap = {
   xs: { src: brandAssets.mark128, width: 128, height: 128, className: "h-10 w-10" },
@@ -35,7 +35,7 @@ export function BrandLogo({
   const image = (
     <Image
       src={config.src}
-      alt="I DJ Events"
+      alt={brandImageAlt}
       width={config.width}
       height={config.height}
       priority={priority}

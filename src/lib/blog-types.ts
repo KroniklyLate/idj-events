@@ -30,6 +30,7 @@ export type BlogPost = {
   author: string;
   category: string;
   readTimeMinutes: number;
+  coverImage: BlogImage;
   content: BlogContentBlock[];
   venues?: BlogVenue[];
   directoryTitle?: string;

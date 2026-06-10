@@ -11,8 +11,8 @@ export const metadata: Metadata = createPageMetadata("packages");
 export default function PackagesPage() {
   return (
     <PageBackground
-      image={heroImages.packages}
-      imageAlt="Romantic Lake Tahoe lakeside wedding venue at sunset"
+      image={heroImages.packages.src}
+      imageAlt={heroImages.packages.alt}
     >
       <PageHero
         eyebrow="Packages & Pricing"

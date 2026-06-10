@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { ReactNode } from "react";
 
 type PageBackgroundProps = {
@@ -9,12 +10,16 @@ type PageBackgroundProps = {
 export function PageBackground({ image, imageAlt, children }: PageBackgroundProps) {
   return (
     <div className="relative min-h-screen">
-      <div
-        className="fixed inset-0 -z-20 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${image})` }}
-        role="img"
-        aria-label={imageAlt}
-      />
+      <div className="fixed inset-0 -z-20">
+        <Image
+          src={image}
+          alt={imageAlt}
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+      </div>
       <div className="relative">{children}</div>
     </div>
   );

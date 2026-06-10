@@ -19,8 +19,8 @@ function ContactFormFallback() {
 export default function ContactPage() {
   return (
     <PageBackground
-      image={heroImages.contact}
-      imageAlt="Wooden pier on calm Lake Tahoe water at dusk with mountain reflections"
+      image={heroImages.contact.src}
+      imageAlt={heroImages.contact.alt}
     >
       <PageHero
         eyebrow="Contact"

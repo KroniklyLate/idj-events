@@ -33,7 +33,14 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     locale: "en_US",
     type: "website",
-    images: [{ url: brandAssets.mark512, width: 512, height: 512, alt: siteConfig.name }],
+    images: [
+      {
+        url: brandAssets.mark512,
+        width: 512,
+        height: 512,
+        alt: `${siteConfig.name} — Lake Tahoe wedding DJ logo`,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",

@@ -11,8 +11,8 @@ export const metadata: Metadata = createPageMetadata("services");
 export default function ServicesPage() {
   return (
     <PageBackground
-      image={heroImages.services}
-      imageAlt="Lake Tahoe at twilight with dramatic celebration lighting"
+      image={heroImages.services.src}
+      imageAlt={heroImages.services.alt}
     >
       <PageHero
         eyebrow="Our Services"

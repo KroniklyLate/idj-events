@@ -42,11 +42,18 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       type: "article",
       publishedTime: post.publishedAt,
       authors: [post.author],
+      images: [
+        {
+          url: `${siteConfig.siteUrl}${post.coverImage.src}`,
+          alt: post.coverImage.alt,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: `${post.title} | ${siteConfig.name}`,
       description: post.excerpt,
+      images: [`${siteConfig.siteUrl}${post.coverImage.src}`],
     },
     alternates: {
       canonical: `${siteConfig.siteUrl}/blog/${post.slug}`,
@@ -68,8 +75,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <PageBackground
-      image={heroImages.blog}
-      imageAlt="Lake Tahoe at golden hour with emerald water and snow-capped Sierra mountains"
+      image={post.coverImage.src}
+      imageAlt={post.coverImage.alt}
     >
       <PageHero
         eyebrow={post.category}

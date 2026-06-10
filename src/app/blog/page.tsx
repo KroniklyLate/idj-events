@@ -14,8 +14,8 @@ export default function BlogPage() {
 
   return (
     <PageBackground
-      image={heroImages.blog}
-      imageAlt="Lake Tahoe at golden hour with emerald water and snow-capped Sierra mountains"
+      image={heroImages.blog.src}
+      imageAlt={heroImages.blog.alt}
     >
       <PageHero
         eyebrow="Lake Tahoe Wedding Insights"

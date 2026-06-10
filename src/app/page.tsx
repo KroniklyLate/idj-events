@@ -17,8 +17,8 @@ export default function HomePage() {
 
   return (
     <PageBackground
-      image={heroImages.home}
-      imageAlt="Lake Tahoe at golden hour with mountains and crystal blue water"
+      image={heroImages.home.src}
+      imageAlt={heroImages.home.alt}
     >
       <PageHero
         eyebrow="Lake Tahoe · Weddings · Celebrations"

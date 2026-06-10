@@ -10,8 +10,8 @@ export const metadata: Metadata = createPageMetadata("about");
 export default function AboutPage() {
   return (
     <PageBackground
-      image={heroImages.about}
-      imageAlt="Expansive Lake Tahoe shoreline with mountains and emerald blue water"
+      image={heroImages.about.src}
+      imageAlt={heroImages.about.alt}
     >
       <PageHero
         eyebrow="About Us"

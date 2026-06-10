@@ -9,14 +9,39 @@ export const brandAssets = {
   appleTouchIcon: "/brand/web/mark-transparent-512.png",
 } as const;
 
+export type SiteImage = {
+  src: string;
+  alt: string;
+};
+
 export const heroImages = {
-  home: "/images/backgrounds/hero-home.jpg",
-  packages: "/images/backgrounds/hero-packages.jpg",
-  services: "/images/backgrounds/hero-services.jpg",
-  about: "/images/backgrounds/hero-about.jpg",
-  contact: "/images/backgrounds/hero-contact.jpg",
-  blog: "/images/backgrounds/hero-blog.jpg",
-} as const;
+  home: {
+    src: "/images/backgrounds/hero-home.jpg",
+    alt: "Lake Tahoe at golden hour with mountains and crystal blue water",
+  },
+  packages: {
+    src: "/images/backgrounds/hero-packages.jpg",
+    alt: "Romantic Lake Tahoe lakeside wedding venue at sunset",
+  },
+  services: {
+    src: "/images/backgrounds/hero-services.jpg",
+    alt: "Lake Tahoe at twilight with dramatic celebration lighting",
+  },
+  about: {
+    src: "/images/backgrounds/hero-about.jpg",
+    alt: "Expansive Lake Tahoe shoreline with mountains and emerald blue water",
+  },
+  contact: {
+    src: "/images/backgrounds/hero-contact.jpg",
+    alt: "Wooden pier on calm Lake Tahoe water at dusk with mountain reflections",
+  },
+  blog: {
+    src: "/images/backgrounds/hero-blog.jpg",
+    alt: "Lake Tahoe at golden hour with emerald water and snow-capped Sierra mountains",
+  },
+} as const satisfies Record<string, SiteImage>;
+
+export const brandImageAlt = "I DJ Events — Lake Tahoe wedding DJ logo";
 
 export const siteConfig = {
   name: "I DJ Events",
@@ -80,6 +105,7 @@ export function createPageMetadata(page: keyof typeof pageSeo): Metadata {
   const { title, description, path } = pageSeo[page];
   const url = `${siteConfig.siteUrl}${path}`;
   const ogTitle = typeof title === "string" ? `${title} | ${siteConfig.name}` : title.absolute;
+  const pageHero = page in heroImages ? heroImages[page as keyof typeof heroImages] : null;
 
   return {
     title,
@@ -92,11 +118,22 @@ export function createPageMetadata(page: keyof typeof pageSeo): Metadata {
       siteName: siteConfig.name,
       locale: "en_US",
       type: "website",
+      ...(pageHero && {
+        images: [
+          {
+            url: `${siteConfig.siteUrl}${pageHero.src}`,
+            alt: pageHero.alt,
+          },
+        ],
+      }),
     },
     twitter: {
       card: "summary_large_image",
       title: ogTitle,
       description,
+      ...(pageHero && {
+        images: [`${siteConfig.siteUrl}${pageHero.src}`],
+      }),
     },
   };
 }

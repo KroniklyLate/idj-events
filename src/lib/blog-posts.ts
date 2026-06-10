@@ -12,6 +12,10 @@ export const blogPosts: BlogPost[] = [
     author: "Clint Davidson",
     category: "Venue Planning",
     readTimeMinutes: 9,
+    coverImage: {
+      src: "/images/blog/casino-venue.jpg",
+      alt: "Elegant ballroom wedding reception with Lake Tahoe views at a Stateline resort",
+    },
     content: [
       {
         type: "paragraph",
@@ -247,6 +251,10 @@ export const blogPosts: BlogPost[] = [
     author: "Clint Davidson",
     category: "Food & Drink",
     readTimeMinutes: 11,
+    coverImage: {
+      src: "/images/blog/food-casino-dining.jpg",
+      alt: "Upscale casino restaurant dining with gourmet food and lake views at Stateline",
+    },
     directoryTitle: "Lake Tahoe restaurants — quick reference",
     directoryDescription:
       "Phone numbers and hours are listed for convenience. Menus, reservations, and seasonal schedules change — always confirm directly with each restaurant before you go.",
@@ -620,6 +628,10 @@ export const blogPosts: BlogPost[] = [
     author: "Clint Davidson",
     category: "Outdoors & Adventure",
     readTimeMinutes: 13,
+    coverImage: {
+      src: "/images/blog/outdoors-hiking-tahoe.jpg",
+      alt: "Hikers on a scenic trail above Lake Tahoe with alpine lake views and Sierra peaks",
+    },
     directoryTitle: "Tahoe outdoors — rentals & resources",
     directoryDescription:
       "Kayak and SUP outfitters, bike shops, fishing charters, campgrounds, and ski resorts are listed below by shore. Hours and seasons change — always confirm directly before you go.",
@@ -1029,6 +1041,10 @@ export const blogPosts: BlogPost[] = [
     author: "Clint Davidson",
     category: "Wedding Planning",
     readTimeMinutes: 11,
+    coverImage: {
+      src: "/images/blog/florals-ceremony-arch-tahoe.jpg",
+      alt: "Lush floral ceremony arch with roses and greenery overlooking Lake Tahoe",
+    },
     directoryTitle: "Lake Tahoe florists — quick reference",
     directoryDescription:
       "Contact details and inquiry links are listed for convenience. Availability, minimums, and seasonal pricing change — always confirm directly with each studio before you book.",
@@ -1117,7 +1133,7 @@ export const blogPosts: BlogPost[] = [
         type: "image",
         image: {
           src: "/images/blog/florals-bridal-bouquet-tahoe.jpg",
-          alt: "Elegant bridal bouquet with garden roses and trailing greenery in Tahoe",
+          alt: "Elegant Lake Tahoe wedding bridal bouquet with garden roses, anemones, and trailing greenery",
           caption:
             "Personal flowers set the palette — bouquets, boutonnieres, and corsages should feel connected to your ceremony and table designs.",
         },

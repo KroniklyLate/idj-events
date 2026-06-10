@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { formatBlogDate, type BlogPost } from "@/lib/blog-posts";
 
@@ -7,7 +8,20 @@ type BlogCardProps = {
 
 export function BlogCard({ post }: BlogCardProps) {
   return (
-    <article className="glass-panel flex h-full flex-col p-6 transition hover:-translate-y-1 sm:p-8">
+    <article className="glass-panel flex h-full flex-col overflow-hidden transition hover:-translate-y-1">
+      <Link href={`/blog/${post.slug}`} className="block">
+        <div className="relative aspect-[16/9] overflow-hidden">
+          <Image
+            src={post.coverImage.src}
+            alt={post.coverImage.alt}
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-cover transition duration-300 hover:scale-[1.02]"
+          />
+        </div>
+      </Link>
+
+      <div className="flex flex-1 flex-col p-6 sm:p-8">
       <div className="mb-4 flex flex-wrap items-center gap-3 text-xs font-semibold tracking-wide uppercase">
         <span className="rounded-full bg-gold-500/15 px-3 py-1 text-gold-700">
           {post.category}
@@ -37,6 +51,7 @@ export function BlogCard({ post }: BlogCardProps) {
           →
         </span>
       </Link>
+      </div>
     </article>
   );
 }
