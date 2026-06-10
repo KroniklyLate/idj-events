@@ -968,7 +968,7 @@ export const blogPosts: BlogPost[] = [
         name: "Hooked Up Sport Fishing",
         area: "Carnelian Bay, CA (North Shore)",
         type: "Fishing Charters",
-        phone: "(530) 546-3474",
+        phone: "(530) 546-2220",
         hours: "Charters by reservation; call or book online.",
         website: "https://hookeduplaketahoe.com/",
         notes: "North Shore fishing charters on Lake Tahoe.",
