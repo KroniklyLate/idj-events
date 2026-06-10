@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { BrandLogo } from "@/components/BrandLogo";
 import { CTABanner } from "@/components/CTABanner";
@@ -5,7 +6,9 @@ import { PackageCard } from "@/components/PackageCard";
 import { PageBackground } from "@/components/PageBackground";
 import { PageHero } from "@/components/PageHero";
 import { SectionHeading } from "@/components/SectionHeading";
-import { heroImages, packages, services, siteConfig } from "@/lib/site-data";
+import { createPageMetadata, heroImages, packages, services, siteConfig } from "@/lib/site-data";
+
+export const metadata: Metadata = createPageMetadata("home");
 
 export default function HomePage() {
   const featuredPackages = packages.filter((pkg) =>

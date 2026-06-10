@@ -23,7 +23,9 @@ export function Header() {
 
         <nav className="hidden items-center gap-8 md:flex">
           {navLinks.map((link) => {
-            const active = pathname === link.href;
+            const active =
+              pathname === link.href ||
+              (link.href !== "/" && pathname.startsWith(`${link.href}/`));
             return (
               <Link
                 key={link.href}
@@ -67,7 +69,9 @@ export function Header() {
         <nav className="border-t border-white/20 bg-white/10 px-4 py-4 backdrop-blur-lg md:hidden">
           <div className="flex flex-col gap-1">
             {navLinks.map((link) => {
-              const active = pathname === link.href;
+              const active =
+                pathname === link.href ||
+                (link.href !== "/" && pathname.startsWith(`${link.href}/`));
               return (
                 <Link
                   key={link.href}

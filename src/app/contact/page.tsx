@@ -4,13 +4,9 @@ import { BrandLogo } from "@/components/BrandLogo";
 import { ContactForm } from "@/components/ContactForm";
 import { PageBackground } from "@/components/PageBackground";
 import { PageHero } from "@/components/PageHero";
-import { heroImages, siteConfig } from "@/lib/site-data";
+import { createPageMetadata, heroImages, siteConfig } from "@/lib/site-data";
 
-export const metadata: Metadata = {
-  title: "Contact & Book",
-  description:
-    "Request a quote for your Lake Tahoe wedding DJ. Call 775-233-6501 or email booking@idj.events.",
-};
+export const metadata: Metadata = createPageMetadata("contact");
 
 function ContactFormFallback() {
   return (

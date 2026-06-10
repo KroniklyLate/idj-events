@@ -3,13 +3,9 @@ import { CTABanner } from "@/components/CTABanner";
 import { PageBackground } from "@/components/PageBackground";
 import { PageHero } from "@/components/PageHero";
 import { SectionHeading } from "@/components/SectionHeading";
-import { faqs, heroImages, siteConfig } from "@/lib/site-data";
+import { createPageMetadata, faqs, heroImages, siteConfig } from "@/lib/site-data";
 
-export const metadata: Metadata = {
-  title: "About I DJ Events",
-  description:
-    "Learn about I DJ Events — Lake Tahoe's premier wedding DJ serving Lake Tahoe, Reno, and beyond.",
-};
+export const metadata: Metadata = createPageMetadata("about");
 
 export default function AboutPage() {
   return (

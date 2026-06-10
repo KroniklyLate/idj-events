@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+
 export const brandAssets = {
   mark128: "/brand/transparent/mark-128.png",
   mark256: "/brand/web/mark-transparent-256.png",
@@ -13,12 +15,14 @@ export const heroImages = {
   services: "/images/backgrounds/hero-services.jpg",
   about: "/images/backgrounds/hero-about.jpg",
   contact: "/images/backgrounds/hero-contact.jpg",
+  blog: "/images/backgrounds/hero-blog.jpg",
 } as const;
 
 export const siteConfig = {
   name: "I DJ Events",
   tagline: "Tahoe's Premier Wedding DJ — I DJ Events",
   domain: "idj.events",
+  siteUrl: "https://idj.events",
   phone: "775-233-6501",
   phoneHref: "tel:+17752336501",
   email: "booking@idj.events",
@@ -27,10 +31,81 @@ export const siteConfig = {
   travelNote: "Travel available",
 };
 
+export const seo = {
+  defaultTitle: "Wedding DJ Lake Tahoe & Reno | I DJ Events",
+  defaultDescription:
+    "Lake Tahoe's premier wedding DJ. DJ, MC, lighting, ceremony sound, officiant & karaoke for unforgettable weddings in Tahoe, Reno & beyond.",
+  titleTemplate: "%s | I DJ Events",
+} as const;
+
+export const pageSeo = {
+  home: {
+    title: { absolute: seo.defaultTitle },
+    description: seo.defaultDescription,
+    path: "/",
+  },
+  packages: {
+    title: "Lake Tahoe Wedding DJ Packages",
+    description:
+      "Six custom wedding DJ packages for Lake Tahoe & Reno — sound, lighting, MC & ceremony audio from $1,500 to $4,000. Find the right fit for your celebration.",
+    path: "/packages",
+  },
+  services: {
+    title: "Wedding DJ, MC & Lighting Services",
+    description:
+      "DJ, MC, uplighting, ceremony sound, officiant & karaoke for Lake Tahoe weddings. One team for music, hosting & production at venues across Tahoe & Reno.",
+    path: "/services",
+  },
+  about: {
+    title: "About Our Tahoe Wedding DJ Team",
+    description:
+      "Meet I DJ Events — Lake Tahoe's trusted wedding DJ team. Local venue expertise, full-service production & travel-ready setups for Tahoe, Reno & beyond.",
+    path: "/about",
+  },
+  contact: {
+    title: "Book Your Wedding DJ",
+    description:
+      "Request a quote for your Lake Tahoe wedding DJ. Share your date, venue & vision — call 775-233-6501 or email booking@idj.events. We respond quickly.",
+    path: "/contact",
+  },
+  blog: {
+    title: "Lake Tahoe Wedding Blog",
+    description:
+      "Wedding planning tips, Tahoe venue inspiration, and DJ advice from I DJ Events. Guides for couples celebrating in Lake Tahoe, Reno & beyond.",
+    path: "/blog",
+  },
+} as const;
+
+export function createPageMetadata(page: keyof typeof pageSeo): Metadata {
+  const { title, description, path } = pageSeo[page];
+  const url = `${siteConfig.siteUrl}${path}`;
+  const ogTitle = typeof title === "string" ? `${title} | ${siteConfig.name}` : title.absolute;
+
+  return {
+    title,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      title: ogTitle,
+      description,
+      url,
+      siteName: siteConfig.name,
+      locale: "en_US",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: ogTitle,
+      description,
+    },
+  };
+}
+
 export const navLinks = [
   { href: "/", label: "Home" },
   { href: "/packages", label: "Packages" },
   { href: "/services", label: "Services" },
+  { href: "/blog", label: "Blog" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];

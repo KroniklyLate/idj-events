@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "export-brand": "node scripts/export-brand-assets.mjs"
+    "export-brand": "node scripts/export-brand-assets.mjs",
+    "export-embroidery": "node scripts/export-embroidery-vector.mjs"
   },
   "dependencies": {
     "next": "16.2.7",
@@ -22,6 +23,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.7",
+    "imagetracerjs": "^1.2.6",
     "sharp": "^0.34.5",
     "tailwindcss": "^4",
     "typescript": "^5"

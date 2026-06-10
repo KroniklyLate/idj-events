@@ -125,7 +125,16 @@ const bgKey = { r: 10, g: 22, b: 40 };
 const bgThreshold = 42;
 const bgFeather = 28;
 
+function isNavyBackgroundPixel(r, g, b) {
+  const max = Math.max(r, g, b);
+  if (max > 145) return false;
+  const isGold = r > 95 && g > 70 && r + g > b * 1.55 && r >= g - 10;
+  if (isGold) return false;
+  return b >= r - 6 && g >= r - 22;
+}
+
 function alphaFromBackground(r, g, b) {
+  if (isNavyBackgroundPixel(r, g, b)) return 0;
   const dr = r - bgKey.r;
   const dg = g - bgKey.g;
   const db = b - bgKey.b;

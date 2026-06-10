@@ -4,13 +4,9 @@ import { CTABanner } from "@/components/CTABanner";
 import { PageBackground } from "@/components/PageBackground";
 import { PageHero } from "@/components/PageHero";
 import { SectionHeading } from "@/components/SectionHeading";
-import { addOnServices, heroImages, services } from "@/lib/site-data";
+import { addOnServices, createPageMetadata, heroImages, services } from "@/lib/site-data";
 
-export const metadata: Metadata = {
-  title: "Wedding DJ Services",
-  description:
-    "DJ, MC, lighting, ceremony sound, officiant, and karaoke services for Lake Tahoe weddings by I DJ Events.",
-};
+export const metadata: Metadata = createPageMetadata("services");
 
 export default function ServicesPage() {
   return (

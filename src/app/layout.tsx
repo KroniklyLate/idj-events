@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { Cormorant_Garamond, Source_Sans_3 } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
-import { brandAssets } from "@/lib/site-data";
+import { JsonLd } from "@/components/JsonLd";
+import { getStructuredDataGraph } from "@/lib/structured-data";
+import { brandAssets, seo, siteConfig } from "@/lib/site-data";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -19,21 +21,25 @@ const sourceSans = Source_Sans_3({
 
 export const metadata: Metadata = {
   title: {
-    default: "I DJ Events | Tahoe's Premier Wedding DJ",
-    template: "%s | I DJ Events",
+    default: seo.defaultTitle,
+    template: seo.titleTemplate,
   },
-  description:
-    "Lake Tahoe's premier wedding DJ. Professional DJ, MC, lighting, ceremony sound, officiant, and karaoke services for unforgettable celebrations.",
-  metadataBase: new URL("https://idj.events"),
+  description: seo.defaultDescription,
+  metadataBase: new URL(siteConfig.siteUrl),
   openGraph: {
-    title: "I DJ Events | Tahoe's Premier Wedding DJ",
-    description:
-      "Professional wedding DJ services in Lake Tahoe, Reno, and beyond. Packages from $1,500.",
-    url: "https://idj.events",
-    siteName: "I DJ Events",
+    title: seo.defaultTitle,
+    description: seo.defaultDescription,
+    url: siteConfig.siteUrl,
+    siteName: siteConfig.name,
     locale: "en_US",
     type: "website",
-    images: [{ url: brandAssets.mark512, width: 512, height: 512, alt: "I DJ Events" }],
+    images: [{ url: brandAssets.mark512, width: 512, height: 512, alt: siteConfig.name }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: seo.defaultTitle,
+    description: seo.defaultDescription,
+    images: [brandAssets.mark512],
   },
   icons: {
     icon: [
@@ -55,6 +61,7 @@ export default function RootLayout({
       className={`${cormorant.variable} ${sourceSans.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
+        <JsonLd data={getStructuredDataGraph()} />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

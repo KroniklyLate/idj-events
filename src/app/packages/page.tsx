@@ -4,13 +4,9 @@ import { PackageCard } from "@/components/PackageCard";
 import { PageBackground } from "@/components/PageBackground";
 import { PageHero } from "@/components/PageHero";
 import { SectionHeading } from "@/components/SectionHeading";
-import { addOnServices, heroImages, packages } from "@/lib/site-data";
+import { addOnServices, createPageMetadata, heroImages, packages } from "@/lib/site-data";
 
-export const metadata: Metadata = {
-  title: "Wedding DJ Packages",
-  description:
-    "Wedding DJ packages for Lake Tahoe from $1,500 to $4,000. Sound, lighting, MC, and ceremony audio options for every celebration.",
-};
+export const metadata: Metadata = createPageMetadata("packages");
 
 export default function PackagesPage() {
   return (
