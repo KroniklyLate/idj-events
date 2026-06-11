@@ -7,6 +7,7 @@ export const brandAssets = {
   mark1024: "/brand/transparent/mark-1024.png",
   favicon: "/brand/transparent/mark-128.png",
   appleTouchIcon: "/brand/web/mark-transparent-512.png",
+  ogImage: "/brand/web/og-image.jpg",
 } as const;
 
 export type SiteImage = {
@@ -55,6 +56,13 @@ export const siteConfig = {
   serviceArea: "Lake Tahoe, Reno, and beyond",
   travelNote: "Travel available",
 };
+
+export const ogImageMeta = {
+  url: `${siteConfig.siteUrl}${brandAssets.ogImage}`,
+  width: 1200,
+  height: 630,
+  alt: "I DJ Events — Tahoe's Premier Wedding DJ in Lake Tahoe & Reno",
+} as const;
 
 export const seo = {
   defaultTitle: "Wedding DJ Lake Tahoe & Reno | I DJ Events",
@@ -105,7 +113,6 @@ export function createPageMetadata(page: keyof typeof pageSeo): Metadata {
   const { title, description, path } = pageSeo[page];
   const url = `${siteConfig.siteUrl}${path}`;
   const ogTitle = typeof title === "string" ? `${title} | ${siteConfig.name}` : title.absolute;
-  const pageHero = page in heroImages ? heroImages[page as keyof typeof heroImages] : null;
 
   return {
     title,
@@ -118,22 +125,13 @@ export function createPageMetadata(page: keyof typeof pageSeo): Metadata {
       siteName: siteConfig.name,
       locale: "en_US",
       type: "website",
-      ...(pageHero && {
-        images: [
-          {
-            url: `${siteConfig.siteUrl}${pageHero.src}`,
-            alt: pageHero.alt,
-          },
-        ],
-      }),
+      images: [ogImageMeta],
     },
     twitter: {
       card: "summary_large_image",
       title: ogTitle,
       description,
-      ...(pageHero && {
-        images: [`${siteConfig.siteUrl}${pageHero.src}`],
-      }),
+      images: [ogImageMeta.url],
     },
   };
 }

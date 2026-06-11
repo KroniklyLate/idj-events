@@ -11,7 +11,7 @@ import {
   getBlogPost,
   getPublishedBlogPosts,
 } from "@/lib/blog-posts";
-import { createPageMetadata, heroImages, siteConfig } from "@/lib/site-data";
+import { createPageMetadata, siteConfig } from "@/lib/site-data";
 
 type BlogPostPageProps = {
   params: Promise<{ slug: string }>;

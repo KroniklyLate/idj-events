@@ -9,7 +9,6 @@ const brandRoot = join(__dirname, "..", "public", "brand");
 const embroideryRoot = join(brandRoot, "embroidery");
 const masterPath = join(brandRoot, "logo-master.jpg");
 const gold = "#D4AF37";
-const navy = "#0A1628";
 
 const bgKey = { r: 10, g: 22, b: 40 };
 const bgThreshold = 42;

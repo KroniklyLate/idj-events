@@ -1,6 +1,6 @@
 "use client";
 
-import { packages } from "@/lib/site-data";
+import { packages, siteConfig } from "@/lib/site-data";
 import { useSearchParams } from "next/navigation";
 import { FormEvent, useState } from "react";
 
@@ -9,22 +9,56 @@ const formEndpoint =
     ? `https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_ID}`
     : null;
 
+const fieldLabels: Record<string, string> = {
+  name: "Name",
+  partner: "Partner's name",
+  email: "Email",
+  phone: "Phone",
+  weddingDate: "Wedding date",
+  venue: "Venue / location",
+  package: "Package of interest",
+  message: "Details",
+};
+
+/**
+ * Builds a mailto: link from the form fields so inquiries still reach the
+ * inbox even when Formspree (NEXT_PUBLIC_FORMSPREE_ID) is not configured.
+ */
+function buildMailtoHref(data: FormData) {
+  const lines = Object.entries(fieldLabels)
+    .map(([key, label]) => {
+      const value = (data.get(key) as string | null)?.trim();
+      return value ? `${label}: ${value}` : null;
+    })
+    .filter(Boolean)
+    .join("\n");
+
+  const subject = `Wedding DJ inquiry — ${(data.get("name") as string) || "New lead"}`;
+  return `${siteConfig.emailHref}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines)}`;
+}
+
 export function ContactForm() {
   const searchParams = useSearchParams();
   const preselectedPackage = searchParams.get("package") ?? "";
-  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [status, setStatus] = useState<
+    "idle" | "submitting" | "success" | "error" | "mailto"
+  >("idle");
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
+    const form = event.currentTarget;
+    const data = new FormData(form);
+
+    // Fallback: no Formspree configured — open the visitor's email client
+    // with a pre-filled message so the lead is never lost.
     if (!formEndpoint) {
-      setStatus("error");
+      window.location.href = buildMailtoHref(data);
+      setStatus("mailto");
       return;
     }
 
     setStatus("submitting");
-    const form = event.currentTarget;
-    const data = new FormData(form);
 
     try {
       const response = await fetch(formEndpoint, {
@@ -58,6 +92,24 @@ export function ContactForm() {
           </p>
           <p className="mt-3 text-slate-600">
             We received your inquiry and will be in touch shortly.
+          </p>
+        </div>
+      ) : status === "mailto" ? (
+        <div className="py-8 text-center">
+          <p className="font-display text-2xl font-semibold text-navy-900">
+            Almost there!
+          </p>
+          <p className="mt-3 text-slate-600">
+            Your email app should have opened with your details ready to send.
+            If it didn&apos;t, email{" "}
+            <a href={siteConfig.emailHref} className="font-semibold text-lake-700 underline">
+              {siteConfig.email}
+            </a>{" "}
+            or call{" "}
+            <a href={siteConfig.phoneHref} className="font-semibold text-lake-700 underline">
+              {siteConfig.phone}
+            </a>
+            .
           </p>
         </div>
       ) : (
@@ -177,23 +229,25 @@ export function ContactForm() {
 
           {!formEndpoint && (
             <p className="rounded-lg bg-amber-50 px-4 py-3 text-sm text-amber-800">
-              Form delivery is not configured yet. Please email{" "}
-              <a href="mailto:booking@idj.events" className="font-semibold underline">
-                booking@idj.events
+              Tapping send will open your email app with these details ready to
+              go. Prefer to reach us directly? Email{" "}
+              <a href={siteConfig.emailHref} className="font-semibold underline">
+                {siteConfig.email}
               </a>{" "}
-              or call 775-233-6501. Formspree setup instructions are in DEPLOYMENT.md.
+              or call {siteConfig.phone}.
             </p>
           )}
 
           {status === "error" && (
             <p className="rounded-lg bg-red-50 px-4 py-3 text-sm text-red-700">
-              Something went wrong. Please call 775-233-6501 or email booking@idj.events.
+              Something went wrong. Please call {siteConfig.phone} or email{" "}
+              {siteConfig.email}.
             </p>
           )}
 
           <button
             type="submit"
-            disabled={status === "submitting" || !formEndpoint}
+            disabled={status === "submitting"}
             className="w-full rounded-full bg-gold-500 px-8 py-3.5 text-sm font-semibold text-navy-950 transition hover:bg-gold-400 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
           >
             {status === "submitting" ? "Sending..." : "Send Inquiry"}

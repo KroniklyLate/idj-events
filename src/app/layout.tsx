@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { Cormorant_Garamond, Source_Sans_3 } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { JsonLd } from "@/components/JsonLd";
 import { getStructuredDataGraph } from "@/lib/structured-data";
-import { brandAssets, seo, siteConfig } from "@/lib/site-data";
+import { brandAssets, ogImageMeta, seo, siteConfig } from "@/lib/site-data";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -33,20 +34,13 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     locale: "en_US",
     type: "website",
-    images: [
-      {
-        url: brandAssets.mark512,
-        width: 512,
-        height: 512,
-        alt: `${siteConfig.name} — Lake Tahoe wedding DJ logo`,
-      },
-    ],
+    images: [ogImageMeta],
   },
   twitter: {
     card: "summary_large_image",
     title: seo.defaultTitle,
     description: seo.defaultDescription,
-    images: [brandAssets.mark512],
+    images: [ogImageMeta.url],
   },
   icons: {
     icon: [
@@ -72,6 +66,7 @@ export default function RootLayout({
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
