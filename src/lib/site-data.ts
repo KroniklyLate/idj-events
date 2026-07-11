@@ -223,7 +223,7 @@ export const packages: Package[] = [
       "Full DJ and MC services for reception",
       "Ceremony audio",
       "Sound system for 75-100 guests",
-      "8 LED PAR cans",
+      "8 LED Uplights",
       "4 LED light bars",
       "4 club-style party lights with lasers",
       "2 moving head wash lights",
@@ -237,9 +237,8 @@ export const packages: Package[] = [
       "Dedicated MC/host on the mic plus a dedicated DJ on music",
       "Sound system for 100-150 guests",
       "Full lighting truss + 2 truss bars",
-      "8 LED PAR cans",
+      "8 LED Uplights",
       "6 moving head wash lights",
-      "Choice of linen colors",
     ],
   },
   {
@@ -249,7 +248,7 @@ export const packages: Package[] = [
     features: [
       "Sound system for 150-200 guests",
       "Full lighting truss + 2 truss bars",
-      "8 LED PAR cans",
+      "8 LED Uplights",
       "6 moving head wash lights",
       "2 gobo moving heads",
       "2 five-lamp moving head units",
@@ -262,7 +261,7 @@ export const packages: Package[] = [
     features: [
       "Complete event coordination and ceremony audio",
       "Sound system for 200+ guests",
-      "8 LED PAR cans",
+      "8 LED Uplights",
       "8 moving head wash lights",
       "2 gobo moving heads",
       "4 five-lamp moving head units",
