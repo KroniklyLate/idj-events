@@ -247,7 +247,6 @@ export const packages: Package[] = [
     price: 3500,
     slug: "the-i-do",
     features: [
-      "Includes outdoor ceremony sound system",
       "Sound system for 150-200 guests",
       "Full lighting truss + 2 truss bars",
       "8 LED PAR cans",
