@@ -221,7 +221,7 @@ export const packages: Package[] = [
     highlight: true,
     features: [
       "Full DJ and MC services for reception",
-      "Ceremony audio",
+      "Ceremony sound system and mic for officiant",
       "Sound system for 75-100 guests",
       "8 LED Uplights",
       "4 LED light bars",
