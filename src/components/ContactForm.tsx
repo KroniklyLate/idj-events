@@ -4,9 +4,12 @@ import { packages, siteConfig } from "@/lib/site-data";
 import { useSearchParams } from "next/navigation";
 import { FormEvent, useState } from "react";
 
+const rawFormspreeId = process.env.NEXT_PUBLIC_FORMSPREE_ID?.trim();
 const formEndpoint =
-  process.env.NEXT_PUBLIC_FORMSPREE_ID
-    ? `https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_ID}`
+  rawFormspreeId &&
+  rawFormspreeId !== "your_form_id_here" &&
+  !rawFormspreeId.includes(" ")
+    ? `https://formspree.io/f/${rawFormspreeId}`
     : null;
 
 const fieldLabels: Record<string, string> = {
@@ -23,6 +26,9 @@ const fieldLabels: Record<string, string> = {
 /**
  * Builds a mailto: link from the form fields so inquiries still reach the
  * inbox even when Formspree (NEXT_PUBLIC_FORMSPREE_ID) is not configured.
+ *
+ * Keeps the body reasonably short so clients/browsers that cap URL length
+ * still open the compose window.
  */
 function buildMailtoHref(data: FormData) {
   const lines = Object.entries(fieldLabels)
@@ -34,7 +40,29 @@ function buildMailtoHref(data: FormData) {
     .join("\n");
 
   const subject = `Wedding DJ inquiry — ${(data.get("name") as string) || "New lead"}`;
-  return `${siteConfig.emailHref}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines)}`;
+  // Some clients fail silently on very long mailto URLs; cap body length.
+  const maxBody = 1500;
+  const body =
+    lines.length > maxBody ? `${lines.slice(0, maxBody)}…` : lines;
+
+  return `${siteConfig.emailHref}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
+/**
+ * Opens a mailto: URL in a way that works more reliably than assigning
+ * window.location.href (which many browsers ignore when no default mail
+ * app is registered, or when the URL is long).
+ */
+function openMailto(href: string) {
+  const anchor = document.createElement("a");
+  anchor.href = href;
+  anchor.rel = "noopener noreferrer";
+  // target=_blank helps some browsers hand off to the OS mail handler
+  // without navigating the current tab away from the form page.
+  anchor.target = "_blank";
+  document.body.appendChild(anchor);
+  anchor.click();
+  document.body.removeChild(anchor);
 }
 
 export function ContactForm() {
@@ -43,6 +71,8 @@ export function ContactForm() {
   const [status, setStatus] = useState<
     "idle" | "submitting" | "success" | "error" | "mailto"
   >("idle");
+  const [mailtoHref, setMailtoHref] = useState<string | null>(null);
+  const [copied, setCopied] = useState(false);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -53,7 +83,9 @@ export function ContactForm() {
     // Fallback: no Formspree configured — open the visitor's email client
     // with a pre-filled message so the lead is never lost.
     if (!formEndpoint) {
-      window.location.href = buildMailtoHref(data);
+      const href = buildMailtoHref(data);
+      setMailtoHref(href);
+      openMailto(href);
       setStatus("mailto");
       return;
     }
@@ -71,10 +103,36 @@ export function ContactForm() {
         setStatus("success");
         form.reset();
       } else {
-        setStatus("error");
+        // Formspree failed — fall back to mailto so the lead isn't lost.
+        const href = buildMailtoHref(data);
+        setMailtoHref(href);
+        openMailto(href);
+        setStatus("mailto");
       }
     } catch {
-      setStatus("error");
+      const href = buildMailtoHref(data);
+      setMailtoHref(href);
+      openMailto(href);
+      setStatus("mailto");
+    }
+  }
+
+  async function copyInquiryDetails() {
+    if (!mailtoHref) return;
+    try {
+      // Decode the mailto body so the user can paste into any email app.
+      const bodyMatch = mailtoHref.match(/[?&]body=([^&]*)/);
+      const subjectMatch = mailtoHref.match(/[?&]subject=([^&]*)/);
+      const subject = subjectMatch
+        ? decodeURIComponent(subjectMatch[1])
+        : "Wedding DJ inquiry";
+      const body = bodyMatch ? decodeURIComponent(bodyMatch[1]) : "";
+      const text = `To: ${siteConfig.email}\nSubject: ${subject}\n\n${body}`;
+      await navigator.clipboard.writeText(text);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2500);
+    } catch {
+      setCopied(false);
     }
   }
 
@@ -100,23 +158,67 @@ export function ContactForm() {
             Almost there!
           </p>
           <p className="mt-3 text-slate-600">
-            Your email app should have opened with your details ready to send.
-            If it didn&apos;t, email{" "}
-            <a href={siteConfig.emailHref} className="font-semibold text-lake-700 underline">
+            Your email app should open with your details ready to send. If
+            nothing opened (common when no default mail app is set), use one of
+            the options below.
+          </p>
+
+          <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+            {mailtoHref && (
+              <a
+                href={mailtoHref}
+                className="inline-flex w-full items-center justify-center rounded-full bg-gold-500 px-8 py-3.5 text-sm font-semibold text-navy-950 transition hover:bg-gold-400 sm:w-auto"
+              >
+                Open email app
+              </a>
+            )}
+            <button
+              type="button"
+              onClick={copyInquiryDetails}
+              className="inline-flex w-full items-center justify-center rounded-full border border-navy-900/20 bg-white px-8 py-3.5 text-sm font-semibold text-navy-900 transition hover:bg-slate-50 sm:w-auto"
+            >
+              {copied ? "Copied!" : "Copy inquiry details"}
+            </button>
+          </div>
+
+          <p className="mt-6 text-sm text-slate-600">
+            Or email{" "}
+            <a
+              href={siteConfig.emailHref}
+              className="font-semibold text-lake-700 underline"
+            >
               {siteConfig.email}
             </a>{" "}
             or call{" "}
-            <a href={siteConfig.phoneHref} className="font-semibold text-lake-700 underline">
+            <a
+              href={siteConfig.phoneHref}
+              className="font-semibold text-lake-700 underline"
+            >
               {siteConfig.phone}
             </a>
             .
           </p>
+
+          <button
+            type="button"
+            onClick={() => {
+              setStatus("idle");
+              setMailtoHref(null);
+              setCopied(false);
+            }}
+            className="mt-4 text-sm font-medium text-lake-700 underline"
+          >
+            Edit and try again
+          </button>
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="space-y-5">
           <div className="grid gap-5 sm:grid-cols-2">
             <div>
-              <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-navy-900">
+              <label
+                htmlFor="name"
+                className="mb-1.5 block text-sm font-medium text-navy-900"
+              >
                 Your Name *
               </label>
               <input
@@ -124,11 +226,15 @@ export function ContactForm() {
                 id="name"
                 name="name"
                 type="text"
+                autoComplete="name"
                 className="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-navy-900 outline-none transition focus:border-lake-500 focus:ring-2 focus:ring-lake-500/20"
               />
             </div>
             <div>
-              <label htmlFor="partner" className="mb-1.5 block text-sm font-medium text-navy-900">
+              <label
+                htmlFor="partner"
+                className="mb-1.5 block text-sm font-medium text-navy-900"
+              >
                 Partner&apos;s Name
               </label>
               <input
@@ -142,7 +248,10 @@ export function ContactForm() {
 
           <div className="grid gap-5 sm:grid-cols-2">
             <div>
-              <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-navy-900">
+              <label
+                htmlFor="email"
+                className="mb-1.5 block text-sm font-medium text-navy-900"
+              >
                 Email *
               </label>
               <input
@@ -150,11 +259,15 @@ export function ContactForm() {
                 id="email"
                 name="email"
                 type="email"
+                autoComplete="email"
                 className="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-navy-900 outline-none transition focus:border-lake-500 focus:ring-2 focus:ring-lake-500/20"
               />
             </div>
             <div>
-              <label htmlFor="phone" className="mb-1.5 block text-sm font-medium text-navy-900">
+              <label
+                htmlFor="phone"
+                className="mb-1.5 block text-sm font-medium text-navy-900"
+              >
                 Phone *
               </label>
               <input
@@ -162,6 +275,7 @@ export function ContactForm() {
                 id="phone"
                 name="phone"
                 type="tel"
+                autoComplete="tel"
                 className="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-navy-900 outline-none transition focus:border-lake-500 focus:ring-2 focus:ring-lake-500/20"
               />
             </div>
@@ -169,7 +283,10 @@ export function ContactForm() {
 
           <div className="grid gap-5 sm:grid-cols-2">
             <div>
-              <label htmlFor="weddingDate" className="mb-1.5 block text-sm font-medium text-navy-900">
+              <label
+                htmlFor="weddingDate"
+                className="mb-1.5 block text-sm font-medium text-navy-900"
+              >
                 Wedding Date
               </label>
               <input
@@ -180,7 +297,10 @@ export function ContactForm() {
               />
             </div>
             <div>
-              <label htmlFor="venue" className="mb-1.5 block text-sm font-medium text-navy-900">
+              <label
+                htmlFor="venue"
+                className="mb-1.5 block text-sm font-medium text-navy-900"
+              >
                 Venue / Location
               </label>
               <input
@@ -194,7 +314,10 @@ export function ContactForm() {
           </div>
 
           <div>
-            <label htmlFor="package" className="mb-1.5 block text-sm font-medium text-navy-900">
+            <label
+              htmlFor="package"
+              className="mb-1.5 block text-sm font-medium text-navy-900"
+            >
               Package of Interest
             </label>
             <select
@@ -214,7 +337,10 @@ export function ContactForm() {
           </div>
 
           <div>
-            <label htmlFor="message" className="mb-1.5 block text-sm font-medium text-navy-900">
+            <label
+              htmlFor="message"
+              className="mb-1.5 block text-sm font-medium text-navy-900"
+            >
               Tell us about your wedding *
             </label>
             <textarea
@@ -231,7 +357,10 @@ export function ContactForm() {
             <p className="rounded-lg bg-amber-50 px-4 py-3 text-sm text-amber-800">
               Tapping send will open your email app with these details ready to
               go. Prefer to reach us directly? Email{" "}
-              <a href={siteConfig.emailHref} className="font-semibold underline">
+              <a
+                href={siteConfig.emailHref}
+                className="font-semibold underline"
+              >
                 {siteConfig.email}
               </a>{" "}
               or call {siteConfig.phone}.
