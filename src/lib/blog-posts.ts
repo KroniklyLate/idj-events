@@ -1296,6 +1296,136 @@ export const blogPosts: BlogPost[] = [
       },
     ],
   },
+  {
+    slug: "is-your-wedding-ready-for-weather",
+    title: "Is Your Wedding Ready for Weather?",
+    excerpt:
+      "Lake Tahoe is a dream wedding destination — and a mountain climate. Here's how to plan for wind, rain, and the rare summer snow so your day stays beautiful no matter what the lake does.",
+    publishedAt: "2026-07-11",
+    author: "Clint Davidson",
+    category: "Wedding Planning",
+    readTimeMinutes: 6,
+    coverImage: {
+      src: "/images/blog/weather-windy-tahoe-whitecaps.jpg",
+      alt: "Windy summer day on Lake Tahoe with white-capped waves, pine shoreline, and Sierra mountains under a partly cloudy sky",
+    },
+    content: [
+      {
+        type: "paragraph",
+        text: "If you are dreaming of a Lake Tahoe wedding, you are in excellent company. This basin is one of the most sought-after wedding destinations in the country — crystal water, granite peaks, pine forests, and sunsets that make even the most camera-shy uncle grab a phone. Couples travel from every corner of the map to say \"I do\" here, and I do not blame them one bit.",
+      },
+      {
+        type: "paragraph",
+        text: "Here is the part I always share with kindness and a little local honesty: Tahoe is also a mountain climate. The same lake that looks like a postcard at 2 p.m. can kick up whitecaps by cocktail hour. Weather here is part of the charm — and part of the plan. Getting ahead of it is not pessimistic. It is how you protect the day you have been imagining for months.",
+      },
+      {
+        type: "heading",
+        text: "Why everyone wants a Tahoe wedding",
+      },
+      {
+        type: "image",
+        image: {
+          src: "/images/blog/weather-windy-tahoe-whitecaps.jpg",
+          alt: "Windy summer day on Lake Tahoe with white-capped waves and pine-covered shoreline",
+          caption:
+            "A breezy summer afternoon on the lake — beautiful, dramatic, and a good reminder to plan for wind if you are outdoors.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: "There is a reason Tahoe stays at the top of destination wedding lists year after year. You get resort ballrooms with lake views, waterfront restaurants with piers, private estates tucked into the trees, and ceremony lawns that look like they were designed for vow moments. Peak season fills up fast because the backdrop does half the storytelling for you.",
+      },
+      {
+        type: "paragraph",
+        text: "That beauty is real. So is the elevation. At roughly 6,200 feet, the air is thinner, the sun is stronger, and the weather can shift faster than many couples expect — especially if you are used to coastal or valley climates. That is not a reason to skip Tahoe. It is a reason to plan like a local.",
+      },
+      {
+        type: "heading",
+        text: "Unpredictable weather is part of the mountain story",
+      },
+      {
+        type: "paragraph",
+        text: "In a typical Tahoe wedding season you can see warm, bluebird afternoons… and also high winds off the water, pop-up rain showers, chilly evenings, and yes — the occasional summertime snow. It sounds wild if you have never lived here. It is simply how the Sierra works.",
+      },
+      {
+        type: "paragraph",
+        text: "Summer snow is rare, but it is not a myth. Meteorologists who have studied Tahoe City records going back more than a century note that measurable June snow shows up on the order of about once every five years. Recent memory has a few vivid examples:",
+      },
+      {
+        type: "list",
+        items: [
+          "June 21, 2025 — On the first day of summer, a cold storm dusted Lake Tahoe mountains with snow (including at Palisades Tahoe) while strong winds and rough water hit the lake itself. Local and national coverage treated it as rare — and a clear reminder that summer storms can still pack a punch.",
+          "June 2023 — After the historic 2022–23 winter, significant snow lingered into early June at higher elevations around the basin and nearby Sierra corridors — a late-season reality for mountain venues and travel plans.",
+          "Late spring is often still \"winter adjacent\" — resorts regularly report substantial April snowfall, and May storms are not unheard of. Peak wedding months can start with snow still in the high country even when the lake is blue and open for photos.",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "I am not sharing those dates to scare anyone. I am sharing them because the couples who sleep best the week of the wedding are the ones who already know: \"If the forecast flips, we have a plan.\"",
+      },
+      {
+        type: "heading",
+        text: "Talk to your venue and planner about wet & windy days",
+      },
+      {
+        type: "paragraph",
+        text: "If any part of your day is outdoors — ceremony, cocktail hour, dinner under the stars, photos on a pier — please put weather on the agenda early with your venue and planner. A good team will not roll their eyes. They will light up, because it means you want the celebration to feel seamless no matter what the sky does.",
+      },
+      {
+        type: "list",
+        items: [
+          "Ask for the indoor or covered backup — ballroom, tent, pavilion, or secondary lawn with wind protection. Know the decision timeline (\"we flip by 10 a.m. day-of\" beats scrambling at 3 p.m.).",
+          "Confirm who calls the weather move — venue coordinator, planner, or couple — so nobody is guessing while guests arrive.",
+          "Walk the wind path — lakeside and ridgeline sites can funnel gusts. Ask where speakers, arches, and guest seating sit relative to open water and tree lines.",
+          "Plan guest comfort — pashminas, a clear umbrella stash, heaters for evening, and a covered photo spot if rain shows up mid-portraits.",
+          "Coordinate vendors — florist, rental company, photographer, and DJ should all know the Plan B layout so load-in and timeline stay calm.",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "From the entertainment side, we build weather into production every time we work an outdoor Tahoe site: weighted stands, secure cable runs, ceremony mics that stay clear when wind picks up, and a lighting plan that still feels romantic if you move under cover. Your day should feel intentional — not improvised.",
+      },
+      {
+        type: "heading",
+        text: "When you are outdoors, plan for wind — and secure the pretty stuff",
+      },
+      {
+        type: "paragraph",
+        text: "If I could put one sticky note on every outdoor Tahoe wedding folder, it would say: plan for wind. Whitecaps on the lake are gorgeous in photos and a gentle warning for décor. Afternoon breezes are common; stronger gusts are not rare. Treat \"secure it\" as part of the design, not an afterthought.",
+      },
+      {
+        type: "list",
+        items: [
+          "Ceremony arches and arbors — sandbags, stakes, or weighted bases; avoid freestanding structures that can tip in a gust.",
+          "Table décor — low centerpieces or properly weighted tall pieces; avoid light cardstock menus that become confetti without holders or clips.",
+          "Signage and seating charts — easels with weight, freestanding frames that lock, or wall-mounted options when the venue allows.",
+          "Linens and runners — clips or weighted corners on open decks and lawns.",
+          "Candles and flame — battery candles or enclosed hurricanes outdoors; open flame and lake wind are not friends.",
+          "Personal flowers — talk to your florist about styles that hold up in breeze (and keep a cool place for bouquets between photos and the aisle).",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "None of this dims the magic. It protects it. The couples who enjoy the wind the most are the ones who planned for it — hair and makeup still look great, the arch stays put for portraits, and nobody is chasing place cards across the lawn during cocktail hour.",
+      },
+      {
+        type: "heading",
+        text: "A simple weather-ready mindset",
+      },
+      {
+        type: "paragraph",
+        text: "Tahoe weddings are worth every bit of planning they require. The light here is different. The air smells like pine. Guests remember standing with the lake behind you. Weather is not the enemy of that story — unprepared weather is.",
+      },
+      {
+        type: "paragraph",
+        text: "So yes: book the dream venue. Order the florals that make you tear up. Build the playlist that empties the dance floor. And in the same breath, ask your venue and planner, \"What do we do if it gets wet and windy?\" Secure the decorations. Have a covered option. Keep a light jacket nearby for photos. Then go enjoy the mountain — whitecaps and all.",
+      },
+      {
+        type: "paragraph",
+        text: "If you are planning a Lake Tahoe or Reno-area wedding and want entertainment that is ready for ceremony lawns, lakeside decks, and last-minute layout flips, we would love to help. Reach out anytime — we are happy to talk timeline, production, and how to keep the energy high no matter what the forecast says.",
+      },
+    ],
+  },
 ];
 
 export function getBlogPost(slug: string) {
