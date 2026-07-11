@@ -234,7 +234,7 @@ export const packages: Package[] = [
     price: 3000,
     slug: "forever",
     features: [
-      "Acts as day-of wedding planner for music and flow",
+      "Dedicated MC/host on the mic plus a dedicated DJ on music",
       "Sound system for 100-150 guests",
       "Full lighting truss + 2 truss bars",
       "8 LED PAR cans",
