@@ -273,7 +273,7 @@ export const addOnServices = [
   "Chef / Catering Services",
   "Bar tending services",
   "Limousine & Transportation Services",
-  "Bounce Houses",
+  "Video Projection",
   "Photo Booths",
   "Floral Design / Flower Shop",
   "Personalized song for the couple",
