@@ -3,7 +3,7 @@ import { BrandLogo } from "@/components/BrandLogo";
 
 type PageHeroProps = {
   eyebrow?: string;
-  title: string;
+  title: ReactNode;
   description?: string;
   children?: ReactNode;
   tall?: boolean;

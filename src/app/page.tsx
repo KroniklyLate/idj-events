@@ -31,7 +31,12 @@ export default function HomePage() {
     >
       <PageHero
         eyebrow="Lake Tahoe · Weddings · Celebrations"
-        title={siteConfig.tagline}
+        title={
+          <>
+            Tahoe&apos;s Premier Wedding DJ —
+            <span className="mt-1 block">I&nbsp;DJ&nbsp;Events</span>
+          </>
+        }
         description="From intimate lakeside ceremonies to all-night dance parties, I DJ Events delivers professional DJ, MC, lighting, and ceremony sound tailored to your Tahoe wedding vision."
         tall
       >
