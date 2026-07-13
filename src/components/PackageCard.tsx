@@ -32,6 +32,9 @@ export function PackageCard({ pkg, compact = false }: PackageCardProps) {
         <p className="mt-2 font-display text-3xl font-bold text-lake-700">
           {formattedPrice}
         </p>
+        <p className="mt-2 text-sm font-medium text-slate-600">
+          {pkg.hours} · {pkg.zones}
+        </p>
       </div>
 
       <ul className={`flex-1 space-y-3 ${compact ? "text-sm" : "text-sm sm:text-base"}`}>

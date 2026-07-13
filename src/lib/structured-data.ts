@@ -20,7 +20,7 @@ export function getStructuredDataGraph() {
       itemOffered: {
         "@type": "Service",
         name: pkg.name,
-        description: pkg.features.join(". "),
+        description: `${pkg.hours}, ${pkg.zones}. ${pkg.features.join(". ")}`,
         provider: { "@id": organizationId },
         areaServed: siteConfig.serviceArea,
       },

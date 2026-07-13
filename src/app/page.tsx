@@ -6,7 +6,16 @@ import { PackageCard } from "@/components/PackageCard";
 import { PageBackground } from "@/components/PageBackground";
 import { PageHero } from "@/components/PageHero";
 import { SectionHeading } from "@/components/SectionHeading";
-import { createPageMetadata, heroImages, packages, services, siteConfig } from "@/lib/site-data";
+import {
+  createPageMetadata,
+  heroImages,
+  packages,
+  reviewLinks,
+  services,
+  siteConfig,
+  testimonialPlaceholders,
+  trustSignals,
+} from "@/lib/site-data";
 
 export const metadata: Metadata = createPageMetadata("home");
 
@@ -130,17 +139,15 @@ export default function HomePage() {
                 centered={false}
               />
               <ul className="mt-8 space-y-4">
-                {[
-                  "Professional sound and lighting scaled to your venue",
-                  "Experienced MC hosting that guides your timeline",
-                  "Ceremony audio for indoor and outdoor settings",
-                  "Packages that grow with your vision — no guesswork",
-                ].map((item) => (
-                  <li key={item} className="text-on-image flex gap-3 text-white">
+                {trustSignals.slice(0, 4).map((item) => (
+                  <li key={item.title} className="text-on-image flex gap-3 text-white">
                     <span className="text-gold-300" aria-hidden="true">
                       ✦
                     </span>
-                    <span>{item}</span>
+                    <span>
+                      <strong className="font-semibold">{item.title}.</strong>{" "}
+                      {item.body}
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -154,13 +161,49 @@ export default function HomePage() {
                 <BrandLogo size="sm" className="h-14 w-14" />
               </div>
               <p className="font-display text-2xl leading-snug font-medium italic text-navy-900 sm:text-3xl">
-                &ldquo;Your wedding deserves more than a playlist — it deserves
-                a partner who cares about every moment.&rdquo;
+                &ldquo;{testimonialPlaceholders[0].quote}&rdquo;
               </p>
               <p className="mt-6 text-sm font-semibold tracking-wide text-gold-600 uppercase">
-                — I DJ Events
+                — {testimonialPlaceholders[0].attribution}
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 sm:py-24">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <SectionHeading
+            eyebrow="Kind Words"
+            title="What couples can expect"
+            description="Client reviews are coming soon on The Knot, WeddingWire, and Google. Until then, here’s our commitment to every couple we serve."
+          />
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            {testimonialPlaceholders.map((item) => (
+              <blockquote key={item.context} className="glass-panel flex h-full flex-col p-6 sm:p-8">
+                <p className="flex-1 text-base leading-relaxed text-slate-700 italic">
+                  &ldquo;{item.quote}&rdquo;
+                </p>
+                <footer className="mt-6">
+                  <p className="text-sm font-semibold text-navy-900">{item.attribution}</p>
+                  <p className="text-xs tracking-wide text-gold-600 uppercase">
+                    {item.context}
+                  </p>
+                </footer>
+              </blockquote>
+            ))}
+          </div>
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+            {reviewLinks.map((link) => (
+              <span
+                key={link.label}
+                className="glass-panel-soft rounded-full px-4 py-2 text-sm font-medium text-slate-700"
+                title={link.comingSoon ? "Profile coming soon" : undefined}
+              >
+                {link.label}
+                {link.comingSoon ? " · Coming soon" : ""}
+              </span>
+            ))}
           </div>
         </div>
       </section>

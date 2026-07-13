@@ -80,13 +80,13 @@ export const pageSeo = {
   packages: {
     title: "Lake Tahoe Wedding DJ Packages",
     description:
-      "Six custom wedding DJ packages for Lake Tahoe & Reno — sound, lighting, MC & ceremony audio from $1,500 to $4,000. Find the right fit for your celebration.",
+      "Six wedding DJ packages for Lake Tahoe & Reno from $1,500–$4,000 with clear hours, multi-zone audio, lighting & add-ons — photo booth, silent disco & more.",
     path: "/packages",
   },
   services: {
     title: "Wedding DJ, MC & Lighting Services",
     description:
-      "DJ, MC, uplighting, ceremony sound, officiant & karaoke for Lake Tahoe weddings. One team for music, hosting & production at venues across Tahoe & Reno.",
+      "DJ, MC, lighting, ceremony sound, officiant & karaoke for Lake Tahoe weddings. Outdoor-ready production, multi-zone setups & clear planning process.",
     path: "/services",
   },
   about: {
@@ -149,7 +149,7 @@ export const services = [
   {
     title: "DJ Services",
     description:
-      "Curated playlists, seamless transitions, and a dance floor that stays packed from cocktails through the last song.",
+      "Curated playlists, seamless transitions, and a dance floor that stays packed from cocktails through the last song. Multicultural and multi-generational music for every guest list.",
     icon: "🎧",
   },
   {
@@ -167,7 +167,7 @@ export const services = [
   {
     title: "Ceremony Sound",
     description:
-      "Crystal-clear audio for your vows, readings, and processional — indoors or outdoors at Tahoe's most stunning venues.",
+      "Crystal-clear audio for your vows, readings, and processional — indoors or outdoors at Tahoe's most stunning venues, including battery-powered setups when power is limited.",
     icon: "💍",
   },
   {
@@ -188,6 +188,8 @@ export type Package = {
   name: string;
   price: number;
   slug: string;
+  hours: string;
+  zones: string;
   highlight?: boolean;
   features: string[];
 };
@@ -197,7 +199,11 @@ export const packages: Package[] = [
     name: "Starter Package",
     price: 1500,
     slug: "starter",
+    hours: "4 hours",
+    zones: "1 zone",
     features: [
+      "4 hours of entertainment from guest arrival",
+      "1 sound zone (reception)",
       "Professional DJ for reception, cocktails, dinner, and dancing",
       "Sound system for 25-50 guests",
       "4 LED light bars",
@@ -207,7 +213,11 @@ export const packages: Package[] = [
     name: "Step It Up Package",
     price: 2000,
     slug: "step-it-up",
+    hours: "5 hours",
+    zones: "1 zone",
     features: [
+      "5 hours of entertainment from guest arrival",
+      "1 sound zone (cocktail + reception)",
       "Everything in the Starter Package",
       "DJ and MC services for reception and select announcements",
       "Sound system for 50-75 guests",
@@ -219,8 +229,12 @@ export const packages: Package[] = [
     name: "Take the Leap Package",
     price: 2500,
     slug: "take-the-leap",
+    hours: "6 hours",
+    zones: "2 zones",
     highlight: true,
     features: [
+      "6 hours of entertainment from guest arrival",
+      "2 sound zones (ceremony + reception)",
       "Everything in the Step It Up Package",
       "Ceremony sound system and mic for officiant",
       "Sound system for 75-100 guests",
@@ -233,7 +247,11 @@ export const packages: Package[] = [
     name: "Forever Package",
     price: 3000,
     slug: "forever",
+    hours: "7 hours",
+    zones: "2–3 zones",
     features: [
+      "7 hours of entertainment from guest arrival",
+      "Up to 3 sound zones (ceremony, cocktail hour, reception)",
       "Everything in the Take the Leap Package",
       "Dedicated MC/host on the mic plus a dedicated DJ on music",
       "Sound system for 100-150 guests",
@@ -245,7 +263,11 @@ export const packages: Package[] = [
     name: "The I Do Package",
     price: 3500,
     slug: "the-i-do",
+    hours: "8 hours",
+    zones: "3 zones",
     features: [
+      "8 hours of entertainment from guest arrival",
+      "3 sound zones for multi-area celebrations",
       "Everything in the Forever Package",
       "Sound system for 150-200 guests",
       "2 gobo moving heads",
@@ -256,7 +278,11 @@ export const packages: Package[] = [
     name: "Till The End Package",
     price: 4000,
     slug: "till-the-end",
+    hours: "8–9 hours",
+    zones: "3+ zones",
     features: [
+      "8–9 hours of entertainment from guest arrival",
+      "3+ sound zones for complex multi-location days",
       "Everything in The I Do Package",
       "Complete event coordination",
       "Sound system for 200+ guests",
@@ -266,17 +292,200 @@ export const packages: Package[] = [
   },
 ];
 
-export const addOnServices = [
+/** Priced entertainment products sold directly by I DJ Events */
+export type EntertainmentAddOn = {
+  name: string;
+  price: number | null;
+  priceLabel?: string;
+  description?: string;
+};
+
+export const entertainmentAddOns: EntertainmentAddOn[] = [
+  {
+    name: "Additional hour",
+    price: 300,
+    description: "Extend your coverage beyond the package hours.",
+  },
+  {
+    name: "Additional zone / sound system",
+    price: 300,
+    description: "Extra audio setup for a separate ceremony, cocktail, or after-party area.",
+  },
+  {
+    name: "Photo booth",
+    price: 650,
+    description:
+      "3–4 hours of booth time with attendant, instant prints and/or digital sharing, and a basic prop set.",
+  },
+  {
+    name: "Photo booth backdrop upgrade",
+    price: 200,
+    description: "Premium backdrop plus expanded props for your booth.",
+  },
+  {
+    name: "Custom monogram / gobo",
+    price: 250,
+    description: "Project your names, initials, or custom design on the dance floor or wall.",
+  },
+  {
+    name: "Video projection",
+    price: 400,
+    description: "Screen or wall projection for slideshows, welcome videos, or special moments.",
+  },
+  {
+    name: "Personalized song for the couple",
+    price: 400,
+    description: "A custom song created for your first dance, ceremony, or grand entrance.",
+  },
+  {
+    name: "After-party DJ set",
+    price: 1000,
+    description: "2 hours of after-party DJ coverage with an additional sound system.",
+  },
+  {
+    name: "Silent disco — 50 headphones",
+    price: 600,
+    description: "Silent disco setup with up to 50 headphones within your package hours.",
+  },
+  {
+    name: "Silent disco — 100 headphones",
+    price: 750,
+    description: "Silent disco setup with up to 100 headphones within your package hours.",
+  },
+  {
+    name: "After-party silent disco (50 headphones)",
+    price: 1600,
+    description: "2-hour after-party silent disco with 50 headphones and DJ set.",
+  },
+  {
+    name: "After-party silent disco (100 headphones)",
+    price: 1700,
+    description: "2-hour after-party silent disco with 100 headphones and DJ set.",
+  },
+  {
+    name: "Live acoustic ceremony / cocktail",
+    price: null,
+    priceLabel: "Ask for quote",
+    description:
+      "Live acoustic guitar (and optional cocktail performance) for vows and processional — available on request.",
+  },
+];
+
+/** Vendor partners coordinated through I DJ Events (not in-house production) */
+export const vendorPartners = [
   "Makeup Artists",
   "Hair Stylists",
   "Photographer & Videographer",
   "Chef / Catering Services",
-  "Bar tending services",
+  "Bartending Services",
   "Limousine & Transportation Services",
-  "Video Projection",
-  "Photo Booths",
   "Floral Design / Flower Shop",
-  "Personalized song for the couple",
+];
+
+/** @deprecated Use entertainmentAddOns and vendorPartners */
+export const addOnServices = [
+  ...entertainmentAddOns.map((a) =>
+    a.price != null ? `${a.name} — $${a.price.toLocaleString("en-US")}` : `${a.name} — ${a.priceLabel}`,
+  ),
+  ...vendorPartners,
+];
+
+export const trustSignals = [
+  {
+    title: "Outdoor ceremony ready",
+    body: "Battery-powered ceremony audio for beaches, meadows, piers, and venues without easy power.",
+  },
+  {
+    title: "Licensed & insured in CA & NV",
+    body: "Fully covered for weddings on both sides of Lake Tahoe and across the region.",
+  },
+  {
+    title: "Backup critical gear",
+    body: "Redundant mics and key equipment so one failure never defines your day.",
+  },
+  {
+    title: "One wedding per day",
+    body: "Your celebration is our only focus — no double-booking.",
+  },
+  {
+    title: "Weather & outdoor contingency",
+    body: "We coordinate with your venue on backup plans, wind, power, and setup logistics.",
+  },
+  {
+    title: "Silent generator available",
+    body: "Quiet power when larger outdoor receptions need it.",
+  },
+];
+
+export const featuredVenues = [
+  "Edgewood Tahoe",
+  "Heavenly Mountain Resort",
+  "Hyatt Regency Lake Tahoe",
+  "The Ritz-Carlton, Lake Tahoe",
+  "Harrah's Lake Tahoe & Caesars Republic",
+  "Valhalla Tahoe",
+  "Martis Camp",
+  "Private estates & homes across the basin",
+];
+
+export const processSteps = [
+  {
+    step: "01",
+    title: "Inquiry & availability",
+    description:
+      "Share your date, venue, guest count, and vision. We confirm availability and recommend the right package.",
+  },
+  {
+    step: "02",
+    title: "Consultation",
+    description:
+      "We walk through timeline, must-play and do-not-play music, ceremony needs, and lighting goals.",
+  },
+  {
+    step: "03",
+    title: "Planning & prep",
+    description:
+      "Music preferences, announcements, vendor coordination, and multi-zone logistics get locked in before the big day.",
+  },
+  {
+    step: "04",
+    title: "Wedding day",
+    description:
+      "Professional setup, clear MC hosting, dance-floor energy, and seamless handoffs with your venue and vendors.",
+  },
+  {
+    step: "05",
+    title: "Pack-out",
+    description:
+      "We tear down on our time so you can enjoy the last dance and leave with great memories.",
+  },
+];
+
+export const testimonialPlaceholders = [
+  {
+    quote:
+      "Your guests will remember the energy on the dance floor — and how smoothly every moment of the day flowed.",
+    attribution: "I DJ Events",
+    context: "What couples can expect",
+  },
+  {
+    quote:
+      "From lakeside vows to late-night celebration, we treat every timeline detail like it matters — because it does.",
+    attribution: "I DJ Events",
+    context: "Our promise",
+  },
+  {
+    quote:
+      "Professional sound, lighting that photographs beautifully, and an MC who keeps everyone in the moment.",
+    attribution: "I DJ Events",
+    context: "Full-service production",
+  },
+];
+
+export const reviewLinks = [
+  { label: "The Knot", href: "#", comingSoon: true },
+  { label: "WeddingWire", href: "#", comingSoon: true },
+  { label: "Google Reviews", href: "#", comingSoon: true },
 ];
 
 export const faqs = [
@@ -293,11 +502,31 @@ export const faqs = [
   {
     question: "Can we customize a package?",
     answer:
-      "Absolutely. Every wedding is unique. Reach out with your vision and we'll tailor a package that fits your venue, guest count, and timeline.",
+      "Absolutely. Every wedding is unique. Reach out with your vision and we'll tailor a package that fits your venue, guest count, and timeline. Additional hours are $300 each, and extra sound zones are $300.",
   },
   {
     question: "Do you handle ceremony and reception?",
     answer:
-      "Yes — several packages include ceremony audio, and our top tiers offer full MC, coordination, and concert-quality sound for your entire day.",
+      "Yes. Take the Leap and above include multi-zone ceremony + reception audio. Higher tiers support cocktail hour and complex multi-location days across Tahoe venues.",
+  },
+  {
+    question: "What if our ceremony has no power?",
+    answer:
+      "We come prepared with battery-powered ceremony audio for beaches, meadows, and remote sites. Silent generators are available when larger outdoor receptions need reliable power.",
+  },
+  {
+    question: "Are you licensed and insured?",
+    answer:
+      "Yes. We are licensed and insured for weddings in California and Nevada, and we carry backup critical gear for peace of mind.",
+  },
+  {
+    question: "How does the planning process work?",
+    answer:
+      "After your inquiry we confirm the date, consult on music and timeline, prepare your must-play and do-not-play lists, coordinate with your venue and vendors, then deliver setup, MC hosting, and pack-out on wedding day. One wedding per day — your celebration is our only focus.",
+  },
+  {
+    question: "Do you offer photo booths, silent disco, or live acoustic?",
+    answer:
+      "Yes. Photo booth, monogram/gobo, video projection, after-party, and silent disco packages are available as priced add-ons. Live acoustic for ceremony or cocktail hour is available on request — ask for a quote.",
   },
 ];

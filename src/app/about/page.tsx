@@ -48,15 +48,19 @@ export default function AboutPage() {
               {[
                 {
                   title: "Local expertise",
-                  body: `We know ${siteConfig.serviceArea} — the venues, the logistics, and the magic that makes Tahoe weddings unforgettable.`,
+                  body: `We know ${siteConfig.serviceArea} — resorts, private estates, beaches, and the logistics that make Tahoe weddings unforgettable.`,
                 },
                 {
                   title: "Full-service production",
-                  body: "Sound, lighting, MC, ceremony audio, officiant, and karaoke — coordinated under one roof.",
+                  body: "Sound, lighting, MC, ceremony audio, officiant, karaoke, photo booth, and after-party options — coordinated under one roof.",
+                },
+                {
+                  title: "Outdoor & bi-state ready",
+                  body: "Battery ceremony audio, silent generators when needed, backup gear, and licensed & insured coverage in California and Nevada.",
                 },
                 {
                   title: "Travel ready",
-                  body: `${siteConfig.travelNote} for destination celebrations across Northern California and Nevada.`,
+                  body: `${siteConfig.travelNote} for destination celebrations across Northern California and Nevada. One wedding per day — your day is our only focus.`,
                 },
               ].map((item) => (
                 <div key={item.title} className="glass-panel p-6">
