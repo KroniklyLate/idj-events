@@ -50,7 +50,7 @@ export default function HomePage() {
           </Link>
         </div>
 
-        <div className="mt-16 grid gap-6 sm:grid-cols-3">
+        <div className="mt-16 flex flex-wrap justify-center gap-6">
           {[
             { label: "Service Area", value: siteConfig.serviceArea },
             { label: "Starting at", value: "$1,500" },
@@ -58,7 +58,7 @@ export default function HomePage() {
           ].map((stat) => (
             <div
               key={stat.label}
-              className="glass-panel-soft px-5 py-4"
+              className="glass-panel-soft w-full px-5 py-4 sm:w-[calc((100%-3rem)/3)]"
             >
               <p className="text-xs font-semibold tracking-widest text-lake-700 uppercase">
                 {stat.label}
@@ -79,9 +79,12 @@ export default function HomePage() {
             description="DJ, MC, lighting, ceremony audio, officiant services, and karaoke — all coordinated with Tahoe venues in mind."
           />
 
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-12 flex flex-wrap justify-center gap-6">
             {services.map((service) => (
-              <article key={service.title} className="glass-panel p-6 transition hover:-translate-y-0.5">
+              <article
+                key={service.title}
+                className="glass-panel w-full p-6 transition hover:-translate-y-0.5 sm:w-[calc(50%-0.75rem)] lg:w-[calc((100%-3rem)/3)]"
+              >
                 <span className="text-3xl" aria-hidden="true">
                   {service.icon}
                 </span>
@@ -111,9 +114,14 @@ export default function HomePage() {
             description="Six thoughtfully designed packages — from elegant receptions to full concert-quality productions with complete event coordination."
           />
 
-          <div className="mt-12 grid gap-8 lg:grid-cols-3">
+          <div className="mt-12 flex flex-wrap justify-center gap-8">
             {featuredPackages.map((pkg) => (
-              <PackageCard key={pkg.slug} pkg={pkg} />
+              <div
+                key={pkg.slug}
+                className="w-full sm:w-[calc(50%-1rem)] lg:w-[calc((100%-4rem)/3)]"
+              >
+                <PackageCard pkg={pkg} />
+              </div>
             ))}
           </div>
 
@@ -178,9 +186,12 @@ export default function HomePage() {
             title="What couples can expect"
             description="Client reviews are coming soon on The Knot, WeddingWire, and Google. Until then, here’s our commitment to every couple we serve."
           />
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
+          <div className="mt-12 flex flex-wrap justify-center gap-6">
             {testimonialPlaceholders.map((item) => (
-              <blockquote key={item.context} className="glass-panel flex h-full flex-col p-6 sm:p-8">
+              <blockquote
+                key={item.context}
+                className="glass-panel flex w-full flex-col p-6 sm:w-[calc(50%-0.75rem)] sm:p-8 md:w-[calc((100%-3rem)/3)]"
+              >
                 <p className="flex-1 text-base leading-relaxed text-slate-700 italic">
                   &ldquo;{item.quote}&rdquo;
                 </p>

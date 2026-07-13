@@ -33,9 +33,11 @@ export default function BlogPage() {
                 description="Guides for couples planning weddings across Lake Tahoe, Reno, and beyond."
               />
 
-              <div className="mt-12 grid gap-8 md:grid-cols-2">
+              <div className="mt-12 flex flex-wrap justify-center gap-8">
                 {posts.map((post) => (
-                  <BlogCard key={post.slug} post={post} />
+                  <div key={post.slug} className="w-full md:w-[calc(50%-1rem)]">
+                    <BlogCard post={post} />
+                  </div>
                 ))}
               </div>
             </>

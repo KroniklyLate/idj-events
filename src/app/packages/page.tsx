@@ -40,9 +40,14 @@ export default function PackagesPage() {
 
       <section className="py-16 sm:py-24">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+          <div className="flex flex-wrap justify-center gap-8">
             {packages.map((pkg) => (
-              <PackageCard key={pkg.slug} pkg={pkg} />
+              <div
+                key={pkg.slug}
+                className="w-full md:w-[calc(50%-1rem)] xl:w-[calc((100%-4rem)/3)]"
+              >
+                <PackageCard pkg={pkg} />
+              </div>
             ))}
           </div>
           <p className="text-on-image mx-auto mt-10 max-w-2xl text-center text-sm text-white">
@@ -59,9 +64,12 @@ export default function PackagesPage() {
             title="Outdoor-ready & fully insured"
             description="Mountain venues, beaches, and estate celebrations — we come prepared for power, weather, and bi-state logistics."
           />
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-12 flex flex-wrap justify-center gap-4">
             {trustSignals.map((signal) => (
-              <div key={signal.title} className="glass-panel p-5 sm:p-6">
+              <div
+                key={signal.title}
+                className="glass-panel w-full p-5 sm:w-[calc(50%-0.5rem)] sm:p-6 lg:w-[calc((100%-2rem)/3)]"
+              >
                 <h3 className="font-display text-lg font-semibold text-navy-900">
                   {signal.title}
                 </h3>
@@ -145,11 +153,11 @@ export default function PackagesPage() {
             title="From resorts to private estates"
             description="Experience across Tahoe’s most requested wedding settings — and countless private homes and lakeside properties."
           />
-          <ul className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <ul className="mt-12 flex flex-wrap justify-center gap-3">
             {featuredVenues.map((venue) => (
               <li
                 key={venue}
-                className="glass-panel-soft px-4 py-3 text-center text-sm font-medium text-slate-800"
+                className="glass-panel-soft w-full px-4 py-3 text-center text-sm font-medium text-slate-800 sm:w-[calc(50%-0.375rem)] lg:w-[calc((100%-2.25rem)/4)]"
               >
                 {venue}
               </li>

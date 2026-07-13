@@ -73,9 +73,12 @@ export default function ServicesPage() {
             title="A clear path from inquiry to last dance"
             description="Couples love vendors who communicate. Here’s exactly how we plan and deliver your wedding day."
           />
-          <ol className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-5">
+          <ol className="mt-12 flex flex-wrap justify-center gap-6">
             {processSteps.map((item) => (
-              <li key={item.step} className="glass-panel flex flex-col p-5 sm:p-6">
+              <li
+                key={item.step}
+                className="glass-panel flex w-full flex-col p-5 sm:p-6 md:w-[calc(50%-0.75rem)] lg:w-[calc((100%-6rem)/5)]"
+              >
                 <span className="font-display text-2xl font-bold text-gold-600">
                   {item.step}
                 </span>
@@ -98,9 +101,12 @@ export default function ServicesPage() {
             title="Prepared for outdoor & multi-zone days"
             description="Battery ceremony audio, silent generators, backup gear, and CA + NV insurance — so destination couples can relax."
           />
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-12 flex flex-wrap justify-center gap-4">
             {trustSignals.map((signal) => (
-              <div key={signal.title} className="glass-panel p-5 sm:p-6">
+              <div
+                key={signal.title}
+                className="glass-panel w-full p-5 sm:w-[calc(50%-0.5rem)] sm:p-6 lg:w-[calc((100%-2rem)/3)]"
+              >
                 <h3 className="font-display text-lg font-semibold text-navy-900">
                   {signal.title}
                 </h3>
@@ -120,9 +126,12 @@ export default function ServicesPage() {
             title="Production extras with clear pricing"
             description="Browse popular upgrades — full details and package tiers live on our packages page."
           />
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-12 flex flex-wrap justify-center gap-4">
             {entertainmentAddOns.slice(0, 6).map((addOn) => (
-              <div key={addOn.name} className="glass-panel-soft px-5 py-4">
+              <div
+                key={addOn.name}
+                className="glass-panel-soft w-full px-5 py-4 sm:w-[calc(50%-0.5rem)] lg:w-[calc((100%-2rem)/3)]"
+              >
                 <div className="flex items-start justify-between gap-3">
                   <p className="font-semibold text-navy-900">{addOn.name}</p>
                   <p className="shrink-0 text-sm font-bold text-lake-700">
@@ -148,11 +157,11 @@ export default function ServicesPage() {
             description="Round out your wedding team with trusted partners — beauty, photo, catering, transportation, and more, coordinated through I DJ Events."
           />
 
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-12 flex flex-wrap justify-center gap-4">
             {vendorPartners.map((service) => (
               <div
                 key={service}
-                className="glass-panel-soft flex items-start gap-3 px-5 py-4"
+                className="glass-panel-soft flex w-full items-start gap-3 px-5 py-4 sm:w-[calc(50%-0.5rem)] lg:w-[calc((100%-2rem)/3)]"
               >
                 <span className="mt-0.5 font-bold text-gold-600" aria-hidden="true">
                   +
