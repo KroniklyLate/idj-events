@@ -82,11 +82,11 @@ export default function PackagesPage() {
             description="Photo booth, silent disco, monogram lighting, after-party coverage, and more — priced clearly so you can plan with confidence."
           />
 
-          <div className="mt-12 grid gap-4 sm:grid-cols-2">
+          <div className="mt-12 flex flex-wrap justify-center gap-4">
             {entertainmentAddOns.map((addOn) => (
               <div
                 key={addOn.name}
-                className="glass-panel-soft flex flex-col gap-2 px-5 py-5 sm:flex-row sm:items-start sm:justify-between sm:gap-4"
+                className="glass-panel-soft flex w-full flex-col gap-2 px-5 py-5 sm:w-[calc(50%-0.5rem)] sm:flex-row sm:items-start sm:justify-between sm:gap-4"
               >
                 <div className="min-w-0 flex-1">
                   <p className="font-semibold text-navy-900">{addOn.name}</p>
@@ -113,11 +113,11 @@ export default function PackagesPage() {
             description="Need beauty, photo, catering, or transportation? We coordinate trusted partners so you can keep planning simple."
           />
 
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-12 flex flex-wrap justify-center gap-4">
             {vendorPartners.map((service) => (
               <div
                 key={service}
-                className="glass-panel-soft flex items-start gap-3 px-5 py-4"
+                className="glass-panel-soft flex w-full items-start gap-3 px-5 py-4 sm:w-[calc(50%-0.5rem)] lg:w-[calc((100%-2rem)/3)]"
               >
                 <span className="mt-0.5 font-bold text-gold-600" aria-hidden="true">
                   +
