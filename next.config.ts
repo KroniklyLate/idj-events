@@ -3,12 +3,12 @@ import type { NextConfig } from "next";
 /**
  * Proxy client portal traffic from idj.events → your IDJ Ops server (via tunnel).
  * Set PORTAL_ORIGIN in Vercel env (or .env.local) to the live tunnel/backend URL, e.g.:
- *   PORTAL_ORIGIN=https://submissions-message-tied-detail.trycloudflare.com
+ *   PORTAL_ORIGIN=https://canyon-ref-directors-loc.trycloudflare.com
  * Client invite links should use PUBLIC_BASE_URL=https://idj.events in IDJ Ops.
  */
 const PORTAL_ORIGIN = (
   process.env.PORTAL_ORIGIN ||
-  "https://submissions-message-tied-detail.trycloudflare.com"
+  "https://canyon-ref-directors-loc.trycloudflare.com"
 ).replace(/\/$/, "");
 
 const nextConfig: NextConfig = {
