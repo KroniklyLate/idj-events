@@ -25,6 +25,11 @@ const nextConfig: NextConfig = {
         source: "/static/:path*",
         destination: `${PORTAL_ORIGIN}/static/:path*`,
       },
+      // Public booking form → Ops CRM (Lead)
+      {
+        source: "/api/leads",
+        destination: `${PORTAL_ORIGIN}/api/leads`,
+      },
     ];
   },
 };

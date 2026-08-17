@@ -4,13 +4,11 @@ import { packages, siteConfig } from "@/lib/site-data";
 import { useSearchParams } from "next/navigation";
 import { FormEvent, useState } from "react";
 
-const rawFormspreeId = process.env.NEXT_PUBLIC_FORMSPREE_ID?.trim();
-const formEndpoint =
-  rawFormspreeId &&
-  rawFormspreeId !== "your_form_id_here" &&
-  !rawFormspreeId.includes(" ")
-    ? `https://formspree.io/f/${rawFormspreeId}`
-    : null;
+const leadEndpoint =
+  process.env.NEXT_PUBLIC_LEAD_ENDPOINT?.trim() ||
+  "https://ops.idj.events/api/leads";
+
+const leadFallback = "/api/leads";
 
 const fieldLabels: Record<string, string> = {
   name: "Name",
@@ -25,7 +23,7 @@ const fieldLabels: Record<string, string> = {
 
 /**
  * Builds a mailto: link from the form fields so inquiries still reach the
- * inbox even when Formspree (NEXT_PUBLIC_FORMSPREE_ID) is not configured.
+ * inbox if the Ops CRM is briefly unreachable.
  *
  * Keeps the body reasonably short so clients/browsers that cap URL length
  * still open the compose window.
@@ -80,35 +78,58 @@ export function ContactForm() {
     const form = event.currentTarget;
     const data = new FormData(form);
 
-    // Fallback: no Formspree configured — open the visitor's email client
-    // with a pre-filled message so the lead is never lost.
-    if (!formEndpoint) {
+    setStatus("submitting");
+
+    const payload = {
+      name: String(data.get("name") || ""),
+      partner: String(data.get("partner") || ""),
+      email: String(data.get("email") || ""),
+      phone: String(data.get("phone") || ""),
+      weddingDate: String(data.get("weddingDate") || ""),
+      venue: String(data.get("venue") || ""),
+      package: String(data.get("package") || ""),
+      message: String(data.get("message") || ""),
+      company: String(data.get("company") || ""),
+    };
+
+    const endpoints = [leadEndpoint, leadFallback].filter(
+      (url, i, arr) => url && arr.indexOf(url) === i,
+    );
+
+    try {
+      let delivered = false;
+      for (const url of endpoints) {
+        try {
+          const response = await fetch(url, {
+            method: "POST",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(payload),
+          });
+          const body = (await response.json().catch(() => null)) as {
+            ok?: boolean;
+          } | null;
+          if (response.ok && body?.ok !== false) {
+            delivered = true;
+            break;
+          }
+        } catch {
+          // try the next endpoint
+        }
+      }
+
+      if (delivered) {
+        setStatus("success");
+        form.reset();
+        return;
+      }
+
       const href = buildMailtoHref(data);
       setMailtoHref(href);
       openMailto(href);
       setStatus("mailto");
-      return;
-    }
-
-    setStatus("submitting");
-
-    try {
-      const response = await fetch(formEndpoint, {
-        method: "POST",
-        body: data,
-        headers: { Accept: "application/json" },
-      });
-
-      if (response.ok) {
-        setStatus("success");
-        form.reset();
-      } else {
-        // Formspree failed — fall back to mailto so the lead isn't lost.
-        const href = buildMailtoHref(data);
-        setMailtoHref(href);
-        openMailto(href);
-        setStatus("mailto");
-      }
     } catch {
       const href = buildMailtoHref(data);
       setMailtoHref(href);
@@ -212,7 +233,7 @@ export function ContactForm() {
           </button>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} className="space-y-5">
+        <form onSubmit={handleSubmit} className="relative space-y-5">
           <div className="grid gap-5 sm:grid-cols-2">
             <div>
               <label
@@ -353,19 +374,16 @@ export function ContactForm() {
             />
           </div>
 
-          {!formEndpoint && (
-            <p className="rounded-lg bg-amber-50 px-4 py-3 text-sm text-amber-800">
-              Tapping send will open your email app with these details ready to
-              go. Prefer to reach us directly? Email{" "}
-              <a
-                href={siteConfig.emailHref}
-                className="font-semibold underline"
-              >
-                {siteConfig.email}
-              </a>{" "}
-              or call {siteConfig.phone}.
-            </p>
-          )}
+          <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
+            <label htmlFor="company">Company</label>
+            <input
+              id="company"
+              name="company"
+              type="text"
+              tabIndex={-1}
+              autoComplete="off"
+            />
+          </div>
 
           {status === "error" && (
             <p className="rounded-lg bg-red-50 px-4 py-3 text-sm text-red-700">
