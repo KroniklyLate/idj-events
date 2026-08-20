@@ -1,15 +1,19 @@
 import type { NextConfig } from "next";
 
 /**
- * Proxy client portal traffic from idj.events → your IDJ Ops server (via tunnel).
- * Set PORTAL_ORIGIN in Vercel env (or .env.local) to the live tunnel/backend URL, e.g.:
- *   PORTAL_ORIGIN=https://canyon-ref-directors-loc.trycloudflare.com
- * Client invite links should use PUBLIC_BASE_URL=https://idj.events in IDJ Ops.
+ * Proxy client portal traffic from idj.events → IDJ Ops on KronServer.
+ * Named Cloudflare hostname ops.idj.events is the stable origin (not trycloudflare).
+ * Optional override: PORTAL_ORIGIN in Vercel env / .env.local.
+ * Client invite links use PUBLIC_BASE_URL=https://www.idj.events in IDJ Ops.
  */
-const PORTAL_ORIGIN = (
-  process.env.PORTAL_ORIGIN ||
-  "https://canyon-ref-directors-loc.trycloudflare.com"
-).replace(/\/$/, "");
+const rawOrigin = (process.env.PORTAL_ORIGIN || "https://ops.idj.events").replace(
+  /\/$/,
+  "",
+);
+// Ignore leftover ephemeral quick-tunnel origins; those hostnames die on restart.
+const PORTAL_ORIGIN = rawOrigin.includes("trycloudflare.com")
+  ? "https://ops.idj.events"
+  : rawOrigin;
 
 const nextConfig: NextConfig = {
   async rewrites() {
