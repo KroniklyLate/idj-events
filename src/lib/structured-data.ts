@@ -45,6 +45,7 @@ export function getStructuredDataGraph() {
         name: siteConfig.name,
         description: seo.defaultDescription,
         url: siteConfig.siteUrl,
+        sameAs: [siteConfig.nightlifeUrl],
         image: absoluteUrl(brandAssets.mark512),
         logo: absoluteUrl(brandAssets.mark512),
         telephone: siteConfig.phone,

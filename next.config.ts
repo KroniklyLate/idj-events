@@ -34,6 +34,11 @@ const nextConfig: NextConfig = {
         source: "/api/leads",
         destination: `${PORTAL_ORIGIN}/api/leads`,
       },
+      // Public calendars → Ops (recurring karaoke, nightlife, listed events)
+      {
+        source: "/api/calendar",
+        destination: `${PORTAL_ORIGIN}/api/calendar`,
+      },
     ];
   },
 };

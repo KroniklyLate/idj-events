@@ -7,6 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     home: 1,
     packages: 0.9,
     services: 0.9,
+    calendar: 0.8,
     contact: 0.8,
     about: 0.7,
     blog: 0.7,
@@ -16,7 +17,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     Object.keys(pageSeo) as (keyof typeof pageSeo)[]
   ).map((key) => ({
     url: `${siteConfig.siteUrl}${pageSeo[key].path}`,
-    changeFrequency: key === "blog" ? "weekly" : "monthly",
+    changeFrequency:
+      key === "blog" || key === "calendar" ? "weekly" : "monthly",
     priority: staticPriority[key],
   }));
 

@@ -1,0 +1,59 @@
+export type CalendarEvent = {
+  id: string;
+  event_id: number;
+  date: string;
+  start_time: string | null;
+  end_time: string | null;
+  title: string;
+  event_type: string;
+  event_type_label: string;
+  venue_name: string | null;
+  venue_address: string | null;
+  subcontractor: string | null;
+  blurb: string | null;
+  recurring: boolean;
+  recurrence: string | null;
+  sites: string[];
+};
+
+export type CalendarResponse = {
+  ok: boolean;
+  from: string;
+  to: string;
+  site: string;
+  events: CalendarEvent[];
+};
+
+export const OPS_CALENDAR_ORIGIN = (
+  process.env.PORTAL_ORIGIN || "https://ops.idj.events"
+).replace(/\/$/, "");
+
+export function monthBounds(year: number, monthIndex0: number) {
+  const last = new Date(year, monthIndex0 + 1, 0).getDate();
+  const pad = (n: number) => String(n).padStart(2, "0");
+  return {
+    from: `${year}-${pad(monthIndex0 + 1)}-01`,
+    to: `${year}-${pad(monthIndex0 + 1)}-${pad(last)}`,
+  };
+}
+
+export function shiftMonth(year: number, monthIndex0: number, delta: number) {
+  const total = year * 12 + monthIndex0 + delta;
+  return { year: Math.floor(total / 12), monthIndex0: ((total % 12) + 12) % 12 };
+}
+
+export async function fetchCalendarEvents(opts: {
+  from: string;
+  to: string;
+  site: "idj" | "kroniklylate";
+  origin?: string;
+}): Promise<CalendarEvent[]> {
+  const base = (opts.origin || OPS_CALENDAR_ORIGIN).replace(/\/$/, "");
+  const url = `${base}/api/calendar?from=${opts.from}&to=${opts.to}&site=${opts.site}`;
+  const res = await fetch(url, { next: { revalidate: 120 } });
+  if (!res.ok) {
+    throw new Error(`Calendar unavailable (${res.status})`);
+  }
+  const body = (await res.json()) as CalendarResponse;
+  return body.events || [];
+}

@@ -40,6 +40,10 @@ export const heroImages = {
     src: "/images/backgrounds/hero-blog.jpg",
     alt: "Lake Tahoe at golden hour with emerald water and snow-capped Sierra mountains",
   },
+  calendar: {
+    src: "/images/backgrounds/hero-services.jpg",
+    alt: "Lake Tahoe at twilight with dramatic celebration lighting",
+  },
 } as const satisfies Record<string, SiteImage>;
 
 export const brandImageAlt = "I DJ Events — Lake Tahoe wedding DJ logo";
@@ -55,6 +59,8 @@ export const siteConfig = {
   emailHref: "mailto:booking@idj.events",
   serviceArea: "Lake Tahoe, Reno, and beyond",
   travelNote: "Travel available",
+  nightlifeName: "Kronikly Late",
+  nightlifeUrl: "https://www.kroniklylate.com",
 };
 
 export const ogImageMeta = {
@@ -107,6 +113,12 @@ export const pageSeo = {
       "Wedding planning tips, Tahoe venue inspiration, and DJ advice from I DJ Events. Guides for couples celebrating in Lake Tahoe, Reno & beyond.",
     path: "/blog",
   },
+  calendar: {
+    title: "Event Calendar",
+    description:
+      "See upcoming karaoke nights, nightlife, and public appearances from I DJ Events. Synced from IDJ Ops. Private weddings stay off this calendar.",
+    path: "/calendar",
+  },
 } as const;
 
 export function createPageMetadata(page: keyof typeof pageSeo): Metadata {
@@ -140,6 +152,7 @@ export const navLinks = [
   { href: "/", label: "Home" },
   { href: "/packages", label: "Packages" },
   { href: "/services", label: "Services" },
+  { href: "/calendar", label: "Calendar" },
   { href: "/blog", label: "Blog" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
