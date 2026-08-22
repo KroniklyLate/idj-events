@@ -24,9 +24,17 @@ export type CalendarResponse = {
   events: CalendarEvent[];
 };
 
-export const OPS_CALENDAR_ORIGIN = (
-  process.env.PORTAL_ORIGIN || "https://ops.idj.events"
-).replace(/\/$/, "");
+function resolveOpsOrigin(explicit?: string) {
+  const raw = (explicit || process.env.PORTAL_ORIGIN || "https://ops.idj.events")
+    .trim()
+    .replace(/\/$/, "");
+  if (!raw || raw.includes("trycloudflare.com")) {
+    return "https://ops.idj.events";
+  }
+  return raw;
+}
+
+export const OPS_CALENDAR_ORIGIN = resolveOpsOrigin();
 
 export function monthBounds(year: number, monthIndex0: number) {
   const last = new Date(year, monthIndex0 + 1, 0).getDate();
@@ -48,7 +56,7 @@ export async function fetchCalendarEvents(opts: {
   site: "idj" | "kroniklylate";
   origin?: string;
 }): Promise<CalendarEvent[]> {
-  const base = (opts.origin || OPS_CALENDAR_ORIGIN).replace(/\/$/, "");
+  const base = resolveOpsOrigin(opts.origin);
   const url = `${base}/api/calendar?from=${opts.from}&to=${opts.to}&site=${opts.site}`;
   const res = await fetch(url, { next: { revalidate: 120 } });
   if (!res.ok) {

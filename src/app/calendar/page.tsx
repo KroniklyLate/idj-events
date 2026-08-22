@@ -86,18 +86,17 @@ export default async function CalendarPage() {
 
       <section className="py-16 sm:py-24">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          {loadError ? (
-            <div className="glass-panel p-8 text-center text-slate-700">
+          {loadError && events.length === 0 && (
+            <div className="glass-panel mb-6 p-4 text-center text-sm text-slate-700">
               {loadError}
             </div>
-          ) : (
-            <PublicCalendar
-              initialYear={year}
-              initialMonthIndex0={monthIndex0}
-              initialEvents={events}
-              site="idj"
-            />
           )}
+          <PublicCalendar
+            initialYear={year}
+            initialMonthIndex0={monthIndex0}
+            initialEvents={events}
+            site="idj"
+          />
 
           <div className="glass-panel mt-10 grid gap-6 p-6 sm:grid-cols-2 sm:p-8">
             <div>

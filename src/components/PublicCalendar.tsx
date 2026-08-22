@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { CalendarEvent } from "@/lib/calendar";
 import { monthBounds, shiftMonth } from "@/lib/calendar";
 
@@ -63,6 +63,35 @@ export function PublicCalendar({
 
   const selectedEvents = selected ? eventsOnDate(events, selected) : [];
   const upcoming = events.filter((event) => event.date >= from);
+
+  useEffect(() => {
+    if (initialEvents.length > 0) return;
+    let cancelled = false;
+    const bounds = monthBounds(initialYear, initialMonthIndex0);
+    setLoading(true);
+    fetch(`/api/calendar?from=${bounds.from}&to=${bounds.to}&site=${site}`)
+      .then((res) => {
+        if (!res.ok) throw new Error("Could not load this month");
+        return res.json() as Promise<{ events?: CalendarEvent[] }>;
+      })
+      .then((body) => {
+        if (cancelled) return;
+        const next = body.events || [];
+        setEvents(next);
+        setSelected(next[0]?.date ?? null);
+        setError(null);
+      })
+      .catch((err: unknown) => {
+        if (cancelled) return;
+        setError(err instanceof Error ? err.message : "Could not load this month");
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [initialEvents.length, initialYear, initialMonthIndex0, site]);
 
   async function go(delta: number) {
     const next = shiftMonth(year, monthIndex0, delta);
