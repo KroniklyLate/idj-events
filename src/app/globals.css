@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: transparent;
+  color-scheme: dark;
+  --background: #0c1929;
   --foreground: #ffffff;
 }
 
@@ -26,8 +27,13 @@
   --color-gold-600: #a8841e;
 }
 
+html {
+  color-scheme: dark;
+  background: #0c1929;
+}
+
 body {
-  background: transparent;
+  background: #0c1929;
   color: var(--foreground);
   font-family: var(--font-source-sans), system-ui, sans-serif;
 }
@@ -46,18 +52,51 @@ body {
 
 .glass-panel {
   border-radius: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(240, 215, 140, 0.22);
+  background: rgba(10, 18, 32, 0.88);
   backdrop-filter: blur(12px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  color: #e8eef7;
 }
 
 .glass-panel-soft {
   border-radius: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(240, 215, 140, 0.18);
+  background: rgba(10, 18, 32, 0.78);
   backdrop-filter: blur(10px);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+  color: #e8eef7;
+}
+
+.glass-panel :is(.text-navy-900, .text-navy-800),
+.glass-panel-soft :is(.text-navy-900, .text-navy-800) {
+  color: #f0d78c;
+}
+.glass-panel :is(.text-slate-500, .text-slate-600, .text-slate-700),
+.glass-panel-soft :is(.text-slate-500, .text-slate-600, .text-slate-700) {
+  color: #c5d0e0;
+}
+.glass-panel :is(input, textarea, select),
+.glass-panel-soft :is(input, textarea, select) {
+  background: #0e1626;
+  border-color: #3a4d68;
+  color: #e8eef7;
+}
+.glass-panel :is(input, textarea, select)::placeholder,
+.glass-panel-soft :is(input, textarea, select)::placeholder {
+  color: #8aa0b8;
+}
+.glass-panel .bg-red-50,
+.glass-panel-soft .bg-red-50 {
+  background: #3a1c1c;
+}
+.glass-panel .text-red-700,
+.glass-panel-soft .text-red-700 {
+  color: #feb2b2;
+}
+.glass-panel .border-slate-300,
+.glass-panel-soft .border-slate-300 {
+  border-color: #3a4d68;
 }
 
 .link-on-image {

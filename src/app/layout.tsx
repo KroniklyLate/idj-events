@@ -59,7 +59,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${cormorant.variable} ${sourceSans.variable} h-full antialiased`}
+      className={`${cormorant.variable} ${sourceSans.variable} h-full antialiased dark`}
     >
       <body className="flex min-h-full flex-col">
         <JsonLd data={getStructuredDataGraph()} />
