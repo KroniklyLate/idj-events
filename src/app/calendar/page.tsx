@@ -63,12 +63,6 @@ export default async function CalendarPage() {
           }
         : undefined,
       description: event.blurb || undefined,
-      organizer: event.subcontractor
-        ? {
-            "@type": "Organization",
-            name: event.subcontractor,
-          }
-        : undefined,
     })),
   };
 

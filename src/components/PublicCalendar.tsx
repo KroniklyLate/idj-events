@@ -267,11 +267,6 @@ function EventCard({ event }: { event: CalendarEvent }) {
       {event.blurb && (
         <p className="mt-2 text-sm leading-relaxed text-slate-600">{event.blurb}</p>
       )}
-      {event.subcontractor && (
-        <p className="mt-2 text-xs text-slate-500">
-          Subcontracted through {event.subcontractor}
-        </p>
-      )}
     </article>
   );
 }
