@@ -12,20 +12,19 @@ npm.cmd run dev
 
 Open http://localhost:3000
 
-## Step 2 — Set up form delivery (Formspree)
+## Step 2 — Form delivery (IDJ Ops)
 
-1. Create a free account at https://formspree.io
-2. Create a new form with destination email: `booking@idj.events`
-3. Copy your form ID (the part after `/f/` in the form URL)
-4. Create a file `.env.local` in the project root:
+Contact-form inquiries are delivered by the **IDJ Ops** app at `ops.idj.events`
+(the CRM's `/api/leads` endpoint). No third-party form service is required.
 
-```
-NEXT_PUBLIC_FORMSPREE_ID=your_form_id_here
-```
+Delivery is resilient with three tiers, so a lead is never lost:
 
-5. Redeploy after adding the env var on Vercel (Step 4)
+1. POST directly to `https://ops.idj.events/api/leads`
+2. Fall back to the same-origin `/api/leads` proxy (see `next.config.ts`)
+3. Fall back to opening the visitor's email app with their details pre-filled
 
-Until this is configured, the contact form shows a fallback message with your phone and email.
+Both origins are configurable via optional env vars — see `.env.local.example`.
+For a normal deploy you don't need to set anything.
 
 ## Step 3 — Push to GitHub
 
@@ -45,8 +44,8 @@ git push -u origin main
 
 1. Sign up at https://vercel.com (use your GitHub account)
 2. **Add New Project** → import your `idj-events` repo
-3. Add environment variable:
-   - `NEXT_PUBLIC_FORMSPREE_ID` = your Formspree form ID
+3. No environment variables are required. (Optional overrides:
+   `PORTAL_ORIGIN`, `NEXT_PUBLIC_LEAD_ENDPOINT` — see `.env.local.example`.)
 4. Click **Deploy**
 5. Vercel gives you a preview URL like `idj-events.vercel.app`
 
@@ -78,7 +77,8 @@ git push -u origin main
 
 - [ ] https://idj.events loads with padlock (HTTPS)
 - [ ] All pages work on mobile
-- [ ] Contact form sends email to booking@idj.events
+- [ ] Contact form creates a lead in IDJ Ops (or falls back to email)
+- [ ] Calendar page loads public events from ops.idj.events
 - [ ] Phone link works on mobile (775-233-6501)
 
 ## Optional next steps

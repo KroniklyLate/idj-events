@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# I DJ Events — idj.events
 
-## Getting Started
+Marketing site for **I DJ Events**, Lake Tahoe's wedding DJ / MC / lighting /
+ceremony-sound service. Built with **Next.js 16** (App Router, Turbopack),
+**React 19**, **TypeScript**, and **Tailwind CSS v4**. Deployed on **Vercel**.
 
-First, run the development server:
+## Getting started
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```powershell
+cd C:\Users\Clint\idj-events
+$env:Path = "C:\Program Files\nodejs;" + $env:Path
+npm.cmd install
+npm.cmd run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Scripts: `dev`, `build`, `start`, `lint`, plus brand-asset generators
+(`export-brand`, `export-embroidery`, `export-og`) in `scripts/`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Architecture
 
-## Learn More
+- **`src/app/`** — routes: home, packages, services, calendar, blog (+ posts),
+  about, contact, plus `sitemap.ts` and `robots.ts`.
+- **`src/components/`** — presentational + interactive components
+  (`ContactForm`, `PublicCalendar`, `Header`, `Footer`, hero/section building
+  blocks).
+- **`src/lib/site-data.ts`** — **single source of truth**: packages, pricing,
+  add-ons, services, venues, FAQs, nav, and all SEO/metadata. Edit content here.
+- **`src/lib/structured-data.ts`** — JSON-LD graph (LocalBusiness, OfferCatalog).
+- **`src/lib/calendar.ts`** — typed client for the Ops calendar API.
 
-To learn more about Next.js, take a look at the following resources:
+## IDJ Ops integration
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Lead capture and the public calendar are served by the **IDJ Ops** app at
+`ops.idj.events` (running on KronServer, exposed via a named Cloudflare
+hostname). `next.config.ts` proxies these paths to Ops:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Path            | Purpose                                  |
+|-----------------|------------------------------------------|
+| `/client/*`     | Client portal pages                      |
+| `/static/*`     | Portal template assets                   |
+| `/api/leads`    | Contact-form → Ops CRM                    |
+| `/api/calendar` | Public events (karaoke, nightlife, etc.) |
 
-## Deploy on Vercel
+The contact form is resilient: it posts to Ops, falls back to the same-origin
+proxy, then to a pre-filled `mailto:` hand-off — so a lead is never lost.
+Private weddings are intentionally kept off the public calendar.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Configuration
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+No environment variables are required; the app ships with working defaults.
+Optional overrides (`PORTAL_ORIGIN`, `NEXT_PUBLIC_LEAD_ENDPOINT`) are documented
+in `.env.local.example`.
+
+## Deploying
+
+See [`DEPLOYMENT.md`](./DEPLOYMENT.md) for the full Vercel + GoDaddy DNS walkthrough.
+
+## Notes
+
+- `public/Insta360/` holds large raw event footage and is git-ignored — it is
+  not part of the deploy.
+- Read `AGENTS.md` before changing framework-level code: this project tracks a
+  fast-moving Next.js release, so check `node_modules/next/dist/docs/` rather
+  than relying on older conventions.
+</content>

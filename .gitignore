@@ -37,6 +37,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# large raw source footage — not for deploy, keep out of the repo
+/public/Insta360/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

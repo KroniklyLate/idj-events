@@ -16,6 +16,12 @@ const PORTAL_ORIGIN = rawOrigin.includes("trycloudflare.com")
   : rawOrigin;
 
 const nextConfig: NextConfig = {
+  // Pin the workspace root to this project. A stray package-lock.json in the
+  // home directory otherwise makes Next infer the wrong root (and drags the
+  // huge public/ assets into filesystem tracing).
+  turbopack: {
+    root: __dirname,
+  },
   async rewrites() {
     if (!PORTAL_ORIGIN) return [];
     return [
