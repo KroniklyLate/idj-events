@@ -14,6 +14,8 @@ export type CalendarEvent = {
   recurring: boolean;
   recurrence: string | null;
   sites: string[];
+  /** True when this is a private/wedding busy marker with no client details. */
+  busy?: boolean;
 };
 
 export type CalendarResponse = {
@@ -23,6 +25,27 @@ export type CalendarResponse = {
   site: string;
   events: CalendarEvent[];
 };
+
+const PRIVATE_BUSY_TYPES = new Set(["Wedding", "Birthday", "Corporate"]);
+
+/** Treat API busy flags and legacy "Private event" rows as Booked markers. */
+export function isBusyEvent(event: CalendarEvent): boolean {
+  if (event.busy) return true;
+  if (PRIVATE_BUSY_TYPES.has(event.event_type)) return true;
+  const title = (event.title || "").trim().toLowerCase();
+  return title === "booked" || title === "private event";
+}
+
+export function displayEventTitle(event: CalendarEvent): string {
+  return isBusyEvent(event) ? "Booked" : event.title;
+}
+
+/** Karaoke / nightlife / other marketed recurring appearances. */
+export function isPublicRecurringEvent(event: CalendarEvent): boolean {
+  if (isBusyEvent(event)) return false;
+  if (event.recurring) return true;
+  return event.event_type === "Karaoke" || event.event_type === "Nightlife";
+}
 
 function resolveOpsOrigin(explicit?: string) {
   const raw = (explicit || process.env.PORTAL_ORIGIN || "https://ops.idj.events")

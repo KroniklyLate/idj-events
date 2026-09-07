@@ -6,6 +6,7 @@ import { PageHero } from "@/components/PageHero";
 import { PublicCalendar } from "@/components/PublicCalendar";
 import {
   fetchCalendarEvents,
+  isBusyEvent,
   monthBounds,
   OPS_CALENDAR_ORIGIN,
   type CalendarEvent,
@@ -49,21 +50,24 @@ export default async function CalendarPage() {
       name: siteConfig.name,
       url: siteConfig.siteUrl,
     },
-    subEvent: events.slice(0, 20).map((event) => ({
-      "@type": "Event",
-      name: event.title,
-      startDate: event.date,
-      eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
-      eventStatus: "https://schema.org/EventScheduled",
-      location: event.venue_name
-        ? {
-            "@type": "Place",
-            name: event.venue_name,
-            address: event.venue_address || undefined,
-          }
-        : undefined,
-      description: event.blurb || undefined,
-    })),
+    subEvent: events
+      .filter((event) => !isBusyEvent(event))
+      .slice(0, 20)
+      .map((event) => ({
+        "@type": "Event",
+        name: event.title,
+        startDate: event.date,
+        eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+        eventStatus: "https://schema.org/EventScheduled",
+        location: event.venue_name
+          ? {
+              "@type": "Place",
+              name: event.venue_name,
+              address: event.venue_address || undefined,
+            }
+          : undefined,
+        description: event.blurb || undefined,
+      })),
   };
 
   return (
@@ -75,7 +79,7 @@ export default async function CalendarPage() {
       <PageHero
         eyebrow="Calendar"
         title="Where to find us"
-        description="Public karaoke nights, nightlife, and listed appearances. Private weddings stay off this page."
+        description="Public karaoke nights, nightlife appearances, and booked dates — check the calendar, then request a quote."
       />
 
       <section className="py-16 sm:py-24">
@@ -117,11 +121,11 @@ export default async function CalendarPage() {
                 Book a wedding
               </p>
               <h2 className="mt-2 font-display text-2xl font-semibold text-navy-900">
-                Private dates stay private
+                Check a date
               </h2>
               <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                Wedding bookings do not publish client names here. Check
-                availability and request a quote on the contact page.
+                See open nights on the calendar, then share your date and venue
+                on the contact page for a quote.
               </p>
               <Link
                 href="/contact"

@@ -116,7 +116,7 @@ export const pageSeo = {
   calendar: {
     title: "Event Calendar",
     description:
-      "See upcoming karaoke nights, nightlife, and public appearances from I DJ Events. Private weddings stay off this calendar.",
+      "See upcoming karaoke nights, nightlife appearances, and booked dates for I DJ Events in Lake Tahoe and Reno.",
     path: "/calendar",
   },
 } as const;

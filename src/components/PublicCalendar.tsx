@@ -2,7 +2,13 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { CalendarEvent } from "@/lib/calendar";
-import { monthBounds, shiftMonth } from "@/lib/calendar";
+import {
+  displayEventTitle,
+  isBusyEvent,
+  isPublicRecurringEvent,
+  monthBounds,
+  shiftMonth,
+} from "@/lib/calendar";
 
 const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
@@ -63,6 +69,7 @@ export function PublicCalendar({
   }, [year, monthIndex0]);
 
   const selectedEvents = selected ? eventsOnDate(events, selected) : [];
+  const dayIsBooked = selectedEvents.some(isBusyEvent);
   const upcoming = events.filter((event) => event.date >= from);
 
   useEffect(() => {
@@ -118,7 +125,6 @@ export function PublicCalendar({
 
   function selectDay(iso: string) {
     setSelected(iso);
-    // Keep the detail heading clear of the sticky site header on narrow screens.
     window.requestAnimationFrame(() => {
       detailRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
     });
@@ -131,10 +137,10 @@ export function PublicCalendar({
           <button
             type="button"
             onClick={() => go(-1)}
-            className="rounded-full border border-navy-900/15 px-3 py-1.5 text-sm font-semibold text-navy-900 hover:bg-navy-900/5"
+            className="rounded-full border border-gold-400/30 bg-navy-950/70 px-3 py-1.5 text-sm font-semibold text-gold-300 hover:border-gold-400 hover:bg-navy-900"
             disabled={loading}
           >
-            ← Prev
+            â† Prev
           </button>
           <h2 className="font-display text-2xl font-semibold text-navy-900">
             {monthLabel}
@@ -142,10 +148,10 @@ export function PublicCalendar({
           <button
             type="button"
             onClick={() => go(1)}
-            className="rounded-full border border-navy-900/15 px-3 py-1.5 text-sm font-semibold text-navy-900 hover:bg-navy-900/5"
+            className="rounded-full border border-gold-400/30 bg-navy-950/70 px-3 py-1.5 text-sm font-semibold text-gold-300 hover:border-gold-400 hover:bg-navy-900"
             disabled={loading}
           >
-            Next →
+            Next â†’
           </button>
         </div>
         {error && <p className="mb-3 text-sm text-red-700">{error}</p>}
@@ -173,17 +179,21 @@ export function PublicCalendar({
                   isSelected
                     ? "border-gold-500 bg-gold-400/20"
                     : dayEvents.length
-                      ? "border-navy-900/15 bg-white hover:border-gold-400"
-                      : "border-transparent bg-white/40 hover:bg-white/70"
+                      ? "border-gold-400/35 bg-navy-950 hover:border-gold-400"
+                      : "border-transparent bg-navy-950/45 hover:bg-navy-900/70"
                 }`}
               >
                 <div className="text-sm font-semibold text-navy-900">{dayNum}</div>
                 {dayEvents.slice(0, 2).map((event) => (
                   <div
                     key={event.id}
-                    className="mt-1 truncate text-[11px] leading-tight text-navy-800"
+                    className={`mt-1 truncate rounded px-1 py-0.5 text-[11px] leading-tight ${
+                      isBusyEvent(event)
+                        ? "border border-gold-400/40 bg-navy-900 text-gold-300"
+                        : "border border-gold-400/25 bg-navy-900/90 text-gold-300"
+                    }`}
                   >
-                    {event.title}
+                    {displayEventTitle(event)}
                   </div>
                 ))}
                 {dayEvents.length > 2 && (
@@ -196,7 +206,7 @@ export function PublicCalendar({
           })}
         </div>
         <p className="mt-3 text-xs text-slate-500">
-          {loading ? "Loading…" : `${from} – ${to}`}
+          {loading ? "Loadingâ€¦" : `${from} â€“ ${to}`}
         </p>
       </div>
 
@@ -210,12 +220,12 @@ export function PublicCalendar({
             {selected ? formatLongDate(selected) : "Select a day"}
           </p>
           {selectedEvents.length === 0 ? (
-            <p className="mt-3 text-sm text-slate-600">No public events this day.</p>
+            <p className="mt-3 text-sm text-slate-600">No events listed this day.</p>
           ) : (
             <ul className="mt-4 space-y-4">
               {selectedEvents.map((event) => (
                 <li key={event.id}>
-                  <EventCard event={event} />
+                  <EventCard event={event} dayIsBooked={dayIsBooked} />
                 </li>
               ))}
             </ul>
@@ -228,7 +238,7 @@ export function PublicCalendar({
           </p>
           {upcoming.length === 0 ? (
             <p className="mt-3 text-sm text-slate-600">
-              Nothing listed yet this month. Private weddings stay off this calendar.
+              Nothing listed yet this month.
             </p>
           ) : (
             <ul className="mt-4 space-y-3">
@@ -239,10 +249,14 @@ export function PublicCalendar({
                     onClick={() => selectDay(event.date)}
                     className="w-full text-left"
                   >
-                    <p className="text-sm font-semibold text-navy-900">{event.title}</p>
+                    <p className="text-sm font-semibold text-navy-900">
+                      {displayEventTitle(event)}
+                    </p>
                     <p className="text-xs text-slate-600">
                       {formatLongDate(event.date)}
-                      {event.start_time ? ` · ${event.start_time}` : ""}
+                      {!isBusyEvent(event) && event.start_time
+                        ? ` Â· ${event.start_time}`
+                        : ""}
                     </p>
                   </button>
                 </li>
@@ -255,12 +269,37 @@ export function PublicCalendar({
   );
 }
 
-function EventCard({ event }: { event: CalendarEvent }) {
+function EventCard({
+  event,
+  dayIsBooked,
+}: {
+  event: CalendarEvent;
+  dayIsBooked: boolean;
+}) {
+  if (isBusyEvent(event)) {
+    return (
+      <article>
+        <p className="text-xs font-semibold tracking-wide text-gold-700 uppercase">
+          Booked
+        </p>
+        <h3 className="mt-1 scroll-mt-28 font-display text-xl font-semibold text-navy-900">
+          Booked
+        </h3>
+        <p className="mt-2 text-sm leading-relaxed text-slate-600">
+          This date is unavailable for new bookings.
+        </p>
+      </article>
+    );
+  }
+
+  const showAvailabilityNote =
+    isPublicRecurringEvent(event) && !dayIsBooked;
+
   return (
     <article>
       <p className="text-xs font-semibold tracking-wide text-gold-700 uppercase">
         {event.event_type_label}
-        {event.recurring ? " · weekly" : ""}
+        {event.recurring ? " Â· weekly" : ""}
       </p>
       <h3 className="mt-1 scroll-mt-28 font-display text-xl font-semibold text-navy-900">
         {event.title}
@@ -268,17 +307,22 @@ function EventCard({ event }: { event: CalendarEvent }) {
       {(event.start_time || event.end_time) && (
         <p className="mt-1 text-sm text-navy-800">
           {event.start_time || "TBD"}
-          {event.end_time ? ` – ${event.end_time}` : ""}
+          {event.end_time ? ` â€“ ${event.end_time}` : ""}
         </p>
       )}
       {event.venue_name && (
         <p className="mt-1 text-sm text-slate-700">
           {event.venue_name}
-          {event.venue_address ? ` — ${event.venue_address}` : ""}
+          {event.venue_address ? ` â€” ${event.venue_address}` : ""}
         </p>
       )}
       {event.blurb && (
         <p className="mt-2 text-sm leading-relaxed text-slate-600">{event.blurb}</p>
+      )}
+      {showAvailabilityNote && (
+        <p className="mt-3 rounded-lg border border-gold-400/30 bg-navy-950/80 px-3 py-2 text-sm text-gold-300">
+          I DJ Events is still available for events this night.
+        </p>
       )}
     </article>
   );

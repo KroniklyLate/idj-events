@@ -109,3 +109,8 @@ body {
 .link-on-image:hover {
   color: #ffffff;
 }
+/* Calendar day cells / chips: never use light fills on dark glass */
+.glass-panel .bg-white,
+.glass-panel-soft .bg-white {
+  background-color: rgba(12, 25, 41, 0.92);
+}
