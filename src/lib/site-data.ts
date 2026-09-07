@@ -73,7 +73,7 @@ export const ogImageMeta = {
 export const seo = {
   defaultTitle: "Wedding DJ Lake Tahoe & Reno | I DJ Events",
   defaultDescription:
-    "Lake Tahoe's premier wedding DJ. DJ, MC, lighting, ceremony sound, officiant & karaoke for unforgettable weddings in Tahoe, Reno & beyond.",
+    "Lake Tahoe wedding DJ for ceremonies and receptions. DJ, MC, lighting, ceremony sound, officiant & karaoke across Tahoe, Reno & beyond.",
   titleTemplate: "%s | I DJ Events",
 } as const;
 
@@ -116,7 +116,7 @@ export const pageSeo = {
   calendar: {
     title: "Event Calendar",
     description:
-      "See upcoming karaoke nights, nightlife, and public appearances from I DJ Events. Synced from IDJ Ops. Private weddings stay off this calendar.",
+      "See upcoming karaoke nights, nightlife, and public appearances from I DJ Events. Private weddings stay off this calendar.",
     path: "/calendar",
   },
 } as const;
@@ -162,7 +162,7 @@ export const services = [
   {
     title: "DJ Services",
     description:
-      "Curated playlists, seamless transitions, and a dance floor that stays packed from cocktails through the last song. Multicultural and multi-generational music for every guest list.",
+      "Curated playlists, clean transitions, and a dance floor that stays packed from cocktails through the last song. Multicultural and multi-generational music for every guest list.",
     icon: "🎧",
   },
   {
@@ -464,7 +464,7 @@ export const processSteps = [
     step: "04",
     title: "Wedding day",
     description:
-      "Professional setup, clear MC hosting, dance-floor energy, and seamless handoffs with your venue and vendors.",
+      "Professional setup, clear MC hosting, dance-floor energy, and coordinated handoffs with your venue and vendors.",
   },
   {
     step: "05",
@@ -474,31 +474,25 @@ export const processSteps = [
   },
 ];
 
-export const testimonialPlaceholders = [
+/** Honest commitment points — not fabricated couple reviews. */
+export const commitmentPoints = [
   {
-    quote:
-      "Your guests will remember the energy on the dance floor — and how smoothly every moment of the day flowed.",
-    attribution: "I DJ Events",
-    context: "What couples can expect",
+    title: "Dance floor energy",
+    body: "Guests remember the music and the room. We read the crowd, honor your must-plays and do-not-plays, and keep the reception moving from cocktails to last dance.",
   },
   {
-    quote:
-      "From lakeside vows to late-night celebration, we treat every timeline detail like it matters — because it does.",
-    attribution: "I DJ Events",
-    context: "Our promise",
+    title: "Timeline that holds",
+    body: "From lakeside vows to late-night celebration, we treat every cue like it matters — announcements, first dance, cake, and vendor handoffs included.",
   },
   {
-    quote:
-      "Professional sound, lighting that photographs beautifully, and an MC who keeps everyone in the moment.",
-    attribution: "I DJ Events",
-    context: "Full-service production",
+    title: "Production that photographs well",
+    body: "Clear ceremony sound, lighting that looks intentional on camera, and an MC who keeps guests oriented without stealing the spotlight.",
   },
 ];
 
-export const reviewLinks = [
-  { label: "The Knot", href: "#", comingSoon: true },
-  { label: "WeddingWire", href: "#", comingSoon: true },
-  { label: "Google Reviews", href: "#", comingSoon: true },
+/** Real review profile links — only show when href is a live URL. */
+export const reviewLinks: { label: string; href: string }[] = [
+  // Add The Knot / WeddingWire / Google URLs here when profiles are live.
 ];
 
 export const faqs = [

@@ -24,11 +24,13 @@ export default function AboutPage() {
           <div className="grid gap-12 lg:grid-cols-2">
             <div className="glass-panel space-y-6 p-8 text-base leading-relaxed text-slate-700">
               <p>
-                Based in the heart of Lake Tahoe, <strong className="text-navy-900">I DJ Events</strong> specializes
-                in weddings that blend natural beauty with unforgettable energy.
-                Whether you&apos;re planning an intimate shoreline ceremony or a
-                grand reception under the stars, we bring the sound, lighting,
-                and hosting expertise to match the moment.
+                Based in the heart of Lake Tahoe,{" "}
+                <strong className="text-navy-900">I DJ Events</strong> specializes
+                in weddings that pair Tahoe scenery with a reception that stays
+                on time and on the dance floor. Whether you&apos;re planning an
+                intimate shoreline ceremony or a grand reception under the stars,
+                we bring the sound, lighting, and hosting expertise to match the
+                moment.
               </p>
               <p>
                 Our approach is simple: listen first, plan thoughtfully, and
@@ -48,7 +50,7 @@ export default function AboutPage() {
               {[
                 {
                   title: "Local expertise",
-                  body: `We know ${siteConfig.serviceArea} — resorts, private estates, beaches, and the logistics that make Tahoe weddings unforgettable.`,
+                  body: `We know ${siteConfig.serviceArea} — resorts, private estates, beaches, and the logistics that make Tahoe weddings run smoothly.`,
                 },
                 {
                   title: "Full-service production",

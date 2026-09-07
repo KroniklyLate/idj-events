@@ -17,13 +17,12 @@ Open http://localhost:3000
 Contact-form inquiries are delivered by the **IDJ Ops** app at `ops.idj.events`
 (the CRM's `/api/leads` endpoint). No third-party form service is required.
 
-Delivery is resilient with three tiers, so a lead is never lost:
+Delivery is resilient, so a lead is never lost:
 
-1. POST directly to `https://ops.idj.events/api/leads`
-2. Fall back to the same-origin `/api/leads` proxy (see `next.config.ts`)
-3. Fall back to opening the visitor's email app with their details pre-filled
+1. POST to same-origin `/api/leads` (rewritten to Ops via `next.config.ts`)
+2. Fall back to opening the visitor's email app with their details pre-filled
 
-Both origins are configurable via optional env vars — see `.env.local.example`.
+Optional overrides: `PORTAL_ORIGIN`, `NEXT_PUBLIC_LEAD_ENDPOINT` — see `.env.local.example`.
 For a normal deploy you don't need to set anything.
 
 ## Step 3 — Push to GitHub

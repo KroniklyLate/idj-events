@@ -75,7 +75,7 @@ export default async function CalendarPage() {
       <PageHero
         eyebrow="Calendar"
         title="Where to find us"
-        description="Public nights from IDJ Ops — karaoke, nightlife, and listed appearances. Private weddings stay off this page."
+        description="Public karaoke nights, nightlife, and listed appearances. Private weddings stay off this page."
       />
 
       <section className="py-16 sm:py-24">
@@ -102,7 +102,7 @@ export default async function CalendarPage() {
               </h2>
               <p className="mt-2 text-sm leading-relaxed text-slate-600">
                 Club nights, residencies, and karaoke live on the nightlife
-                site — same calendar from Ops, nightlife branding.
+                site — same public calendar, nightlife branding.
               </p>
               <a
                 href={siteConfig.nightlifeUrl}

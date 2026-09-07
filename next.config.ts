@@ -22,6 +22,12 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: __dirname,
   },
+  async redirects() {
+    return [
+      { source: "/events", destination: "/calendar", permanent: true },
+      { source: "/events/:path*", destination: "/calendar", permanent: true },
+    ];
+  },
   async rewrites() {
     if (!PORTAL_ORIGIN) return [];
     return [
