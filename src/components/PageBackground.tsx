@@ -10,7 +10,8 @@ type PageBackgroundProps = {
 export function PageBackground({ image, imageAlt, children }: PageBackgroundProps) {
   return (
     <div className="relative min-h-screen">
-      <div className="fixed inset-0 -z-20">
+      {/* z-0 (not negative): solid body/html navy used to cover -z backgrounds */}
+      <div className="pointer-events-none fixed inset-0 z-0">
         <Image
           src={image}
           alt={imageAlt}
@@ -19,8 +20,9 @@ export function PageBackground({ image, imageAlt, children }: PageBackgroundProp
           sizes="100vw"
           className="object-cover object-center"
         />
+        <div className="absolute inset-0 bg-navy-950/55" aria-hidden />
       </div>
-      <div className="relative">{children}</div>
+      <div className="relative z-10">{children}</div>
     </div>
   );
 }
