@@ -107,7 +107,7 @@ export function BlogPostContent({
                     className="h-auto w-full object-cover"
                   />
                   {block.image.caption && (
-                    <figcaption className="bg-white/90 px-4 py-3 text-sm text-slate-600">
+                    <figcaption className="border-t border-slate-200 bg-white px-4 py-3 text-sm font-medium text-navy-900">
                       {block.image.caption}
                     </figcaption>
                   )}

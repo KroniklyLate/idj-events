@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { CalendarEvent } from "@/lib/calendar";
 import { monthBounds, shiftMonth } from "@/lib/calendar";
 
@@ -41,6 +41,7 @@ export function PublicCalendar({
   );
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const detailRef = useRef<HTMLDivElement>(null);
 
   const { from, to } = monthBounds(year, monthIndex0);
   const monthLabel = new Date(year, monthIndex0, 1).toLocaleDateString("en-US", {
@@ -115,6 +116,14 @@ export function PublicCalendar({
     }
   }
 
+  function selectDay(iso: string) {
+    setSelected(iso);
+    // Keep the detail heading clear of the sticky site header on narrow screens.
+    window.requestAnimationFrame(() => {
+      detailRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }
+
   return (
     <div className="grid gap-8 lg:grid-cols-[1.4fr_1fr]">
       <div className="glass-panel p-5 sm:p-6">
@@ -159,7 +168,7 @@ export function PublicCalendar({
               <button
                 key={iso}
                 type="button"
-                onClick={() => setSelected(iso)}
+                onClick={() => selectDay(iso)}
                 className={`min-h-[4.5rem] rounded-lg border p-1.5 text-left transition ${
                   isSelected
                     ? "border-gold-500 bg-gold-400/20"
@@ -192,7 +201,11 @@ export function PublicCalendar({
       </div>
 
       <div className="space-y-4">
-        <div className="glass-panel p-5 sm:p-6">
+        <div
+          ref={detailRef}
+          id="calendar-day-detail"
+          className="glass-panel scroll-mt-28 p-5 sm:p-6"
+        >
           <p className="text-xs font-semibold tracking-widest text-gold-600 uppercase">
             {selected ? formatLongDate(selected) : "Select a day"}
           </p>
@@ -223,7 +236,7 @@ export function PublicCalendar({
                 <li key={event.id}>
                   <button
                     type="button"
-                    onClick={() => setSelected(event.date)}
+                    onClick={() => selectDay(event.date)}
                     className="w-full text-left"
                   >
                     <p className="text-sm font-semibold text-navy-900">{event.title}</p>
@@ -249,7 +262,7 @@ function EventCard({ event }: { event: CalendarEvent }) {
         {event.event_type_label}
         {event.recurring ? " · weekly" : ""}
       </p>
-      <h3 className="mt-1 font-display text-xl font-semibold text-navy-900">
+      <h3 className="mt-1 scroll-mt-28 font-display text-xl font-semibold text-navy-900">
         {event.title}
       </h3>
       {(event.start_time || event.end_time) && (

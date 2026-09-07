@@ -7,13 +7,13 @@ import { PageBackground } from "@/components/PageBackground";
 import { PageHero } from "@/components/PageHero";
 import { SectionHeading } from "@/components/SectionHeading";
 import {
+  commitmentPoints,
   createPageMetadata,
   heroImages,
   packages,
   reviewLinks,
   services,
   siteConfig,
-  testimonialPlaceholders,
   trustSignals,
 } from "@/lib/site-data";
 
@@ -115,8 +115,8 @@ export default function HomePage() {
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Packages"
-            title="Clear pricing, unforgettable experiences"
-            description="Six thoughtfully designed packages — from elegant receptions to full concert-quality productions with complete event coordination."
+            title="Clear pricing for every reception size"
+            description="Six packages from Starter to Till The End — three highlights below. See the full lineup for hours, zones, lighting, and guest-count guidance."
           />
 
           <div className="mt-12 flex flex-wrap justify-center gap-8">
@@ -173,11 +173,11 @@ export default function HomePage() {
               <div className="mb-6 flex justify-center sm:justify-start">
                 <BrandLogo size="sm" className="h-14 w-14" />
               </div>
-              <p className="font-display text-2xl leading-snug font-medium italic text-navy-900 sm:text-3xl">
-                &ldquo;{testimonialPlaceholders[0].quote}&rdquo;
+              <p className="font-display text-2xl leading-snug font-medium text-navy-900 sm:text-3xl">
+                One wedding per day. Outdoor-ready audio. Clear planning from inquiry to pack-out.
               </p>
-              <p className="mt-6 text-sm font-semibold tracking-wide text-gold-600 uppercase">
-                — {testimonialPlaceholders[0].attribution}
+              <p className="mt-6 text-sm leading-relaxed text-slate-700">
+                We book Tahoe and Reno celebrations with licensed coverage in California and Nevada — one wedding per day, prepared for outdoor venues.
               </p>
             </div>
           </div>
@@ -187,40 +187,40 @@ export default function HomePage() {
       <section className="py-16 sm:py-24">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
-            eyebrow="Kind Words"
-            title="What couples can expect"
-            description="Client reviews are coming soon on The Knot, WeddingWire, and Google. Until then, here’s our commitment to every couple we serve."
+            eyebrow="Our Commitment"
+            title="What you can count on"
+            description="Couple reviews will appear here once they are published on The Knot, WeddingWire, and Google. Until then, here is our promise for every wedding we book."
           />
           <div className="mt-12 flex flex-wrap justify-center gap-6">
-            {testimonialPlaceholders.map((item) => (
-              <blockquote
-                key={item.context}
+            {commitmentPoints.map((item) => (
+              <article
+                key={item.title}
                 className="glass-panel flex w-full flex-col p-6 sm:w-[calc(50%-0.75rem)] sm:p-8 md:w-[calc((100%-3rem)/3)]"
               >
-                <p className="flex-1 text-base leading-relaxed text-slate-700 italic">
-                  &ldquo;{item.quote}&rdquo;
+                <h3 className="font-display text-xl font-semibold text-navy-900">
+                  {item.title}
+                </h3>
+                <p className="mt-3 flex-1 text-base leading-relaxed text-slate-700">
+                  {item.body}
                 </p>
-                <footer className="mt-6">
-                  <p className="text-sm font-semibold text-navy-900">{item.attribution}</p>
-                  <p className="text-xs tracking-wide text-gold-600 uppercase">
-                    {item.context}
-                  </p>
-                </footer>
-              </blockquote>
+              </article>
             ))}
           </div>
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-            {reviewLinks.map((link) => (
-              <span
-                key={link.label}
-                className="glass-panel-soft rounded-full px-4 py-2 text-sm font-medium text-slate-700"
-                title={link.comingSoon ? "Profile coming soon" : undefined}
-              >
-                {link.label}
-                {link.comingSoon ? " · Coming soon" : ""}
-              </span>
-            ))}
-          </div>
+          {reviewLinks.length > 0 && (
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+              {reviewLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="glass-panel-soft rounded-full px-4 py-2 text-sm font-medium text-slate-700 transition hover:text-navy-900"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

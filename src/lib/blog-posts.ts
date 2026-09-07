@@ -135,7 +135,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "paragraph",
-        text: "At I DJ Events, we plan around the venue first — load-in paths, ceremony vs. reception layouts, lighting truss clearance, and how your guests will move from cocktails to dancing. The right venue plus the right production plan is what turns a beautiful setting into an unforgettable celebration.",
+        text: "At I DJ Events, we plan around the venue first — load-in paths, ceremony vs. reception layouts, lighting truss clearance, and how your guests will move from cocktails to dancing. The right venue plus the right production plan is what turns a beautiful setting into a celebration that feels intentional.",
       },
       {
         type: "paragraph",
@@ -683,7 +683,7 @@ export const blogPosts: BlogPost[] = [
           "Eagle Lake Trail (Emerald Bay) — A classic South Shore hike with a steady climb, wildflowers in season, and a gorgeous alpine lake payoff. One of the best half-day hikes on the lake.",
           "Mount Tallac — For experienced hikers who want a serious summit. The views from Tahoe's most iconic peak are worth every step. Start early, bring layers, and respect the elevation.",
           "Rubicon Trail / Vikingsholm area — Lakeside hiking through some of the most photographed shoreline in California. Pair it with a kayak rental for the full Emerald Bay experience.",
-          "North Shore favorites — Shirley Canyon in Squaw Valley, Mount Rose summit trails, and lakefront paths around Tahoe City and Kings Beach deliver big scenery without always needing a full mountaineering day.",
+          "North Shore favorites — Shirley Canyon in Olympic Valley, Mount Rose summit trails, and lakefront paths around Tahoe City and Kings Beach deliver big scenery without always needing a full mountaineering day.",
         ],
       },
       {
@@ -1089,7 +1089,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "heading",
-        text: "My pick for the best floral design: Create With T",
+        text: "A South Shore florist worth knowing: Create With T",
       },
       {
         type: "image",
@@ -1102,11 +1102,11 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "paragraph",
-        text: "If you want my straight answer on the best floral design around Lake Tahoe, it is Create With T on the South Shore. Tracey Duncan and her team are not just arranging flowers — they are bringing what their site calls \"floral magic to your special day,\" and after seeing their work at events across the basin, I believe that tagline.",
+        text: "On the South Shore, Create With T is a florist I point couples toward when they want thoughtful, elevated design. Tracey Duncan and her team bring strong landscape-architecture instincts to ceremony and reception installs — worth a look if that is your style.",
       },
       {
         type: "paragraph",
-        text: "Create With T was established in 2018 with a clear mission: authentic, creative, and inspiring florals that help craft dreams into reality. That is not marketing fluff — it is how they operate. Tracey is the owner, creative director, and lead designer, and her background in landscape architecture shows up in the way she thinks about scale, color, and how installations sit in real outdoor spaces. She is a California Certified Florist with competition credentials and a portfolio that spans classic Tahoe romance to completely non-traditional celebrations.",
+        text: "Create With T has been building Tahoe wedding florals since 2018. Tracey is the owner, creative director, and lead designer; her landscape-architecture background shows in how she thinks about scale, color, and outdoor installs. She is a California Certified Florist with a portfolio that spans classic Tahoe romance to less traditional celebrations.",
       },
       {
         type: "list",
@@ -1123,7 +1123,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "paragraph",
-        text: "Start with their planning questionnaire or reach out through Instagram at @Create_with_t — Tracey's team is approachable, professional, and genuinely excited about the design process. If you are marrying on the South Shore, at Edgewood, a Stateline resort, a Ski Run restaurant, or a private estate above the lake, Create With T is who I recommend first.",
+        text: "Start with their planning questionnaire or reach out through Instagram at @Create_with_t. If you are marrying on the South Shore — Edgewood, a Stateline resort, Ski Run, or a private estate — they are a strong first conversation.",
       },
       {
         type: "heading",
@@ -1220,7 +1220,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "paragraph",
-        text: "My recommendation: start with Create With T if you want the best floral design I have seen around this lake. Explore the North Shore studios below if your venue and vision pull you that direction. Bring your florist into the planning conversation early — and bring your entertainment team in at the same time. The best Tahoe weddings are designed as one experience, not a stack of separate vendor bookings.",
+        text: "Start with Create With T if South Shore elevated design is your priority, or explore the North Shore studios below if your venue pulls you that way. Bring your florist into planning early — and bring entertainment in at the same time so lighting, sound, and florals share one plan.",
       },
     ],
     venues: [

@@ -4,11 +4,9 @@ import { packages, siteConfig } from "@/lib/site-data";
 import { useSearchParams } from "next/navigation";
 import { FormEvent, useState } from "react";
 
+// Prefer same-origin /api/leads (rewritten to Ops). Optional absolute override only.
 const leadEndpoint =
-  process.env.NEXT_PUBLIC_LEAD_ENDPOINT?.trim() ||
-  "https://ops.idj.events/api/leads";
-
-const leadFallback = "/api/leads";
+  process.env.NEXT_PUBLIC_LEAD_ENDPOINT?.trim() || "/api/leads";
 
 const fieldLabels: Record<string, string> = {
   name: "Name",
@@ -92,35 +90,20 @@ export function ContactForm() {
       company: String(data.get("company") || ""),
     };
 
-    const endpoints = [leadEndpoint, leadFallback].filter(
-      (url, i, arr) => url && arr.indexOf(url) === i,
-    );
-
     try {
-      let delivered = false;
-      for (const url of endpoints) {
-        try {
-          const response = await fetch(url, {
-            method: "POST",
-            headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(payload),
-          });
-          const body = (await response.json().catch(() => null)) as {
-            ok?: boolean;
-          } | null;
-          if (response.ok && body?.ok !== false) {
-            delivered = true;
-            break;
-          }
-        } catch {
-          // try the next endpoint
-        }
-      }
+      const response = await fetch(leadEndpoint, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+      const body = (await response.json().catch(() => null)) as {
+        ok?: boolean;
+      } | null;
 
-      if (delivered) {
+      if (response.ok && body?.ok !== false) {
         setStatus("success");
         form.reset();
         return;

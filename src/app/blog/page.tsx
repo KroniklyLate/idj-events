@@ -20,7 +20,7 @@ export default function BlogPage() {
       <PageHero
         eyebrow="Lake Tahoe Wedding Insights"
         title="The I DJ Events Blog"
-        description="Planning tips, venue inspiration, and DJ advice for unforgettable Lake Tahoe and Reno celebrations."
+        description="Planning tips, venue inspiration, and DJ advice for Lake Tahoe and Reno weddings."
       />
 
       <section className="py-16 sm:py-24">
