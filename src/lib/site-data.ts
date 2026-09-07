@@ -41,8 +41,8 @@ export const heroImages = {
     alt: "Lake Tahoe at golden hour with emerald water and snow-capped Sierra mountains",
   },
   calendar: {
-    src: "/images/backgrounds/hero-services.jpg",
-    alt: "Lake Tahoe at twilight with dramatic celebration lighting",
+    src: "/images/backgrounds/hero-calendar.jpg",
+    alt: "Lake Tahoe nighttime patio with string lights overlooking the water",
   },
 } as const satisfies Record<string, SiteImage>;
 
