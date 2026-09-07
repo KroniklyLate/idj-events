@@ -140,7 +140,7 @@ export function PublicCalendar({
             className="rounded-full border border-gold-400/30 bg-navy-950/70 px-3 py-1.5 text-sm font-semibold text-gold-300 hover:border-gold-400 hover:bg-navy-900"
             disabled={loading}
           >
-            â† Prev
+            {"\u2190"} Prev
           </button>
           <h2 className="font-display text-2xl font-semibold text-navy-900">
             {monthLabel}
@@ -151,7 +151,7 @@ export function PublicCalendar({
             className="rounded-full border border-gold-400/30 bg-navy-950/70 px-3 py-1.5 text-sm font-semibold text-gold-300 hover:border-gold-400 hover:bg-navy-900"
             disabled={loading}
           >
-            Next â†’
+            Next {"\u2192"}
           </button>
         </div>
         {error && <p className="mb-3 text-sm text-red-700">{error}</p>}
