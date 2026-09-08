@@ -52,7 +52,7 @@ export const siteConfig = {
   name: "I DJ Events",
   tagline: "Tahoe's Premier Wedding DJ — I DJ Events",
   domain: "idj.events",
-  siteUrl: "https://idj.events",
+  siteUrl: "https://www.idj.events",
   phone: "775-233-6501",
   phoneHref: "tel:+17752336501",
   email: "booking@idj.events",
