@@ -21,7 +21,7 @@ export function Header() {
           className="h-11 w-11 sm:h-12 sm:w-12"
         />
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-6 lg:gap-8 md:flex">
           {navLinks.map((link) => {
             const active =
               pathname === link.href ||
@@ -40,12 +40,24 @@ export function Header() {
               </Link>
             );
           })}
-          <Link
-            href="/contact"
-            className="rounded-full bg-gold-500 px-5 py-2.5 text-sm font-semibold text-navy-950 transition hover:bg-gold-400"
-          >
-            Book Now
-          </Link>
+          <div className="flex items-center gap-2">
+            <Link
+              href="/nightlife"
+              className={`rounded-full border px-4 py-2.5 text-sm font-semibold transition ${
+                pathname === "/nightlife" || pathname.startsWith("/nightlife/")
+                  ? "border-gold-400 bg-gold-500/20 text-gold-300"
+                  : "border-white/40 bg-white/10 text-white hover:bg-white/20"
+              }`}
+            >
+              Book Nightlife
+            </Link>
+            <Link
+              href="/contact"
+              className="rounded-full bg-gold-500 px-5 py-2.5 text-sm font-semibold text-navy-950 transition hover:bg-gold-400"
+            >
+              Book Now
+            </Link>
+          </div>
         </nav>
 
         <button
@@ -88,9 +100,16 @@ export function Header() {
               );
             })}
             <Link
+              href="/nightlife"
+              onClick={() => setOpen(false)}
+              className="mt-2 rounded-full border border-white/40 bg-white/10 px-5 py-3 text-center text-sm font-semibold text-white"
+            >
+              Book Nightlife
+            </Link>
+            <Link
               href="/contact"
               onClick={() => setOpen(false)}
-              className="mt-2 rounded-full bg-gold-500 px-5 py-3 text-center text-sm font-semibold text-navy-950"
+              className="rounded-full bg-gold-500 px-5 py-3 text-center text-sm font-semibold text-navy-950"
             >
               Book Now
             </Link>

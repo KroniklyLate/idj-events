@@ -16,6 +16,20 @@ const PORTAL_ORIGIN = rawOrigin.includes("trycloudflare.com")
   : rawOrigin;
 
 const nextConfig: NextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "www.kroniklylate.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "kroniklylate.com",
+        pathname: "/**",
+      },
+    ],
+  },
   // Pin the workspace root to this project. A stray package-lock.json in the
   // home directory otherwise makes Next infer the wrong root (and drags the
   // huge public/ assets into filesystem tracing).
@@ -26,6 +40,7 @@ const nextConfig: NextConfig = {
     return [
       { source: "/events", destination: "/calendar", permanent: true },
       { source: "/events/:path*", destination: "/calendar", permanent: true },
+      { source: "/kroniklylate", destination: "/nightlife", permanent: false },
     ];
   },
   async rewrites() {

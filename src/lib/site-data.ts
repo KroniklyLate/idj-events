@@ -119,6 +119,12 @@ export const pageSeo = {
       "See upcoming karaoke nights, nightlife appearances, and booked dates for I DJ Events in Lake Tahoe and Reno.",
     path: "/calendar",
   },
+  nightlife: {
+    title: "Nightlife & Karaoke Bookings",
+    description:
+      "Club, karaoke, and nightlife bookings for I DJ Events are handled through Kronikly Late. Weddings and formal receptions stay on idj.events.",
+    path: "/nightlife",
+  },
 } as const;
 
 export function createPageMetadata(page: keyof typeof pageSeo): Metadata {

@@ -9,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     services: 0.9,
     calendar: 0.8,
     contact: 0.8,
+    nightlife: 0.8,
     about: 0.7,
     blog: 0.7,
   };

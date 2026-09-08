@@ -63,13 +63,12 @@ export function Footer() {
               </a>
             </li>
             <li>
-              <a
-                href={siteConfig.nightlifeUrl}
+              <Link
+                href="/nightlife"
                 className="transition-colors hover:text-white"
-                rel="noopener noreferrer"
               >
                 Nightlife &amp; karaoke · {siteConfig.nightlifeName}
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

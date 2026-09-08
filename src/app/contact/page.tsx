@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Suspense } from "react";
 import { BrandLogo } from "@/components/BrandLogo";
 import { ContactForm } from "@/components/ContactForm";
@@ -71,6 +72,22 @@ export default function ContactPage() {
                 </p>
                 <p className="mt-2 text-navy-900">{siteConfig.serviceArea}</p>
                 <p className="mt-1 text-sm text-slate-600">{siteConfig.travelNote}</p>
+              </div>
+
+              <div className="glass-panel p-5">
+                <p className="text-xs font-semibold tracking-widest text-gold-600 uppercase">
+                  Nightlife &amp; karaoke
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-slate-700">
+                  Club, karaoke, and late-night inquiries book through{" "}
+                  {siteConfig.nightlifeName} — not this wedding form.
+                </p>
+                <Link
+                  href="/nightlife"
+                  className="mt-3 inline-flex text-sm font-semibold text-navy-900 underline underline-offset-2 hover:text-lake-700"
+                >
+                  Go to nightlife handoff →
+                </Link>
               </div>
             </div>
           </div>
