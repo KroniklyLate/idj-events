@@ -106,7 +106,7 @@ export default async function CalendarPage() {
               </h2>
               <p className="mt-2 text-sm leading-relaxed text-slate-600">
                 Club nights, residencies, and karaoke book on Kronikly Late —
-                same DJ, nightlife path. Preview the handoff, then open the site.
+                same DJ, clear path. Preview the nightlife site, then open booking.
               </p>
               <Link
                 href="/nightlife"

@@ -94,7 +94,7 @@ export function KroniklyLateSitePreview() {
       </div>
 
       <p className="mt-3 text-center text-xs text-white/60 transition-colors group-hover:text-white/80">
-        Live nightlife site preview — click to open booking
+        Live preview — click to open Kronikly Late booking
       </p>
     </a>
   );

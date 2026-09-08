@@ -6,7 +6,7 @@ import { createPageMetadata, heroImages, siteConfig } from "@/lib/site-data";
 
 export const metadata: Metadata = createPageMetadata("nightlife");
 
-export default function NightlifeHandoffPage() {
+export default function NightlifePage() {
   return (
     <PageBackground
       image={heroImages.calendar.src}
@@ -49,7 +49,7 @@ export default function NightlifeHandoffPage() {
             href="/contact"
             className="inline-flex w-full items-center justify-center rounded-full border border-white/50 bg-white/15 px-10 py-4 text-lg font-semibold text-white backdrop-blur-sm transition hover:bg-white/25 sm:w-auto"
           >
-            Stay for Wedding Quote
+            Book Wedding Instead
           </Link>
         </div>
 

@@ -86,7 +86,7 @@ export default function ContactPage() {
                   href="/nightlife"
                   className="mt-3 inline-flex text-sm font-semibold text-navy-900 underline underline-offset-2 hover:text-lake-700"
                 >
-                  Go to nightlife handoff →
+                  Book nightlife on Kronikly Late →
                 </Link>
               </div>
             </div>
