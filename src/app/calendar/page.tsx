@@ -105,16 +105,15 @@ export default async function CalendarPage() {
                 Kronikly Late
               </h2>
               <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                Club nights, residencies, and karaoke live on the nightlife
-                site — same public calendar, nightlife branding.
+                Club nights, residencies, and karaoke book on Kronikly Late —
+                same DJ, nightlife path. Preview the handoff, then open the site.
               </p>
-              <a
-                href={siteConfig.nightlifeUrl}
+              <Link
+                href="/nightlife"
                 className="mt-4 inline-flex rounded-full bg-navy-900 px-5 py-2.5 text-sm font-semibold text-white hover:bg-navy-800"
-                rel="noopener noreferrer"
               >
-                Open kroniklylate.com
-              </a>
+                Book nightlife on Kronikly Late
+              </Link>
             </div>
             <div>
               <p className="text-xs font-semibold tracking-widest text-gold-600 uppercase">

@@ -224,7 +224,60 @@ export default function HomePage() {
         </div>
       </section>
 
+
+      <section className="py-16 sm:py-24">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="glass-panel grid gap-8 p-6 sm:grid-cols-2 sm:p-8 lg:p-10">
+            <div>
+              <p className="text-xs font-semibold tracking-widest text-gold-600 uppercase">
+                Nightlife &amp; karaoke
+              </p>
+              <h2 className="mt-2 font-display text-2xl font-semibold text-navy-900 sm:text-3xl">
+                Clubs and karaoke book on Kronikly Late
+              </h2>
+              <p className="mt-3 text-sm leading-relaxed text-slate-700 sm:text-base">
+                Weddings stay on I DJ Events. For nightclubs, karaoke, residencies,
+                and late-night sets, use the nightlife handoff — same DJ, clear path.
+              </p>
+              <Link
+                href="/nightlife"
+                className="mt-6 inline-flex rounded-full bg-navy-900 px-6 py-3 text-sm font-semibold text-white transition hover:bg-navy-800"
+              >
+                Book Nightlife
+              </Link>
+            </div>
+            <div>
+              <p className="text-xs font-semibold tracking-widest text-gold-600 uppercase">
+                Weddings &amp; receptions
+              </p>
+              <h2 className="mt-2 font-display text-2xl font-semibold text-navy-900 sm:text-3xl">
+                Tahoe packages start at $1,500
+              </h2>
+              <p className="mt-3 text-sm leading-relaxed text-slate-700 sm:text-base">
+                Ceremony sound, MC hosting, lighting, and reception energy —
+                request a quote or browse packages for your date and venue.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Link
+                  href="/contact"
+                  className="inline-flex rounded-full bg-gold-500 px-6 py-3 text-sm font-semibold text-navy-950 transition hover:bg-gold-400"
+                >
+                  Request a Quote
+                </Link>
+                <Link
+                  href="/packages"
+                  className="inline-flex rounded-full border border-navy-900/20 bg-white/40 px-6 py-3 text-sm font-semibold text-navy-900 transition hover:bg-white/70"
+                >
+                  View Packages
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <CTABanner />
+
     </PageBackground>
   );
 }
