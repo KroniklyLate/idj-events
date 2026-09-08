@@ -237,7 +237,7 @@ export default function HomePage() {
               </h2>
               <p className="mt-3 text-sm leading-relaxed text-slate-700 sm:text-base">
                 Weddings stay on I DJ Events. For nightclubs, karaoke, residencies,
-                and late-night sets, use the nightlife handoff — same DJ, clear path.
+                and late-night sets, book on Kronikly Late — same DJ, clear path.
               </p>
               <Link
                 href="/nightlife"

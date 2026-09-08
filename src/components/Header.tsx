@@ -55,7 +55,7 @@ export function Header() {
               href="/contact"
               className="rounded-full bg-gold-500 px-5 py-2.5 text-sm font-semibold text-navy-950 transition hover:bg-gold-400"
             >
-              Book Now
+              Book Wedding
             </Link>
           </div>
         </nav>
@@ -111,7 +111,7 @@ export function Header() {
               onClick={() => setOpen(false)}
               className="rounded-full bg-gold-500 px-5 py-3 text-center text-sm font-semibold text-navy-950"
             >
-              Book Now
+              Book Wedding
             </Link>
           </div>
         </nav>
